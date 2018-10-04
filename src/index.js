@@ -12,7 +12,7 @@ const target = document.querySelector('#root')
 
 render(
   <Provider store={store}>
-    <ConnectedRouter history={history}>
+    <ConnectedRouter basename={process.env.PUBLIC_URL} history={history}>
       <div>
         <App />
       </div>
