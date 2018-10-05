@@ -1,4 +1,3 @@
 /node_modules
 hyper-compose.yml
 /build
-deploy.sh
