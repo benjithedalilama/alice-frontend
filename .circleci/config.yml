@@ -16,8 +16,6 @@ jobs:
             - ~/node_modules
       - run: yarn test
   deploy:
-    requires:
-      - hold
     machine:
         enabled: true
     working_directory: ~/repo
@@ -32,6 +30,9 @@ jobs:
           name: Install Hyper.sh CLI
           command: wget https://hyper-install.s3.amazonaws.com/hyper-linux-x86_64.tar.gz && tar xzf hyper-linux-x86_64.tar.gz && ./hyper --help
       - run:
+          name: Configure Hyper.sh
+          command: hyper config --secretkey $HYPER_SECRET_KEY --accesskey $HYPER_ACCESS_KEY
+      - run:
           name: Deploy Master to Hyper.sh
           command: yarn deploy
 workflows:
@@ -39,17 +40,4 @@ workflows:
   build-and-deploy:
     jobs:
       - build
-      - dark-deploy:
-          requires:
-            - build
-          filters:
-            branches:
-              only: master
-      - hold:
-          type: approval
-          requires:
-            - dark-deploy
-          filters:
-            branches:
-              only: master
       - deploy
