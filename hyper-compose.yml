@@ -1,7 +1,7 @@
 version: "2"
 services:
   frontend:
-    image: benjithedalilama/alice-frontend:latest
+    image: benjithedalilama/alice-frontend:MVP
     fip: 209.177.93.243
     size: s1
     environment:
