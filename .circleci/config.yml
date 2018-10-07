@@ -1,7 +1,7 @@
 defaults: &defaults
   docker:
     - image: circleci/node:10.11
-  working_directory: ~/tmp
+  working_directory: /tmp
   environment:
     NODE_ENV: "production"
   filters:
@@ -24,9 +24,15 @@ jobs:
             - ~/node_modules
       - run: yarn test
       - run: yarn build
+      - persist_to_workspace:
+          root: ./
+          paths:
+            - build
   deploy:
     <<: *defaults
     steps:
+      - attach_workspace:
+          at: /tmp/workspace
       - restore_cache:
           keys:
             - hyper_cache
