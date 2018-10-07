@@ -10,7 +10,7 @@ defaults: &defaults
 
 version: 2
 jobs:
-  build:
+  test:
     <<: *defaults
     steps:
       - restore_cache:
@@ -23,19 +23,9 @@ jobs:
           paths:
             - ~/node_modules
       - run: yarn test
-      - run: yarn build
-      - run: mkdir -p workspace
-      - run: cd workspace && mkdir build/ && cd ../
-      - run: cp -r build/* workspace/build/
-      - persist_to_workspace:
-          root: workspace
-          paths:
-            - build
   deploy:
     <<: *defaults
     steps:
-      - attach_workspace:
-          at: /tmp
       - restore_cache:
           keys:
             - hyper_cache
@@ -55,9 +45,9 @@ jobs:
           command: yarn deploy
 workflows:
   version: 2
-  build-and-deploy:
+  test-and-deploy:
     jobs:
-      - build
+      - test
       - deploy:
           requires:
-            - build
+            - test
