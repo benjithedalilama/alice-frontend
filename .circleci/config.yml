@@ -26,8 +26,6 @@ jobs:
       - run: yarn build
   deploy:
     <<: *defaults
-    requires:
-      - build
     steps:
       - restore_cache:
           keys:
@@ -52,3 +50,5 @@ workflows:
     jobs:
       - build
       - deploy
+        requires:
+          - build
