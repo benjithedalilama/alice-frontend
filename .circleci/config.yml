@@ -32,7 +32,7 @@ jobs:
           command: wget https://hyper-install.s3.amazonaws.com/hyper-linux-x86_64.tar.gz && tar xzf hyper-linux-x86_64.tar.gz && ./hyper --help
       - run:
           name: Configure Hyper.sh
-          command: ./hyper config --secretkey $HYPER_SECRET_KEY --accesskey $HYPER_ACCESS_KEY
+          command: ./hyper config --secretkey $HYPER_SECRET_KEY --accesskey $HYPER_ACCESS_KEY --default-region us-west-1
       - run:
           name: Deploy Master to Hyper.sh
           command: yarn deploy
