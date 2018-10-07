@@ -15,19 +15,6 @@ jobs:
           paths:
             - ~/node_modules
       - run: yarn test
-  dark-deploy:
-    requires:
-      - build
-    filters:
-      branches:
-        only: master
-  hold:
-    type: approval
-    requires:
-      - dark-deploy
-    filters:
-      branches:
-        only: master
   deploy:
     requires:
       - hold
@@ -52,9 +39,17 @@ workflows:
   build-and-deploy:
     jobs:
       - build
-      - deploy:
+      - dark-deploy:
           requires:
             - build
           filters:
             branches:
               only: master
+      - hold:
+          type: approval
+          requires:
+            - dark-deploy
+          filters:
+            branches:
+              only: master
+      - deploy
