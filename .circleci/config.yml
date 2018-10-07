@@ -27,6 +27,7 @@ jobs:
       branches:
         only: master
     steps:
+      - checkout
       - run:
           name: Install Hyper.sh CLI
           command: wget https://hyper-install.s3.amazonaws.com/hyper-linux-x86_64.tar.gz && tar xzf hyper-linux-x86_64.tar.gz && ./hyper --help
