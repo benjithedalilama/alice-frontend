@@ -1,9 +1,17 @@
+defaults:
+  docker:
+    - image: circleci/node:10.11
+  working_directory: ~/tmp
+  environment:
+    NODE_ENV: "production"
+  filters:
+    branches:
+      only: master
+
 version: 2
 jobs:
   build:
-    docker:
-      - image: circleci/node:10.11
-    working_directory: ~/repo
+    <<: *defaults
     steps:
       - restore_cache:
           keys:
@@ -17,16 +25,9 @@ jobs:
       - run: yarn test
       - run: yarn build
   deploy:
+    <<: *defaults
     requires:
       - build
-    docker:
-      - image: circleci/node:10.11
-    working_directory: ~/repo
-    environment:
-      NODE_ENV: "production"
-    filers:
-      branches:
-        only: master
     steps:
       - restore_cache:
           keys:
