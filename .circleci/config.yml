@@ -24,6 +24,8 @@ jobs:
             - ~/node_modules
       - run: yarn test
       - run: yarn build
+      - run: mkdir -p workspace
+      - run: cp build workspace
       - persist_to_workspace:
           root: workspace
           paths:
@@ -32,7 +34,7 @@ jobs:
     <<: *defaults
     steps:
       - attach_workspace:
-          at: /tmp/workspace
+          at: /tmp
       - restore_cache:
           keys:
             - hyper_cache
