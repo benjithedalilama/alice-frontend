@@ -28,10 +28,17 @@ jobs:
       branches:
         only: master
     steps:
+      - restore_cache:
+          keys:
+            - hyper_cache
       - checkout
       - run:
           name: Install Hyper.sh CLI
           command: wget https://hyper-install.s3.amazonaws.com/hyper-linux-x86_64.tar.gz && tar xzf hyper-linux-x86_64.tar.gz && ./hyper --help
+      - save_cache:
+          key: hyper_cache
+          paths:
+            - ./hyper
       - run:
           name: Configure Hyper.sh
           command: ./hyper config --secretkey $HYPER_SECRET_KEY --accesskey $HYPER_ACCESS_KEY --default-region us-west-1
