@@ -1,0 +1,17 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: circleci/node:10.11
+    working_directory: ~/repo
+    steps:
+      - restore_cache:
+          keys:
+            - my-cache
+      - checkout
+      - run: yarn install
+      - save_cache:
+          key: my-cache
+          paths:
+            - ~/node_modules
+      - run: yarn test
