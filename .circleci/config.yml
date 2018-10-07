@@ -15,6 +15,7 @@ jobs:
           paths:
             - ~/node_modules
       - run: yarn test
+      - run: yarn build
   deploy:
     requires:
       - build
