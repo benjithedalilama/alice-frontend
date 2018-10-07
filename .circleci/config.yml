@@ -29,7 +29,7 @@ jobs:
     steps:
       - run:
           name: Install Hyper.sh CLI
-          command: wget https://hyper-install.s3.amazonaws.com/hyper-linux-x86_64.tar.gz && tar xzf hyper-linux-x86_64.tar.gz && ./hyper --help
+          command: wget https://hyper-install.s3.amazonaws.com/hyper-linux-x86_64.tar.gz && tar xzf hyper-linux-x86_64.tar.gz && ./hyper --help && ls -lah /usr/local/bin/hyper
       - run:
           name: Configure Hyper.sh
           command: hyper config --secretkey $HYPER_SECRET_KEY --accesskey $HYPER_ACCESS_KEY
