@@ -18,8 +18,8 @@ jobs:
   deploy:
     requires:
       - build
-    machine:
-        enabled: true
+    docker:
+      - image: circleci/node:10.11
     working_directory: ~/repo
     environment:
       NODE_ENV: "production"
