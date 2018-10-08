@@ -4,9 +4,6 @@ defaults: &defaults
   working_directory: ~/repo
   environment:
     NODE_ENV: "production"
-  filters:
-    branches:
-      only: master
 
 version: 2
 jobs:
@@ -51,3 +48,6 @@ workflows:
       - deploy:
           requires:
             - test
+          filters:
+            branches:
+              only: master
