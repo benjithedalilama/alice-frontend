@@ -1,7 +1,7 @@
 defaults: &defaults
   docker:
     - image: circleci/node:10.11
-  working_directory: ~/repo
+  working_directory: ~/alice-frontend
   environment:
     NODE_ENV: "production"
 
