@@ -3,7 +3,7 @@ services:
   frontend:
     image: benjithedalilama/alice-frontend:MVP
     fip: 209.177.93.243
-    size: s1
+    size: s4
     environment:
       - NODE_ENV=production
     ports:
