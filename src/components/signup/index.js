@@ -12,10 +12,10 @@ const SignUp = props => (
         <input placeholder="Email"></input>
         <input placeholder="Password"></input>
         <input placeholder="Confirm Password"></input>
-        <button className="button--main">Sign Up</button>
+        <button onClick={() => props.changePage('/hubs')}className="button--main">Sign Up</button>
       </form>
       <p>Already have an account?</p>
-      <button onClick={props.changePage} className="button--alt">Login</button>
+      <button onClick={() => props.changePage('/login')} className="button--alt">Login</button>
     </div>
   </div>
 )
@@ -25,7 +25,7 @@ const mapStateToProps = ({ counter }) => ({
 })
 
 const mapDispatchToProps = dispatch => bindActionCreators({
-  changePage: () => push('/login')
+  changePage: (destination) => push(destination)
 }, dispatch)
 
 export default connect(

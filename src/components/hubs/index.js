@@ -3,14 +3,14 @@ import { push } from 'connected-react-router'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 
-const Home = props => (
+const Hubs = props => (
   <div>
-    <h1>Home</h1>
+    <h1>Hubs</h1>
   </div>
 )
 
 const mapStateToProps = ({ counter }) => ({
-  
+
 })
 
 const mapDispatchToProps = dispatch => bindActionCreators({
@@ -20,4 +20,4 @@ const mapDispatchToProps = dispatch => bindActionCreators({
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(Home)
+)(Hubs)
