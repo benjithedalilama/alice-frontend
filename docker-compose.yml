@@ -8,3 +8,6 @@ services:
     ports:
       - "3000:3000"
       - "35729:35729"
+    volumes:
+      - .:/app
+    command: yarn start

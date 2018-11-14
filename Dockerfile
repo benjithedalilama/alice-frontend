@@ -1,14 +1,11 @@
 FROM node:10.11
-
-ADD yarn.lock /yarn.lock
-ADD package.json /package.json
-
-ENV NODE_PATH=/node_modules
-ENV PATH=$PATH:/node_modules/.bin
-RUN yarn
-
 WORKDIR /app
-ADD . /app
+COPY package.json ./
+COPY yarn.lock ./
+
+RUN yarn global add nodemon
+RUN yarn install
+COPY . /app
 
 EXPOSE 3000
 
