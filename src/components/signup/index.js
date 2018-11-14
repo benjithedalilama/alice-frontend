@@ -11,9 +11,10 @@ const SignUp = props => (
       <form className="login__form">
         <input placeholder="Email"></input>
         <input placeholder="Password"></input>
+        <input placeholder="Confirm Password"></input>
         <button className="button--main">Sign Up</button>
       </form>
-      <p>Forgot password?</p>
+      <p>Already have an account?</p>
       <button onClick={props.changePage} className="button--alt">Login</button>
     </div>
   </div>
