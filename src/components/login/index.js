@@ -7,14 +7,14 @@ import './login.css'
 const Login = props => (
   <div>
     <div className="auth">
-      <p className="login__header">Login</p>
-      <form className="login__form">
+      <p className="auth__header">Login</p>
+      <form className="auth__form">
         <input placeholder="Email"></input>
         <input placeholder="Password"></input>
-        <button onClick={() => props.changePage('/hubs')} className="button--main">Login</button>
+        <button onClick={() => props.changePage('/hubs')} className="button button--main">Login</button>
       </form>
       <p>Forgot password?</p>
-      <button onClick={() => props.changePage('/signup')} className="button--alt">Sign Up</button>
+      <button onClick={() => props.changePage('/signup')} className="button button--alt">Sign Up</button>
     </div>
   </div>
 )

@@ -1,0 +1,18 @@
+.navbar {
+  position: relative;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+
+  width: auto;
+  height: 50px;
+
+  color: white;
+  background-color: #2FADA5
+}
+
+.navbar__element {
+  margin: auto 10px;
+}

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Route } from 'react-router-dom'
 import Login from '../login'
-import SignUp from '../signup'
+import Signup from '../signup'
 import Hubs from '../hubs'
 
 const App = () => (
@@ -12,7 +12,7 @@ const App = () => (
     <main>
       <Route path="/hubs" component={Hubs} />
       <Route exact path="/login" component={Login} />
-      <Route exact path="/signup" component={SignUp} />
+      <Route exact path="/signup" component={Signup} />
     </main>
   </div>
 )

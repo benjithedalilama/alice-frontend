@@ -1,0 +1,19 @@
+.searchbar {
+  display: flex;
+  flex-direction: row;
+}
+
+.searchbar__input {
+  margin: auto 2px;
+
+  border: none;
+}
+
+.searchbar__icon {
+  position: relative;
+
+  width: 15px;
+  height: auto;
+
+  background-color: white;
+}

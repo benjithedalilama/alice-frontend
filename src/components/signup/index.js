@@ -2,20 +2,20 @@ import React from 'react'
 import { push } from 'connected-react-router'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import './signup.css'
+import '../login/login.css'
 
-const SignUp = props => (
+const Signup = props => (
   <div>
     <div className="auth">
-      <p className="login__header">Sign Up</p>
-      <form className="login__form">
+      <p className="auth__header">Sign Up</p>
+      <form className="auth__form">
         <input placeholder="Email"></input>
         <input placeholder="Password"></input>
         <input placeholder="Confirm Password"></input>
-        <button onClick={() => props.changePage('/hubs')}className="button--main">Sign Up</button>
+        <button onClick={() => props.changePage('/hubs')} className="button button--main">Sign Up</button>
       </form>
       <p>Already have an account?</p>
-      <button onClick={() => props.changePage('/login')} className="button--alt">Login</button>
+      <button onClick={() => props.changePage('/login')} className="button button--alt">Login</button>
     </div>
   </div>
 )
@@ -31,4 +31,4 @@ const mapDispatchToProps = dispatch => bindActionCreators({
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(SignUp)
+)(Signup)

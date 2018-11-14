@@ -1,13 +1,14 @@
 import React from 'react'
-// import { push } from 'connected-react-router'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import NavBar from '../navbar'
-import './hubs.css'
+import Breadcrumbs from '../breadcrumbs'
+import Searchbar from '../searchbar'
+import './navbar.css'
 
-const Hubs = props => (
-  <div>
-    <NavBar />
+const Navbar = props => (
+  <div className="navbar">
+    <Breadcrumbs className="navbar__element"></Breadcrumbs>
+    <Searchbar className="navbar__element"></Searchbar>
   </div>
 )
 
@@ -18,4 +19,4 @@ const mapDispatchToProps = dispatch => bindActionCreators({}, dispatch)
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(Hubs)
+)(Navbar)
