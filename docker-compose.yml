@@ -1,7 +1,7 @@
 version: "2"
 services:
   frontend:
-    image: benjithedalilama/alice-frontend:latest
+    image: benjithedalilama/alice-frontend:MVP
     environment:
       - NODE_ENV=development
       - CHOKIDAR_POLLING=true
