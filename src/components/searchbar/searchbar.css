@@ -12,11 +12,23 @@
   border: none;
 }
 
-.searchbar__icon {
+.searchbar__searchButton {
   position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
   width: 20px;
   height: auto;
 
   background-color: white;
+}
+
+.searchbar__searchButton:hover {
+  cursor: pointer;
+}
+
+.searchbar__icon {
+  font-size: 10px;
+  color: #4C4C4C;
 }
