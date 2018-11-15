@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux'
-import filler from './filler.js'
+import hubs from './hubsReducer.js'
 
 export default combineReducers({
-  filler
+  hubs
 })

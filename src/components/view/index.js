@@ -1,5 +1,5 @@
 import React from 'react'
-import Hubs from '../hubs'
+import HubList from '../hublist'
 import Navbar from '../navbar'
 
 const View = props => (
@@ -9,7 +9,7 @@ const View = props => (
     </header>
 
     <main>
-      <Hubs />
+      <HubList />
     </main>
   </div>
 )
