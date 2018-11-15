@@ -6,13 +6,16 @@
 .searchbar__input {
   margin: auto 2px;
 
+  width: 300px;
+  height: 25px;
+
   border: none;
 }
 
 .searchbar__icon {
   position: relative;
 
-  width: 15px;
+  width: 20px;
   height: auto;
 
   background-color: white;

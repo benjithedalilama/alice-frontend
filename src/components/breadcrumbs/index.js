@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import './breadcrumbs.css'
 
 const Breadcrumbs = props => (
-  <div className={props.className}>
+  <div className={'breadcrumbs ' + props.className}>
     <p>BREADCRUMBS</p>
   </div>
 )

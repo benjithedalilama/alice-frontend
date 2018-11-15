@@ -1,0 +1,18 @@
+.profilePreview {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.profilePreview__text {
+  margin-right: 5px;
+}
+
+.profilePreview__image {
+  position: relative;
+
+  margin-left: 5px;
+  height: 2.5em;
+
+  border-radius: 50%;
+}
