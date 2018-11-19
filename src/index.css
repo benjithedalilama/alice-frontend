@@ -4,6 +4,15 @@ body {
   font-family: sans-serif;
 }
 
+.listContainer {
+  display: flex;
+  position: relative;
+  justify-content: center;
+  align-items: center;
+
+  margin: 45px;
+}
+
 .auth {
   position: relative;
   flex-direction: column;

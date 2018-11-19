@@ -8,7 +8,7 @@ const View = props => (
       <Navbar />
     </header>
 
-    <main>
+    <main className='listContainer'>
       <HubList />
     </main>
   </div>

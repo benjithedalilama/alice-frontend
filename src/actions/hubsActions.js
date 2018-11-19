@@ -54,7 +54,31 @@ export const fetchHubs = () => {
           createdAt: '20180124',
           sensors: [],
           controlCodes: []
-        }
+        },
+        {
+          id: 1,
+          name: 'Berlin-3',
+          deployed:	false,
+          createdAt: '20180124',
+          sensors: [],
+          controlCodes: []
+        },
+        {
+          id: 2,
+          name: 'Munich-3',
+          deployed:	false,
+          createdAt: '20180124',
+          sensors: [],
+          controlCodes: []
+        },
+        {
+          id: 3,
+          name: 'Paris-3',
+          deployed:	false,
+          createdAt: '20180124',
+          sensors: [],
+          controlCodes: []
+        },
       ]
       dispatch(fetchHubsSuccess(hubs))
       return hubs
