@@ -7,9 +7,9 @@ import View from '../view'
 const App = () => (
   <div>
     <main>
-      <Route path="/hubs" component={View} />
-      <Route exact path="/login" component={Login} />
-      <Route exact path="/signup" component={Signup} />
+      <Route path='/hubs' component={View} />
+      <Route exact path='/login' component={Login} />
+      <Route exact path='/signup' component={Signup} />
     </main>
   </div>
 )

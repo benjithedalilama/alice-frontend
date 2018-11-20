@@ -23,11 +23,11 @@ class IconButton extends Component {
         this.iconType = {}
     }
   }
-  
+
   render () {
     return (
-      <div>
-        <FontAwesomeIcon className={this.props.className} icon={this.iconType} />
+      <div className={this.props.className}>
+        <FontAwesomeIcon icon={this.iconType} />
       </div>
     )
   }

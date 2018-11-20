@@ -56,7 +56,7 @@ export const fetchHubs = () => {
           controlCodes: []
         },
         {
-          id: 1,
+          id: 5,
           name: 'Berlin-3',
           deployed:	false,
           createdAt: '20180124',
@@ -64,7 +64,7 @@ export const fetchHubs = () => {
           controlCodes: []
         },
         {
-          id: 2,
+          id: 6,
           name: 'Munich-3',
           deployed:	false,
           createdAt: '20180124',
@@ -72,7 +72,7 @@ export const fetchHubs = () => {
           controlCodes: []
         },
         {
-          id: 3,
+          id: 7,
           name: 'Paris-3',
           deployed:	false,
           createdAt: '20180124',

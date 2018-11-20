@@ -1,15 +1,16 @@
 import React from 'react'
 import HubList from '../hublist'
 import Navbar from '../navbar'
+import { Route } from 'react-router-dom'
 
-const View = props => (
+const View = ({ match }) => (
   <div>
     <header>
       <Navbar />
     </header>
 
     <main className='listContainer'>
-      <HubList />
+      <Route path='/hubs' component={HubList} />
     </main>
   </div>
 )

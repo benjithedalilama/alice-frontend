@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { fetchHubs } from '../../actions/hubsActions'
 import IconButton from '../iconbutton'
+import { Route, Link } from "react-router-dom";
 import './hublist.css'
 
 class HubList extends Component {
@@ -11,31 +12,35 @@ class HubList extends Component {
 
   render() {
     const { hubs } = this.props
+    const { match } = this.props
 
     return (
-      <div className='hublist'>
+      <div className='list'>
         {hubs.map(hub =>
-          <div className='hublist__item' key={hub.id}>
-            <div className='hublist__item__top'>
-              <div className='hublist__text'>
-                <div className='hublist__text--main'>{hub.name}</div>
-                <div className='hublist__text--alt'>{hub.id}</div>
+          <div className='list__itemContainer'>
+            <Link className='list__item' to={match.url + '/' + hub.id} key={hub.id}>
+              <div className='list__item__top'>
+                <div className='list__text'>
+                  <div className='list__text--main'>{hub.name}</div>
+                  <div className='list__text--alt'>{hub.id}</div>
+                </div>
+                <div className='list__buttons'>
+                  <IconButton className='list__button' id={hub.id} type='delete'/>
+                  <IconButton className='list__button' id={hub.id} type='edit'/>
+                  <IconButton className='list__button' id={hub.id} type='play'/>
+                  <IconButton className='list__button' id={hub.id} type='stop'/>
+                </div>
               </div>
-              <div className='hublist__buttons'>
-                <IconButton className='hublist__button' id={hub.id} type='delete'/>
-                <IconButton className='hublist__button' id={hub.id} type='edit'/>
-                <IconButton className='hublist__button' id={hub.id} type='play'/>
-                <IconButton className='hublist__button' id={hub.id} type='stop'/>
+              <div className='list__item__bottom'>
+                <div className='list__text list__text--main'>
+                  <div>Sensors: {hub.sensors.length}</div>
+                </div>
+                <div className='list__text list__text--main'>
+                  <div>Created at {hub.createdAt}</div>
+                </div>
               </div>
-            </div>
-            <div className='hublist__item__bottom'>
-              <div className='hublist__text hublist__text--main'>
-                <div>Sensors: {hub.sensors.length}</div>
-              </div>
-              <div className='hublist__text hublist__text--main'>
-                <div>Created at {hub.createdAt}</div>
-              </div>
-            </div>
+            </Link>
+            <Route path={match.url + '/' + hub.id} component={HubList} />
           </div>
         )}
       </div>
