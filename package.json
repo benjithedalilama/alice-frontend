@@ -29,6 +29,8 @@
     "deploy": "bash deploy.sh"
   },
   "devDependencies": {
+    "jest-environment-enzyme": "^7.0.1",
+    "jest-enzyme": "^7.0.1",
     "react-test-renderer": "^16.6.3"
   }
 }
