@@ -5,7 +5,7 @@ import IconButton from '../iconbutton'
 import { Route, Link } from "react-router-dom";
 import './hublist.css'
 
-class HubList extends Component {
+export class HubList extends Component {
   componentDidMount() {
     this.props.dispatch(fetchHubs())
   }
@@ -17,11 +17,11 @@ class HubList extends Component {
     return (
       <div className='list'>
         {hubs.map(hub =>
-          <div className='list__itemContainer'>
-            <Link className='list__item' to={match.url + '/' + hub.id} key={hub.id}>
+          <div className='list__itemContainer' key={hub.id}>
+            <div className='list__item'>
               <div className='list__item__top'>
                 <div className='list__text'>
-                  <div className='list__text--main'>{hub.name}</div>
+                  <Link className='list__text--main' to={match.url + '/' + hub.id}>{hub.name}</Link>
                   <div className='list__text--alt'>{hub.id}</div>
                 </div>
                 <div className='list__buttons'>
@@ -39,7 +39,7 @@ class HubList extends Component {
                   <div>Created at {hub.createdAt}</div>
                 </div>
               </div>
-            </Link>
+            </div>
             <Route path={match.url + '/' + hub.id} component={HubList} />
           </div>
         )}
