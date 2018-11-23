@@ -2,18 +2,15 @@ import React from 'react'
 import { push } from 'connected-react-router'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import './login.css'
 
-const Login = props => (
+const AddHub = props => (
   <div className="form__container">
     <div className="form">
       <form className="form__form">
-        <p className="form__text">Login</p>
-        <input className="form__input" placeholder="Email"></input>
-        <input className="form__input" placeholder="Password"></input>
-        <button onClick={() => props.changePage('/hubs')} className="button button--main">Login</button>
-        <p className="form__text">Forgot password?</p>
-        <button onClick={() => props.changePage('/signup')} className="button button--alt">Sign Up</button>
+        <input className="form__input" placeholder="Name"></input>
+        <input className="form__input" placeholder="Latitude"></input>
+        <input className="form__input" placeholder="Longitude"></input>
+        <button onClick={() => props.changePage('/hubs')} className="button button--alt">Add Hub</button>
       </form>
     </div>
   </div>
@@ -30,4 +27,4 @@ const mapDispatchToProps = dispatch => bindActionCreators({
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(Login)
+)(AddHub)

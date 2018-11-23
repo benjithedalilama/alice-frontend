@@ -4,13 +4,15 @@ body {
   font-family: sans-serif;
 }
 
+.form__container {
+  display: flex;
+}
+
 .listContainer {
   display: flex;
   position: relative;
   justify-content: center;
   align-items: center;
-
-  margin: 45px;
 }
 
 .list {
@@ -22,6 +24,7 @@ body {
 
   width: 500px;
   height: auto;
+  margin: 50px auto;
 }
 
 .list__item {
@@ -80,29 +83,41 @@ body {
   color: #707070;
 }
 
-.auth {
+.form {
   position: relative;
   flex-direction: column;
   align-items: center;
-  display: flex;
+  display: inline-flex;
 
   width: 300px;
-  height: 320px;
-  margin: 12% auto;
+  margin: 10% auto;
 
   background: #F7F7F7;
   border: 1px solid #DFDFDF;
 }
 
-.auth__form {
+.form__form {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: stretch;
+
+  margin: 20px auto;
+  width: 200px;
+}
+
+.form__text {
+  align-self: center;
+}
+
+.form__input {
+  height: 27px;
+
+  border: 1px solid #DFDFDF;
 }
 
 .button {
   height: 27px;
-  
+
   color: white;
   border: none;
 }

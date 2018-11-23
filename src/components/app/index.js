@@ -7,7 +7,7 @@ import View from '../view'
 const App = () => (
   <div>
     <main>
-      <Route path='/hubs' component={View} />
+      <Route path={/^(?!.*login)(?!.*signup).*$/} component={View} />
       <Route exact path='/login' component={Login} />
       <Route exact path='/signup' component={Signup} />
     </main>
