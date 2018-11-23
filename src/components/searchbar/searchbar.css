@@ -4,12 +4,11 @@
 }
 
 .searchbar__input {
-  margin: auto 2px;
-
   width: 300px;
   height: 25px;
 
   border: none;
+  outline: none;
 }
 
 .searchbar__searchButton {

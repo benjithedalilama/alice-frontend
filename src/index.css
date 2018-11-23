@@ -101,7 +101,10 @@ body {
 }
 
 .button {
+  height: 27px;
+  
   color: white;
+  border: none;
 }
 
 .button--main {
