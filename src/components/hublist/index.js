@@ -2,8 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { fetchHubs } from '../../actions/hubsActions'
 import IconButton from '../iconbutton'
-import Hub from '../hub'
-import { Route, Link } from "react-router-dom";
+import { Link } from "react-router-dom"
 import './hublist.css'
 
 export class HubList extends Component {
@@ -13,7 +12,6 @@ export class HubList extends Component {
 
   render() {
     const { hubs } = this.props
-    const { match } = this.props
 
     return (
       <div className='listContainer'>
@@ -23,7 +21,7 @@ export class HubList extends Component {
               <div className='list__item'>
                 <div className='list__item__top'>
                   <div className='list__text'>
-                    <Link className='list__text--main' to={match.url + '/' + hub.id}>{hub.name}</Link>
+                    <Link className='list__text--main' to={{ pathname: '/hubs/' + hub.id, hub: hub }} hub={hub}>{hub.name}</Link>
                     <div className='list__text--alt'>{hub.id}</div>
                   </div>
                   <div className='list__buttons'>
@@ -42,7 +40,6 @@ export class HubList extends Component {
                   </div>
                 </div>
               </div>
-              <Route path={match.url + '/' + hub.id} render={()=><Hub hub={hub} />} />
             </div>
           )}
         </div>

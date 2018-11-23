@@ -2,17 +2,21 @@ import React from 'react'
 import HubList from '../hublist'
 import Navbar from '../navbar'
 import AddHub from '../addhub'
-import { Route } from 'react-router-dom'
+import Hub from '../hub'
+import { Route, Switch } from 'react-router-dom'
 
-const View = ({ match }) => (
+const View = ({ match, location }) => (
   <div>
     <header>
       <Navbar />
     </header>
 
     <main>
-      <Route exact path='/hubs' component={HubList} />
-      <Route exact path='/add-hub' component={AddHub} />
+      <Switch>
+        <Route exact path='/hubs' component={HubList} />
+        <Route path='/hubs/:id' location={location} component={Hub} />} />
+        <Route path='/add-hub' component={AddHub} />
+      </Switch>
     </main>
   </div>
 )
