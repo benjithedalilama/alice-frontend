@@ -11,9 +11,7 @@ const View = ({ match }) => (
     </header>
 
     <main>
-      <div className='listContainer'>
-        <Route exact path='/hubs' component={HubList} />
-      </div>
+      <Route exact path='/hubs' component={HubList} />
       <Route exact path='/add-hub' component={AddHub} />
     </main>
   </div>
