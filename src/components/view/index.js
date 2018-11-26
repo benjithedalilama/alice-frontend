@@ -1,8 +1,8 @@
 import React from 'react'
-import HubList from '../hublist'
+import HubListView from '../hublistview'
 import Navbar from '../navbar'
 import AddHub from '../addhub'
-import Hub from '../hub'
+import HubView from '../hubview'
 import { Route, Switch } from 'react-router-dom'
 
 const View = ({ match, location }) => (
@@ -13,8 +13,8 @@ const View = ({ match, location }) => (
 
     <main>
       <Switch>
-        <Route exact path='/hubs' component={HubList} />
-        <Route path='/hubs/:id' location={location} component={Hub} />} />
+        <Route exact path='/hubs' component={HubListView} />
+        <Route path='/hubs/:id' location={location} component={HubView} />} />
         <Route path='/add-hub' component={AddHub} />
       </Switch>
     </main>

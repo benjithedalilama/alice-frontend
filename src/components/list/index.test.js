@@ -1,8 +1,8 @@
 import React from 'react'
-import { HubList } from '../hublist'
+import { ListView } from '../hublist'
 import { shallow } from 'enzyme'
 
-describe('HubList component', () => {
+describe('ListView component', () => {
   let match
   let dispatch
   let hubs
@@ -20,13 +20,13 @@ describe('HubList component', () => {
     hubs = null
   })
 
-  it('renders the HubList component', () => {
+  it('renders the ListView component', () => {
     const hubs = []
-    const wrapper = shallow(<HubList hubs={hubs} match={match} dispatch={dispatch}/>)
+    const wrapper = shallow(<ListView hubs={hubs} match={match} dispatch={dispatch}/>)
     expect(wrapper.find('.list')).toExist()
   })
 
-  it('renders the HubList component with 2 hubs', () => {
+  it('renders the ListView component with 2 hubs', () => {
     hubs = [
       {
         id: 1,
@@ -45,11 +45,11 @@ describe('HubList component', () => {
         controlCodes: []
       },
     ]
-    const wrapper = shallow(<HubList hubs={hubs} match={match} dispatch={dispatch}/>)
+    const wrapper = shallow(<ListView hubs={hubs} match={match} dispatch={dispatch}/>)
     expect(wrapper.find('.list__item')).toHaveLength(2)
   })
 
-  it('renders the HubList component with 4 iconbuttons', () => {
+  it('renders the ListView component with 4 iconbuttons', () => {
     hubs = [
       {
         id: 1,
@@ -60,7 +60,7 @@ describe('HubList component', () => {
         controlCodes: []
       },
     ]
-    const wrapper = shallow(<HubList hubs={hubs} match={match} dispatch={dispatch}/>)
+    const wrapper = shallow(<ListView hubs={hubs} match={match} dispatch={dispatch}/>)
     expect(wrapper.find('.list__button')).toHaveLength(4)
   })
 })
