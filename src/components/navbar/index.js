@@ -5,6 +5,7 @@ import { push } from 'connected-react-router'
 import Breadcrumbs from '../breadcrumbs'
 import Searchbar from '../searchbar'
 import ProfilePreview from '../profilepreview'
+import { Route } from 'react-router-dom'
 import './navbar.css'
 
 const Navbar = props => (
@@ -12,18 +13,16 @@ const Navbar = props => (
     <Breadcrumbs className="navbar__element"></Breadcrumbs>
     <Searchbar className="navbar__element navbar__element--centered"></Searchbar>
     <ProfilePreview className="navbar__element">
-      <button onClick={() => props.changePage('/add-hub')} className="button button--alt">ADD HUB</button>
+      <Route path='/hubs' render={() => (<button onClick={() => props.changePage('/add-hub')} className="button button--alt">ADD HUB</button>)}/>
+      <Route path='/sensors' render={() => (<button onClick={() => props.changePage('/add-sensor')} className="button button--alt">ADD SENSOR</button>)}/>
     </ProfilePreview>
   </div>
 )
-
-const mapStateToProps = ({ counter }) => ({})
 
 const mapDispatchToProps = dispatch => bindActionCreators({
   changePage: (destination) => push(destination)
 }, dispatch)
 
 export default connect(
-  mapStateToProps,
   mapDispatchToProps
 )(Navbar)

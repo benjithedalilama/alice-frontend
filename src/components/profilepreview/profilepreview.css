@@ -1,7 +1,9 @@
 .profilePreview {
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: flex-end;
+
+  width: 270px;
 }
 
 .profilePreview__text {
