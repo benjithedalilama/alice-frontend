@@ -7,7 +7,7 @@ const CodeList = ({codes}) => (
   <List className='list__container--small'>
     <div className='list__itemContainer'>
       <div className='list__item'>
-        <div className='list__item__top list__text'>Codes</div>
+        <div className='list__item__top list__text'>Control Codes</div>
       </div>
     </div>
     {codes.map(code =>
