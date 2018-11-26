@@ -1,21 +1,11 @@
-import React, { Component } from 'react'
-import { connect } from 'react-redux'
-import './list.css'
+import React from 'react'
 
-export class List extends Component {
-  render() {
-    return (
-      <div className='listContainer'>
-        <div className='list'>
-          {this.props.children}
-        </div>
-      </div>
-    )
-  }
-}
+const List = (props) => (
+  <div className={'list__container ' + props.className}>
+    <div className='list'>
+      {props.children}
+    </div>
+  </div>
+)
 
-const mapStateToProps = state => ({})
-
-export default connect(
-  mapStateToProps
-)(List)
+export default List

@@ -28,7 +28,26 @@ export const fetchHubs = () => {
           name: 'Berlin-3',
           deployed:	false,
           createdAt: '20180124',
-          sensors: [],
+          sensors: [
+            {
+              id: 1,
+              createdAt: '20180223',
+              type: 'humidity',
+              name: 'super-sensor'
+            },
+            {
+              id: 2,
+              createdAt: '20180223',
+              type: 'humidity',
+              name: 'super-sensor'
+            },
+            {
+              id: 3,
+              createdAt: '20180223',
+              type: 'humidity',
+              name: 'super-sensor'
+            },
+          ],
           controlCodes: []
         },
         {
@@ -36,7 +55,26 @@ export const fetchHubs = () => {
           name: 'Munich-3',
           deployed:	false,
           createdAt: '20180124',
-          sensors: [],
+          sensors: [
+            {
+              id: 1,
+              createdAt: '20180223',
+              type: 'humidity',
+              name: 'super-sensor'
+            },
+            {
+              id: 2,
+              createdAt: '20180223',
+              type: 'humidity',
+              name: 'super-sensor'
+            },
+            {
+              id: 3,
+              createdAt: '20180223',
+              type: 'humidity',
+              name: 'super-sensor'
+            },
+          ],
           controlCodes: []
         },
         {
@@ -44,7 +82,26 @@ export const fetchHubs = () => {
           name: 'Paris-3',
           deployed:	false,
           createdAt: '20180124',
-          sensors: [],
+          sensors: [
+            {
+              id: 1,
+              createdAt: '20180223',
+              type: 'humidity',
+              name: 'super-sensor'
+            },
+            {
+              id: 2,
+              createdAt: '20180223',
+              type: 'humidity',
+              name: 'super-sensor'
+            },
+            {
+              id: 3,
+              createdAt: '20180223',
+              type: 'humidity',
+              name: 'super-sensor'
+            },
+          ],
           controlCodes: []
         },
         {
@@ -52,7 +109,26 @@ export const fetchHubs = () => {
           name: 'Paris-2',
           deployed:	false,
           createdAt: '20180124',
-          sensors: [],
+          sensors: [
+            {
+              id: 1,
+              createdAt: '20180223',
+              type: 'humidity',
+              name: 'super-sensor'
+            },
+            {
+              id: 2,
+              createdAt: '20180223',
+              type: 'humidity',
+              name: 'super-sensor'
+            },
+            {
+              id: 3,
+              createdAt: '20180223',
+              type: 'humidity',
+              name: 'super-sensor'
+            },
+          ],
           controlCodes: []
         },
         {
@@ -60,7 +136,26 @@ export const fetchHubs = () => {
           name: 'Berlin-3',
           deployed:	false,
           createdAt: '20180124',
-          sensors: [],
+          sensors: [
+            {
+              id: 1,
+              createdAt: '20180223',
+              type: 'humidity',
+              name: 'super-sensor'
+            },
+            {
+              id: 2,
+              createdAt: '20180223',
+              type: 'humidity',
+              name: 'super-sensor'
+            },
+            {
+              id: 3,
+              createdAt: '20180223',
+              type: 'humidity',
+              name: 'super-sensor'
+            },
+          ],
           controlCodes: []
         },
         {
@@ -68,7 +163,26 @@ export const fetchHubs = () => {
           name: 'Munich-3',
           deployed:	false,
           createdAt: '20180124',
-          sensors: [],
+          sensors: [
+            {
+              id: 1,
+              createdAt: '20180223',
+              type: 'humidity',
+              name: 'super-sensor'
+            },
+            {
+              id: 2,
+              createdAt: '20180223',
+              type: 'humidity',
+              name: 'super-sensor'
+            },
+            {
+              id: 3,
+              createdAt: '20180223',
+              type: 'humidity',
+              name: 'super-sensor'
+            },
+          ],
           controlCodes: []
         },
         {
@@ -76,7 +190,26 @@ export const fetchHubs = () => {
           name: 'Paris-3',
           deployed:	false,
           createdAt: '20180124',
-          sensors: [],
+          sensors: [
+            {
+              id: 1,
+              createdAt: '20180223',
+              type: 'humidity',
+              name: 'super-sensor'
+            },
+            {
+              id: 2,
+              createdAt: '20180223',
+              type: 'humidity',
+              name: 'super-sensor'
+            },
+            {
+              id: 3,
+              createdAt: '20180223',
+              type: 'humidity',
+              name: 'super-sensor'
+            },
+          ],
           controlCodes: []
         },
       ]

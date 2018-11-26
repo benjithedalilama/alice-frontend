@@ -4,11 +4,15 @@ body {
   font-family: sans-serif;
 }
 
+.view {
+  margin: 50px auto;
+}
+
 .form__container {
   display: flex;
 }
 
-.listContainer {
+.list__container {
   display: flex;
   position: relative;
   justify-content: center;
@@ -24,7 +28,7 @@ body {
 
   width: 500px;
   height: auto;
-  margin: 50px auto;
+  margin: auto;
 }
 
 .list__item {
@@ -39,6 +43,12 @@ body {
   background: #F7F7F7;
   border: 1px solid #DFDFDF;
   text-decoration: none;
+}
+
+.list__container--small {
+  align-self: flex-start;
+
+  width: 50%;
 }
 
 .list__itemContainer {

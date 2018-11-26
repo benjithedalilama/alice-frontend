@@ -3,7 +3,7 @@ import { push } from 'connected-react-router'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 
-const AddHub = props => (
+const AddHubView = props => (
   <div className="form__container">
     <div className="form">
       <form className="form__form">
@@ -27,4 +27,4 @@ const mapDispatchToProps = dispatch => bindActionCreators({
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(AddHub)
+)(AddHubView)
