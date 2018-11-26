@@ -46,8 +46,6 @@ body {
 }
 
 .list__container--small {
-  align-self: flex-start;
-
   width: 50%;
 }
 
@@ -91,6 +89,13 @@ body {
 
 .list__text--alt {
   color: #707070;
+}
+
+.sublist__container {
+  display: flex;
+  align-items: flex-start;
+
+  width: 100%;
 }
 
 .form {

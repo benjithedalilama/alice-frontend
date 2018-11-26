@@ -48,7 +48,26 @@ export const fetchHubs = () => {
               name: 'super-sensor'
             },
           ],
-          controlCodes: []
+          controlCodes: [
+            {
+              id: 1,
+              createdAt: '20180223',
+              type: 'setHumidity',
+              name: 'super-code'
+            },
+            {
+              id: 2,
+              createdAt: '20180223',
+              type: 'setHumidity',
+              name: 'super-code'
+            },
+            {
+              id: 3,
+              createdAt: '20180223',
+              type: 'setHumidity',
+              name: 'super-code'
+            },
+          ]
         },
         {
           id: 2,
@@ -75,7 +94,26 @@ export const fetchHubs = () => {
               name: 'super-sensor'
             },
           ],
-          controlCodes: []
+          controlCodes: [
+            {
+              id: 1,
+              createdAt: '20180223',
+              type: 'setHumidity',
+              name: 'super-code'
+            },
+            {
+              id: 2,
+              createdAt: '20180223',
+              type: 'setHumidity',
+              name: 'super-code'
+            },
+            {
+              id: 3,
+              createdAt: '20180223',
+              type: 'setHumidity',
+              name: 'super-code'
+            },
+          ]
         },
         {
           id: 3,
@@ -102,7 +140,26 @@ export const fetchHubs = () => {
               name: 'super-sensor'
             },
           ],
-          controlCodes: []
+          controlCodes: [
+            {
+              id: 1,
+              createdAt: '20180223',
+              type: 'setHumidity',
+              name: 'super-code'
+            },
+            {
+              id: 2,
+              createdAt: '20180223',
+              type: 'setHumidity',
+              name: 'super-code'
+            },
+            {
+              id: 3,
+              createdAt: '20180223',
+              type: 'setHumidity',
+              name: 'super-code'
+            },
+          ]
         },
         {
           id: 4,
@@ -129,7 +186,26 @@ export const fetchHubs = () => {
               name: 'super-sensor'
             },
           ],
-          controlCodes: []
+          controlCodes: [
+            {
+              id: 1,
+              createdAt: '20180223',
+              type: 'setHumidity',
+              name: 'super-code'
+            },
+            {
+              id: 2,
+              createdAt: '20180223',
+              type: 'setHumidity',
+              name: 'super-code'
+            },
+            {
+              id: 3,
+              createdAt: '20180223',
+              type: 'setHumidity',
+              name: 'super-code'
+            },
+          ]
         },
         {
           id: 5,
@@ -156,7 +232,26 @@ export const fetchHubs = () => {
               name: 'super-sensor'
             },
           ],
-          controlCodes: []
+          controlCodes: [
+            {
+              id: 1,
+              createdAt: '20180223',
+              type: 'setHumidity',
+              name: 'super-code'
+            },
+            {
+              id: 2,
+              createdAt: '20180223',
+              type: 'setHumidity',
+              name: 'super-code'
+            },
+            {
+              id: 3,
+              createdAt: '20180223',
+              type: 'setHumidity',
+              name: 'super-code'
+            },
+          ]
         },
         {
           id: 6,
@@ -183,7 +278,26 @@ export const fetchHubs = () => {
               name: 'super-sensor'
             },
           ],
-          controlCodes: []
+          controlCodes: [
+            {
+              id: 1,
+              createdAt: '20180223',
+              type: 'setHumidity',
+              name: 'super-code'
+            },
+            {
+              id: 2,
+              createdAt: '20180223',
+              type: 'setHumidity',
+              name: 'super-code'
+            },
+            {
+              id: 3,
+              createdAt: '20180223',
+              type: 'setHumidity',
+              name: 'super-code'
+            },
+          ]
         },
         {
           id: 7,
@@ -210,7 +324,26 @@ export const fetchHubs = () => {
               name: 'super-sensor'
             },
           ],
-          controlCodes: []
+          controlCodes: [
+            {
+              id: 1,
+              createdAt: '20180223',
+              type: 'setHumidity',
+              name: 'super-code'
+            },
+            {
+              id: 2,
+              createdAt: '20180223',
+              type: 'setHumidity',
+              name: 'super-code'
+            },
+            {
+              id: 3,
+              createdAt: '20180223',
+              type: 'setHumidity',
+              name: 'super-code'
+            },
+          ]
         },
       ]
       dispatch(fetchHubsSuccess(hubs))

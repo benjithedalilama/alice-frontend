@@ -2,12 +2,11 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import Hub from '../hub'
 import SensorList from '../sensorlist'
+import CodeList from '../codelist'
 
 export class HubView extends Component {
   render() {
     const { hub } = this.props.location
-    // const sensors = hub.sensors
-    // const controlCodes = hub.controlCodes
 
     return (
       <div className='list__container'>
@@ -15,7 +14,10 @@ export class HubView extends Component {
           <Hub hub={hub}>
             <div className='list__text--main'>{hub.name}</div>
           </Hub>
-          <SensorList sensors={hub.sensors}></SensorList>
+          <div className='sublist__container'>
+            <SensorList sensors={hub.sensors}></SensorList>
+            <CodeList codes={hub.controlCodes}></CodeList>
+          </div>
         </div>
       </div>
     )
