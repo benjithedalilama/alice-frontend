@@ -23,6 +23,7 @@ export default function hubReducer(state = initialState, action) {
       return {
         ...state,
         loading: false,
+        error: null,
         items: action.payload.hubs
       }
 
