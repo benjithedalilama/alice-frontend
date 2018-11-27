@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faTrash, faPen, faPlay, faStop } from '@fortawesome/free-solid-svg-icons'
 
 class IconButton extends Component {
   constructor(props) {
@@ -8,16 +7,16 @@ class IconButton extends Component {
     this.iconType = {}
     switch (props.type) {
       case 'delete':
-        this.iconType = faTrash
+        this.iconType = ['far', 'trash-alt']
         break
       case 'edit':
-        this.iconType = faPen
+        this.iconType = ['far', 'edit']
         break
       case 'play':
-        this.iconType = faPlay
+        this.iconType = ['fas', 'play']
         break
       case 'stop':
-        this.iconType = faStop
+        this.iconType = ['fas', 'stop']
         break
       default:
         this.iconType = {}

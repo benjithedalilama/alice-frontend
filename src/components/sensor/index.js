@@ -12,8 +12,6 @@ const Sensor = ({sensor, children}) => (
         <div className='list__buttons'>
           <IconButton className='list__button' id={sensor.id} type='delete'/>
           <IconButton className='list__button' id={sensor.id} type='edit'/>
-          <IconButton className='list__button' id={sensor.id} type='play'/>
-          <IconButton className='list__button' id={sensor.id} type='stop'/>
         </div>
       </div>
       <div className='list__item__bottom'>

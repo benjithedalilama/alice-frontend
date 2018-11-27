@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import { connect } from 'react-redux'
 import Hub from '../hub'
 import SensorList from '../sensorlist'
 import CodeList from '../codelist'
@@ -15,7 +14,7 @@ export class HubView extends Component {
             <div className='list__text--main'>{hub.name}</div>
           </Hub>
           <div className='sublist__container'>
-            <SensorList sensors={hub.sensors}></SensorList>
+            <SensorList sensors={hub.sensors} location={this.props.location}></SensorList>
             <CodeList codes={hub.controlCodes}></CodeList>
           </div>
         </div>
@@ -24,8 +23,4 @@ export class HubView extends Component {
   }
 }
 
-const mapStateToProps = state => ({})
-
-export default connect(
-  mapStateToProps
-)(HubView)
+export default HubView

@@ -13,8 +13,8 @@ const Navbar = props => (
     <Breadcrumbs className="navbar__element"></Breadcrumbs>
     <Searchbar className="navbar__element navbar__element--centered"></Searchbar>
     <ProfilePreview className="navbar__element">
-      <Route path='/hubs' render={() => (<button onClick={() => props.changePage('/add-hub')} className="button button--alt">ADD HUB</button>)}/>
-      <Route path='/sensors' render={() => (<button onClick={() => props.changePage('/add-sensor')} className="button button--alt">ADD SENSOR</button>)}/>
+      <Route exact path='/hubs' render={() => (<button onClick={() => props.changePage('/add-hub')} className="button button--alt">ADD HUB</button>)}/>
+      <Route exact path='/hubs/:hubId/sensors/:id' render={() => (<button onClick={() => props.changePage('/add-sensor')} className="button button--alt">ADD SENSOR</button>)}/>
     </ProfilePreview>
   </div>
 )

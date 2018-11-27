@@ -3,16 +3,16 @@ import { Link } from 'react-router-dom'
 import Sensor from '../sensor'
 import List from '../list'
 
-const SensorList = ({sensors}) => (
+const SensorList = (props) => (
   <List className='list__container--small'>
     <div className='list__itemContainer'>
       <div className='list__item'>
         <div className='list__item__top list__text'>Sensors</div>
       </div>
     </div>
-    {sensors.map(sensor =>
+    {props.sensors.map(sensor =>
       <Sensor sensor={sensor}>
-        <Link className='list__text--main' to={{ pathname: '/sensors/' + sensor.id, sensor: sensor }}>{sensor.name}</Link>
+        <Link className='list__text--main' to={{ pathname: '/hubs/' + props.location.hub.id + '/sensors/' + sensor.id, sensor: sensor}}>{sensor.name}</Link>
       </Sensor>
     )}
   </List>

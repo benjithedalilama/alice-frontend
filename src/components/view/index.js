@@ -5,7 +5,7 @@ import AddHubView from '../addhubview'
 import HubView from '../hubview'
 import { Route, Switch } from 'react-router-dom'
 
-const View = ({ match, location }) => (
+const View = ({ location }) => (
   <div>
     <header>
       <Navbar />
