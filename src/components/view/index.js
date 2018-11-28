@@ -16,9 +16,9 @@ const View = ({ location }) => (
       <Switch>
         <div className='view'>
           <Route exact path='/hubs' component={HubListView} />
-          <Route exact path='/hubs/:id' location={location} component={HubView} />
+          <Route exact path='/hubs/:hubId' location={location} component={HubView} />
           <Route exact path='/add-hub' component={AddHubView} />
-          <Route exact path='/hubs/:hubId/sensors/:id' location={location} component={SensorView} />
+          <Route exact path='/hubs/:hubId/sensors/:sensorId' location={location} component={SensorView} />
         </div>
       </Switch>
     </main>

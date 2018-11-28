@@ -12,7 +12,7 @@ const SensorList = (props) => (
     </div>
     {props.sensors.map(sensor =>
       <Sensor sensor={sensor}>
-        <Link className='list__text--main' to={{ pathname: '/hubs/' + props.location.hub.id + '/sensors/' + sensor.id, sensor: sensor}}>{sensor.name}</Link>
+        <Link className='list__text--main' to={{ pathname: '/hubs/' + props.parent.id + '/sensors/' + sensor.id, sensor: sensor}}>{sensor.name}</Link>
       </Sensor>
     )}
   </List>

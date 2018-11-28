@@ -22,7 +22,7 @@ export const fetchHubs = () => {
     dispatch(fetchHubsBegin())
 
     try {
-      // const hubs = await fetch("/hubs")
+      // get hubs API call
       const hubs = HUBS
       dispatch(fetchHubsSuccess(hubs))
       return hubs
