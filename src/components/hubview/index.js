@@ -33,7 +33,8 @@ export class HubView extends Component {
 const mapStateToProps = state => ({
   hub: state.hub.item,
   loading: state.hub.loading,
-  error: state.hub.error
+  error: state.hub.error,
+  pathname: state.router
 })
 
 export default connect(
