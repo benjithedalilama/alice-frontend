@@ -1,4 +1,5 @@
 import { HUBS } from '../fake_data'
+import { handleErrors } from './hubsActions'
 export const FETCH_HUB_BEGIN   = 'FETCH_HUB_BEGIN'
 export const FETCH_HUB_SUCCESS = 'FETCH_HUB_SUCCESS'
 export const FETCH_HUB_FAILURE = 'FETCH_HUB_FAILURE'
@@ -18,7 +19,6 @@ export const fetchHubFailure = error => ({
 })
 
 export const fetchHub = (id) => {
-  console.log('ID: ',id)
   return dispatch => {
     dispatch(fetchHubBegin())
 
@@ -35,11 +35,4 @@ export const fetchHub = (id) => {
       handleErrors(err)
     }
   }
-}
-
-export const handleErrors = response => {
-  if (!response.ok) {
-    throw Error(response.statusText)
-  }
-  return response
 }
