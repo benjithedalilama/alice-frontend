@@ -17,7 +17,7 @@ export class HubListView extends Component {
       <List>
           {hubs.map(hub =>
             <Hub hub={hub}>
-              <Link className='list__text--main' to={{ pathname: '/hubs/' + hub.id }}>{hub.name}</Link>
+              <Link className='list__text--main' to={{ pathname: '/hubs/' + hub.id, hub: hub}}>{hub.name}</Link>
             </Hub>
           )}
       </List>

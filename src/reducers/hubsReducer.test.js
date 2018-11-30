@@ -38,7 +38,7 @@ describe('todos reducer', () => {
               deployed:	false,
               createdAt: '20180124',
               sensors: [],
-              controlCodes: []
+              codes: []
             }]
           }
         }
@@ -52,7 +52,7 @@ describe('todos reducer', () => {
           deployed:	false,
           createdAt: '20180124',
           sensors: [],
-          controlCodes: []
+          codes: []
         }]
       }
     )

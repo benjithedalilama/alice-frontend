@@ -24,7 +24,7 @@ export const HUBS = [
         name: 'super-sensor'
       },
     ],
-    controlCodes: [
+    codes: [
       {
         id: 1,
         createdAt: '20180223',
@@ -70,7 +70,7 @@ export const HUBS = [
         name: 'super-sensor'
       },
     ],
-    controlCodes: [
+    codes: [
       {
         id: 1,
         createdAt: '20180223',
@@ -116,7 +116,7 @@ export const HUBS = [
         name: 'super-sensor'
       },
     ],
-    controlCodes: [
+    codes: [
       {
         id: 1,
         createdAt: '20180223',
@@ -162,7 +162,7 @@ export const HUBS = [
         name: 'super-sensor'
       },
     ],
-    controlCodes: [
+    codes: [
       {
         id: 1,
         createdAt: '20180223',
@@ -208,7 +208,7 @@ export const HUBS = [
         name: 'super-sensor'
       },
     ],
-    controlCodes: [
+    codes: [
       {
         id: 1,
         createdAt: '20180223',
@@ -254,7 +254,7 @@ export const HUBS = [
         name: 'super-sensor'
       },
     ],
-    controlCodes: [
+    codes: [
       {
         id: 1,
         createdAt: '20180223',
@@ -300,7 +300,7 @@ export const HUBS = [
         name: 'super-sensor'
       },
     ],
-    controlCodes: [
+    codes: [
       {
         id: 1,
         createdAt: '20180223',

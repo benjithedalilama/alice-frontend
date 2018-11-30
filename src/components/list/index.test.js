@@ -34,7 +34,7 @@ describe('ListView component', () => {
         deployed:	false,
         createdAt: '20180124',
         sensors: [],
-        controlCodes: []
+        codes: []
       },
       {
         id: 2,
@@ -42,7 +42,7 @@ describe('ListView component', () => {
         deployed:	false,
         createdAt: '20180124',
         sensors: [],
-        controlCodes: []
+        codes: []
       },
     ]
     const wrapper = shallow(<ListView hubs={hubs} match={match} dispatch={dispatch}/>)
@@ -57,7 +57,7 @@ describe('ListView component', () => {
         deployed:	false,
         createdAt: '20180124',
         sensors: [],
-        controlCodes: []
+        codes: []
       },
     ]
     const wrapper = shallow(<ListView hubs={hubs} match={match} dispatch={dispatch}/>)

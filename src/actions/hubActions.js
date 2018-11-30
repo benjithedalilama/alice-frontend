@@ -26,7 +26,7 @@ export const fetchHub = (id) => {
       // get all hubs
       const hubs = HUBS
       // get hub by id API call
-      const hub = hubs.find(k => k.id === parseInt(id, 10))
+      const hub = hubs.find(hub => hub.id === parseInt(id, 10))
       dispatch(fetchHubSuccess(hub))
       return hub
     }

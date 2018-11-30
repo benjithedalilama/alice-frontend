@@ -1,9 +1,11 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { fetchHub } from '../../actions/hubActions'
+import { Link } from 'react-router-dom'
 import Sensor from '../sensor'
+import List from '../list'
 
-export class SensorView extends Component {
+export class SensorListView extends Component {
   componentDidMount() {
     const { hubId } = this.props.match.params
     this.props.dispatch(fetchHub(hubId))
@@ -11,21 +13,15 @@ export class SensorView extends Component {
 
   render() {
     const { sensors } = this.props.hub
-    let sensor
-    sensor = !sensor ?
-      sensors[0] :
-      sensors.find(sensor => sensor.id === parseInt(this.props.match.params.sensorId, 10))
 
     return (
-      <div className='list__container'>
-        <div className='list'>
-          <Sensor sensor={sensor}>
-            <div className='list__text--main'>{sensor.name}</div>
-          </Sensor>
-          <div className='sublist__container'>
-          </div>
-        </div>
-      </div>
+      <List>
+          {sensors.map(sensor =>
+            <Sensor sensor={sensor}>
+              <Link className='list__text--main' to={{ pathname: '/hubs/' + this.props.match.params.hubId + '/sensors/' + sensor.id, sensor: sensor}}>{sensor.name}</Link>
+            </Sensor>
+          )}
+      </List>
     )
   }
 }
@@ -38,4 +34,4 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps
-)(SensorView)
+)(SensorListView)

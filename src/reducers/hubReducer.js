@@ -10,8 +10,22 @@ const initialState = {
     name: [],
     deployed:	[],
     createdAt: [],
-    sensors: [],
-    controlCodes: []
+    sensors: [
+      {
+        id: [],
+        createdAt: [],
+        type: [],
+        name: []
+      }
+    ],
+    codes: [
+      {
+        id: [],
+        createdAt: [],
+        type: [],
+        name: []
+      }
+    ]
   },
   loading: false,
   error: null
