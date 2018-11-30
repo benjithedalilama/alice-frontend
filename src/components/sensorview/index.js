@@ -10,8 +10,9 @@ export class SensorView extends Component {
   }
 
   render() {
-    const { sensors } = this.props.hub
     let sensor
+    
+    const { sensors } = this.props.hub
     sensor = !sensor ?
       sensors[0] :
       sensors.find(sensor => sensor.id === parseInt(this.props.match.params.sensorId, 10))

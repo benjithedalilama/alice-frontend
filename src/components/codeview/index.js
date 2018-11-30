@@ -10,8 +10,9 @@ export class CodeView extends Component {
   }
 
   render() {
-    const { codes } = this.props.hub
     let code
+    
+    const { codes } = this.props.hub
     code = !code ?
       codes[0] :
       codes.find(code => code.id === parseInt(this.props.match.params.codeId, 10))
