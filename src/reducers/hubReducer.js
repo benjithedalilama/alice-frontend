@@ -15,7 +15,15 @@ const initialState = {
         id: [],
         createdAt: [],
         type: [],
-        name: []
+        name: [],
+        readings: [
+          {
+            id: [],
+            createdAt: [],
+            action: [],
+            data: []
+          }
+        ]
       }
     ],
     codes: [
@@ -23,7 +31,15 @@ const initialState = {
         id: [],
         createdAt: [],
         type: [],
-        name: []
+        name: [],
+        commands: [
+          {
+            id: [],
+            createdAt: [],
+            action: [],
+            data: []
+          }
+        ]
       }
     ]
   },

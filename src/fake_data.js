@@ -9,19 +9,61 @@ export const HUBS = [
         id: 1,
         createdAt: '20180223',
         type: 'humidity',
-        name: 'super-sensor'
+        name: 'super-sensor',
+        readings: [
+          {
+            id: 1,
+            action: 'readHumidity',
+            createdAt: '20180303',
+            data: 50
+          },
+          {
+            id: 2,
+            action: 'readHumidity',
+            createdAt: '20180304',
+            data: 60
+          }
+        ]
       },
       {
         id: 2,
         createdAt: '20180223',
         type: 'humidity',
-        name: 'super-sensor'
+        name: 'super-sensor',
+        readings: [
+          {
+            id: 1,
+            action: 'readHumidity',
+            createdAt: '20180303',
+            data: 50
+          },
+          {
+            id: 2,
+            action: 'readHumidity',
+            createdAt: '20180304',
+            data: 60
+          }
+        ]
       },
       {
         id: 3,
         createdAt: '20180223',
         type: 'humidity',
-        name: 'super-sensor'
+        name: 'super-sensor',
+        readings: [
+          {
+            id: 1,
+            action: 'readHumidity',
+            createdAt: '20180303',
+            data: 50
+          },
+          {
+            id: 2,
+            action: 'readHumidity',
+            createdAt: '20180304',
+            data: 60
+          }
+        ]
       },
     ],
     codes: [
@@ -29,19 +71,61 @@ export const HUBS = [
         id: 1,
         createdAt: '20180223',
         type: 'setHumidity',
-        name: 'super-code'
+        name: 'super-code',
+        commands: [
+          {
+            id: 1,
+            action: 'setHumidity',
+            createdAt: '20180303',
+            data: 50
+          },
+          {
+            id: 2,
+            action: 'setHumidity',
+            createdAt: '20180304',
+            data: 60
+          }
+        ]
       },
       {
         id: 2,
         createdAt: '20180223',
         type: 'setHumidity',
-        name: 'super-code'
+        name: 'super-code',
+        commands: [
+          {
+            id: 1,
+            action: 'setHumidity',
+            createdAt: '20180303',
+            data: 50
+          },
+          {
+            id: 2,
+            action: 'setHumidity',
+            createdAt: '20180304',
+            data: 60
+          }
+        ]
       },
       {
         id: 3,
         createdAt: '20180223',
         type: 'setHumidity',
-        name: 'super-code'
+        name: 'super-code',
+        commands: [
+          {
+            id: 1,
+            action: 'setHumidity',
+            createdAt: '20180303',
+            data: 50
+          },
+          {
+            id: 2,
+            action: 'setHumidity',
+            createdAt: '20180304',
+            data: 60
+          }
+        ]
       },
     ]
   },
@@ -55,19 +139,61 @@ export const HUBS = [
         id: 1,
         createdAt: '20180223',
         type: 'humidity',
-        name: 'super-sensor'
+        name: 'super-sensor',
+        readings: [
+          {
+            id: 1,
+            action: 'readHumidity',
+            createdAt: '20180303',
+            data: 50
+          },
+          {
+            id: 2,
+            action: 'readHumidity',
+            createdAt: '20180304',
+            data: 60
+          }
+        ]
       },
       {
         id: 2,
         createdAt: '20180223',
         type: 'humidity',
-        name: 'super-sensor'
+        name: 'super-sensor',
+        readings: [
+          {
+            id: 1,
+            action: 'readHumidity',
+            createdAt: '20180303',
+            data: 50
+          },
+          {
+            id: 2,
+            action: 'readHumidity',
+            createdAt: '20180304',
+            data: 60
+          }
+        ]
       },
       {
         id: 3,
         createdAt: '20180223',
         type: 'humidity',
-        name: 'super-sensor'
+        name: 'super-sensor',
+        readings: [
+          {
+            id: 1,
+            action: 'readHumidity',
+            createdAt: '20180303',
+            data: 50
+          },
+          {
+            id: 2,
+            action: 'readHumidity',
+            createdAt: '20180304',
+            data: 60
+          }
+        ]
       },
     ],
     codes: [
@@ -75,19 +201,61 @@ export const HUBS = [
         id: 1,
         createdAt: '20180223',
         type: 'setHumidity',
-        name: 'super-code'
+        name: 'super-code',
+        commands: [
+          {
+            id: 1,
+            action: 'setHumidity',
+            createdAt: '20180303',
+            data: 50
+          },
+          {
+            id: 2,
+            action: 'setHumidity',
+            createdAt: '20180304',
+            data: 60
+          }
+        ]
       },
       {
         id: 2,
         createdAt: '20180223',
         type: 'setHumidity',
-        name: 'super-code'
+        name: 'super-code',
+        commands: [
+          {
+            id: 1,
+            action: 'setHumidity',
+            createdAt: '20180303',
+            data: 50
+          },
+          {
+            id: 2,
+            action: 'setHumidity',
+            createdAt: '20180304',
+            data: 60
+          }
+        ]
       },
       {
         id: 3,
         createdAt: '20180223',
         type: 'setHumidity',
-        name: 'super-code'
+        name: 'super-code',
+        commands: [
+          {
+            id: 1,
+            action: 'setHumidity',
+            createdAt: '20180303',
+            data: 50
+          },
+          {
+            id: 2,
+            action: 'setHumidity',
+            createdAt: '20180304',
+            data: 60
+          }
+        ]
       },
     ]
   },
@@ -101,19 +269,61 @@ export const HUBS = [
         id: 1,
         createdAt: '20180223',
         type: 'humidity',
-        name: 'super-sensor'
+        name: 'super-sensor',
+        readings: [
+          {
+            id: 1,
+            action: 'readHumidity',
+            createdAt: '20180303',
+            data: 50
+          },
+          {
+            id: 2,
+            action: 'readHumidity',
+            createdAt: '20180304',
+            data: 60
+          }
+        ]
       },
       {
         id: 2,
         createdAt: '20180223',
         type: 'humidity',
-        name: 'super-sensor'
+        name: 'super-sensor',
+        readings: [
+          {
+            id: 1,
+            action: 'readHumidity',
+            createdAt: '20180303',
+            data: 50
+          },
+          {
+            id: 2,
+            action: 'readHumidity',
+            createdAt: '20180304',
+            data: 60
+          }
+        ]
       },
       {
         id: 3,
         createdAt: '20180223',
         type: 'humidity',
-        name: 'super-sensor'
+        name: 'super-sensor',
+        readings: [
+          {
+            id: 1,
+            action: 'readHumidity',
+            createdAt: '20180303',
+            data: 50
+          },
+          {
+            id: 2,
+            action: 'readHumidity',
+            createdAt: '20180304',
+            data: 60
+          }
+        ]
       },
     ],
     codes: [
@@ -121,19 +331,61 @@ export const HUBS = [
         id: 1,
         createdAt: '20180223',
         type: 'setHumidity',
-        name: 'super-code'
+        name: 'super-code',
+        commands: [
+          {
+            id: 1,
+            action: 'setHumidity',
+            createdAt: '20180303',
+            data: 50
+          },
+          {
+            id: 2,
+            action: 'setHumidity',
+            createdAt: '20180304',
+            data: 60
+          }
+        ]
       },
       {
         id: 2,
         createdAt: '20180223',
         type: 'setHumidity',
-        name: 'super-code'
+        name: 'super-code',
+        commands: [
+          {
+            id: 1,
+            action: 'setHumidity',
+            createdAt: '20180303',
+            data: 50
+          },
+          {
+            id: 2,
+            action: 'setHumidity',
+            createdAt: '20180304',
+            data: 60
+          }
+        ]
       },
       {
         id: 3,
         createdAt: '20180223',
         type: 'setHumidity',
-        name: 'super-code'
+        name: 'super-code',
+        commands: [
+          {
+            id: 1,
+            action: 'setHumidity',
+            createdAt: '20180303',
+            data: 50
+          },
+          {
+            id: 2,
+            action: 'setHumidity',
+            createdAt: '20180304',
+            data: 60
+          }
+        ]
       },
     ]
   },
@@ -147,19 +399,61 @@ export const HUBS = [
         id: 1,
         createdAt: '20180223',
         type: 'humidity',
-        name: 'super-sensor'
+        name: 'super-sensor',
+        readings: [
+          {
+            id: 1,
+            action: 'readHumidity',
+            createdAt: '20180303',
+            data: 50
+          },
+          {
+            id: 2,
+            action: 'readHumidity',
+            createdAt: '20180304',
+            data: 60
+          }
+        ]
       },
       {
         id: 2,
         createdAt: '20180223',
         type: 'humidity',
-        name: 'super-sensor'
+        name: 'super-sensor',
+        readings: [
+          {
+            id: 1,
+            action: 'readHumidity',
+            createdAt: '20180303',
+            data: 50
+          },
+          {
+            id: 2,
+            action: 'readHumidity',
+            createdAt: '20180304',
+            data: 60
+          }
+        ]
       },
       {
         id: 3,
         createdAt: '20180223',
         type: 'humidity',
-        name: 'super-sensor'
+        name: 'super-sensor',
+        readings: [
+          {
+            id: 1,
+            action: 'readHumidity',
+            createdAt: '20180303',
+            data: 50
+          },
+          {
+            id: 2,
+            action: 'readHumidity',
+            createdAt: '20180304',
+            data: 60
+          }
+        ]
       },
     ],
     codes: [
@@ -167,19 +461,61 @@ export const HUBS = [
         id: 1,
         createdAt: '20180223',
         type: 'setHumidity',
-        name: 'super-code'
+        name: 'super-code',
+        commands: [
+          {
+            id: 1,
+            action: 'setHumidity',
+            createdAt: '20180303',
+            data: 50
+          },
+          {
+            id: 2,
+            action: 'setHumidity',
+            createdAt: '20180304',
+            data: 60
+          }
+        ]
       },
       {
         id: 2,
         createdAt: '20180223',
         type: 'setHumidity',
-        name: 'super-code'
+        name: 'super-code',
+        commands: [
+          {
+            id: 1,
+            action: 'setHumidity',
+            createdAt: '20180303',
+            data: 50
+          },
+          {
+            id: 2,
+            action: 'setHumidity',
+            createdAt: '20180304',
+            data: 60
+          }
+        ]
       },
       {
         id: 3,
         createdAt: '20180223',
         type: 'setHumidity',
-        name: 'super-code'
+        name: 'super-code',
+        commands: [
+          {
+            id: 1,
+            action: 'setHumidity',
+            createdAt: '20180303',
+            data: 50
+          },
+          {
+            id: 2,
+            action: 'setHumidity',
+            createdAt: '20180304',
+            data: 60
+          }
+        ]
       },
     ]
   },
@@ -193,19 +529,61 @@ export const HUBS = [
         id: 1,
         createdAt: '20180223',
         type: 'humidity',
-        name: 'super-sensor'
+        name: 'super-sensor',
+        readings: [
+          {
+            id: 1,
+            action: 'readHumidity',
+            createdAt: '20180303',
+            data: 50
+          },
+          {
+            id: 2,
+            action: 'readHumidity',
+            createdAt: '20180304',
+            data: 60
+          }
+        ]
       },
       {
         id: 2,
         createdAt: '20180223',
         type: 'humidity',
-        name: 'super-sensor'
+        name: 'super-sensor',
+        readings: [
+          {
+            id: 1,
+            action: 'readHumidity',
+            createdAt: '20180303',
+            data: 50
+          },
+          {
+            id: 2,
+            action: 'readHumidity',
+            createdAt: '20180304',
+            data: 60
+          }
+        ]
       },
       {
         id: 3,
         createdAt: '20180223',
         type: 'humidity',
-        name: 'super-sensor'
+        name: 'super-sensor',
+        readings: [
+          {
+            id: 1,
+            action: 'readHumidity',
+            createdAt: '20180303',
+            data: 50
+          },
+          {
+            id: 2,
+            action: 'readHumidity',
+            createdAt: '20180304',
+            data: 60
+          }
+        ]
       },
     ],
     codes: [
@@ -213,19 +591,61 @@ export const HUBS = [
         id: 1,
         createdAt: '20180223',
         type: 'setHumidity',
-        name: 'super-code'
+        name: 'super-code',
+        commands: [
+          {
+            id: 1,
+            action: 'setHumidity',
+            createdAt: '20180303',
+            data: 50
+          },
+          {
+            id: 2,
+            action: 'setHumidity',
+            createdAt: '20180304',
+            data: 60
+          }
+        ]
       },
       {
         id: 2,
         createdAt: '20180223',
         type: 'setHumidity',
-        name: 'super-code'
+        name: 'super-code',
+        commands: [
+          {
+            id: 1,
+            action: 'setHumidity',
+            createdAt: '20180303',
+            data: 50
+          },
+          {
+            id: 2,
+            action: 'setHumidity',
+            createdAt: '20180304',
+            data: 60
+          }
+        ]
       },
       {
         id: 3,
         createdAt: '20180223',
         type: 'setHumidity',
-        name: 'super-code'
+        name: 'super-code',
+        commands: [
+          {
+            id: 1,
+            action: 'setHumidity',
+            createdAt: '20180303',
+            data: 50
+          },
+          {
+            id: 2,
+            action: 'setHumidity',
+            createdAt: '20180304',
+            data: 60
+          }
+        ]
       },
     ]
   },
@@ -239,19 +659,61 @@ export const HUBS = [
         id: 1,
         createdAt: '20180223',
         type: 'humidity',
-        name: 'super-sensor'
+        name: 'super-sensor',
+        readings: [
+          {
+            id: 1,
+            action: 'readHumidity',
+            createdAt: '20180303',
+            data: 50
+          },
+          {
+            id: 2,
+            action: 'readHumidity',
+            createdAt: '20180304',
+            data: 60
+          }
+        ]
       },
       {
         id: 2,
         createdAt: '20180223',
         type: 'humidity',
-        name: 'super-sensor'
+        name: 'super-sensor',
+        readings: [
+          {
+            id: 1,
+            action: 'readHumidity',
+            createdAt: '20180303',
+            data: 50
+          },
+          {
+            id: 2,
+            action: 'readHumidity',
+            createdAt: '20180304',
+            data: 60
+          }
+        ]
       },
       {
         id: 3,
         createdAt: '20180223',
         type: 'humidity',
-        name: 'super-sensor'
+        name: 'super-sensor',
+        readings: [
+          {
+            id: 1,
+            action: 'readHumidity',
+            createdAt: '20180303',
+            data: 50
+          },
+          {
+            id: 2,
+            action: 'readHumidity',
+            createdAt: '20180304',
+            data: 60
+          }
+        ]
       },
     ],
     codes: [
@@ -259,19 +721,61 @@ export const HUBS = [
         id: 1,
         createdAt: '20180223',
         type: 'setHumidity',
-        name: 'super-code'
+        name: 'super-code',
+        commands: [
+          {
+            id: 1,
+            action: 'setHumidity',
+            createdAt: '20180303',
+            data: 50
+          },
+          {
+            id: 2,
+            action: 'setHumidity',
+            createdAt: '20180304',
+            data: 60
+          }
+        ]
       },
       {
         id: 2,
         createdAt: '20180223',
         type: 'setHumidity',
-        name: 'super-code'
+        name: 'super-code',
+        commands: [
+          {
+            id: 1,
+            action: 'setHumidity',
+            createdAt: '20180303',
+            data: 50
+          },
+          {
+            id: 2,
+            action: 'setHumidity',
+            createdAt: '20180304',
+            data: 60
+          }
+        ]
       },
       {
         id: 3,
         createdAt: '20180223',
         type: 'setHumidity',
-        name: 'super-code'
+        name: 'super-code',
+        commands: [
+          {
+            id: 1,
+            action: 'setHumidity',
+            createdAt: '20180303',
+            data: 50
+          },
+          {
+            id: 2,
+            action: 'setHumidity',
+            createdAt: '20180304',
+            data: 60
+          }
+        ]
       },
     ]
   },
@@ -285,19 +789,61 @@ export const HUBS = [
         id: 1,
         createdAt: '20180223',
         type: 'humidity',
-        name: 'super-sensor'
+        name: 'super-sensor',
+        readings: [
+          {
+            id: 1,
+            action: 'readHumidity',
+            createdAt: '20180303',
+            data: 50
+          },
+          {
+            id: 2,
+            action: 'readHumidity',
+            createdAt: '20180304',
+            data: 60
+          }
+        ]
       },
       {
         id: 2,
         createdAt: '20180223',
         type: 'humidity',
-        name: 'super-sensor'
+        name: 'super-sensor',
+        readings: [
+          {
+            id: 1,
+            action: 'readHumidity',
+            createdAt: '20180303',
+            data: 50
+          },
+          {
+            id: 2,
+            action: 'readHumidity',
+            createdAt: '20180304',
+            data: 60
+          }
+        ]
       },
       {
         id: 3,
         createdAt: '20180223',
         type: 'humidity',
-        name: 'super-sensor'
+        name: 'super-sensor',
+        readings: [
+          {
+            id: 1,
+            action: 'readHumidity',
+            createdAt: '20180303',
+            data: 50
+          },
+          {
+            id: 2,
+            action: 'readHumidity',
+            createdAt: '20180304',
+            data: 60
+          }
+        ]
       },
     ],
     codes: [
@@ -305,19 +851,61 @@ export const HUBS = [
         id: 1,
         createdAt: '20180223',
         type: 'setHumidity',
-        name: 'super-code'
+        name: 'super-code',
+        commands: [
+          {
+            id: 1,
+            action: 'setHumidity',
+            createdAt: '20180303',
+            data: 50
+          },
+          {
+            id: 2,
+            action: 'setHumidity',
+            createdAt: '20180304',
+            data: 60
+          }
+        ]
       },
       {
         id: 2,
         createdAt: '20180223',
         type: 'setHumidity',
-        name: 'super-code'
+        name: 'super-code',
+        commands: [
+          {
+            id: 1,
+            action: 'setHumidity',
+            createdAt: '20180303',
+            data: 50
+          },
+          {
+            id: 2,
+            action: 'setHumidity',
+            createdAt: '20180304',
+            data: 60
+          }
+        ]
       },
       {
         id: 3,
         createdAt: '20180223',
         type: 'setHumidity',
-        name: 'super-code'
+        name: 'super-code',
+        commands: [
+          {
+            id: 1,
+            action: 'setHumidity',
+            createdAt: '20180303',
+            data: 50
+          },
+          {
+            id: 2,
+            action: 'setHumidity',
+            createdAt: '20180304',
+            data: 60
+          }
+        ]
       },
     ]
   },

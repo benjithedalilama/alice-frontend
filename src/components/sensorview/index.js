@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { fetchHub } from '../../actions/hubActions'
 import Sensor from '../sensor'
+import List from '../list'
+import Reading from '../reading'
 
 export class SensorView extends Component {
   componentDidMount() {
@@ -11,7 +13,7 @@ export class SensorView extends Component {
 
   render() {
     let sensor
-    
+
     const { sensors } = this.props.hub
     sensor = !sensor ?
       sensors[0] :
@@ -24,6 +26,16 @@ export class SensorView extends Component {
             <div className='list__text--main'>{sensor.name}</div>
           </Sensor>
           <div className='sublist__container'>
+            <List className='list__container'>
+              <div className='list__itemContainer'>
+                <div className='list__item'>
+                  <div className='list__item__top list__text--main'>Commands</div>
+                </div>
+              </div>
+              {sensor.readings.map(reading =>
+                <Reading reading={reading} />
+              )}
+            </List>
           </div>
         </div>
       </div>

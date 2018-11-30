@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { fetchHub } from '../../actions/hubActions'
 import Code from '../code'
+import List from '../list'
+import Command from '../command'
 
 export class CodeView extends Component {
   componentDidMount() {
@@ -11,7 +13,7 @@ export class CodeView extends Component {
 
   render() {
     let code
-    
+
     const { codes } = this.props.hub
     code = !code ?
       codes[0] :
@@ -24,6 +26,16 @@ export class CodeView extends Component {
             <div className='list__text--main'>{code.name}</div>
           </Code>
           <div className='sublist__container'>
+            <List className='list__container'>
+              <div className='list__itemContainer'>
+                <div className='list__item'>
+                  <div className='list__item__top list__text--main'>Commands</div>
+                </div>
+              </div>
+              {code.commands.map(command =>
+                <Command command={command} />
+              )}
+            </List>
           </div>
         </div>
       </div>
