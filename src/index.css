@@ -130,6 +130,10 @@ body {
   border: 1px solid #DFDFDF;
 }
 
+.form__element {
+  margin: 2.5px 0;
+}
+
 .button {
   height: 27px;
 

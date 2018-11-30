@@ -7,23 +7,19 @@ const AddCodeView = props => (
   <div className="form__container">
     <div className="form">
       <div className="form__form">
-        <input className="form__input" placeholder="Name"></input>
-        <input className="form__input" placeholder="Type"></input>
-        <button onClick={() => props.goBack()} className="button button--alt">Add Code</button>
+        <input className="form__input form__element" placeholder="Name"></input>
+        <input className="form__input form__element" placeholder="Type"></input>
+        <button onClick={() => props.goBack()} className="button button--alt form__element">Add Code</button>
       </div>
     </div>
   </div>
 )
-
-const mapStateToProps = ({ counter }) => ({
-
-})
 
 const mapDispatchToProps = dispatch => bindActionCreators({
   goBack: () => goBack()
 }, dispatch)
 
 export default connect(
-  mapStateToProps,
+  null,
   mapDispatchToProps
 )(AddCodeView)

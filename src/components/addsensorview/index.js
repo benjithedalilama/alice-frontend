@@ -7,9 +7,9 @@ const AddSensorView = props => (
   <div className="form__container">
     <div className="form">
       <div className="form__form">
-        <input className="form__input" placeholder="Name"></input>
-        <input className="form__input" placeholder="Type"></input>
-        <button onClick={() => props.goBack()} className="button button--alt">Add Sensor</button>
+        <input className="form__input form__element" placeholder="Name"></input>
+        <input className="form__input form__element" placeholder="Type"></input>
+        <button onClick={() => props.goBack()} className="button button--alt form__element">Add Sensor</button>
       </div>
     </div>
   </div>

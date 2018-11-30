@@ -21,8 +21,8 @@ const View = ( props ) => (
     <header>
       <Navbar>
         <Route exact path='/hubs' render={() => (<button onClick={() => props.changePage('/add-hub')} className="button button--alt">ADD HUB</button>)}/>
-        <Route exact path={['/hubs/:hubId', '/hubs/:hubId/sensors']} render={() => (<button onClick={() => props.changePage('/add-sensor')} className="button button--alt">ADD SENSOR</button>)}/>
-        <Route exact path={['/hubs/:hubId', '/hubs/:hubId/codes']} render={() => (<button onClick={() => props.changePage('/add-code')} className="button button--alt">ADD CODE</button>)}/>
+        <Route exact path={['/hubs/:hubId', '/hubs/:hubId/sensors']} render={() => (<button onClick={() => props.changePage('/add-sensor')} className="button button--alt profilePreview__element">ADD SENSOR</button>)}/>
+        <Route exact path={['/hubs/:hubId', '/hubs/:hubId/codes']} render={() => (<button onClick={() => props.changePage('/add-code')} className="button button--alt profilePreview__element">ADD CODE</button>)}/>
       </Navbar>
     </header>
 

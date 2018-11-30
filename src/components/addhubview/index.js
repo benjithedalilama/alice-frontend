@@ -7,10 +7,10 @@ const AddHubView = props => (
   <div className="form__container">
     <div className="form">
       <form className="form__form">
-        <input className="form__input" placeholder="Name"></input>
-        <input className="form__input" placeholder="Latitude"></input>
-        <input className="form__input" placeholder="Longitude"></input>
-        <button onClick={() => props.changePage('/hubs')} className="button button--alt">Add Hub</button>
+        <input className="form__input form__element" placeholder="Name"></input>
+        <input className="form__input form__element" placeholder="Latitude"></input>
+        <input className="form__input form__element" placeholder="Longitude"></input>
+        <button onClick={() => props.changePage('/hubs')} className="button button--alt form__element">Add Hub</button>
       </form>
     </div>
   </div>

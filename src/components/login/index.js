@@ -9,11 +9,11 @@ const Login = props => (
     <div className="form">
       <form className="form__form">
         <p className="form__text">Login</p>
-        <input className="form__input" placeholder="Email"></input>
-        <input className="form__input" placeholder="Password"></input>
-        <button onClick={() => props.changePage('/hubs')} className="button button--main">Login</button>
+        <input className="form__input form__element" placeholder="Email"></input>
+        <input className="form__input form__element" placeholder="Password"></input>
+        <button onClick={() => props.changePage('/hubs')} className="button button--main form__element">Login</button>
         <p className="form__text">Forgot password?</p>
-        <button onClick={() => props.changePage('/signup')} className="button button--alt">Sign Up</button>
+        <button onClick={() => props.changePage('/signup')} className="button button--alt form__element">Sign Up</button>
       </form>
     </div>
   </div>

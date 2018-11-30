@@ -14,5 +14,7 @@
 }
 
 .navbar__element {
+  flex: 1;
+  
   margin: auto 10px;
 }

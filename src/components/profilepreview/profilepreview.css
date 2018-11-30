@@ -6,6 +6,10 @@
   width: 270px;
 }
 
+.profilePreview__element {
+  margin: auto 5px;
+}
+
 .profilePreview__text {
   margin: auto 10px;
 }
