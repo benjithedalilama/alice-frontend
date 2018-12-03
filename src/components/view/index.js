@@ -7,18 +7,27 @@ import SensorView from '../sensorview'
 import SensorListView from '../sensorlistview'
 import CodeView from '../codeview'
 import CodeListView from '../codelistview'
-
 import AddHubView from '../addhubview'
 import AddSensorView from '../addsensorview'
 import AddCodeView from '../addcodeview'
+import { Breadcrumbs } from 'react-breadcrumbs-dynamic'
+
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import { push } from 'connected-react-router'
-import { Route, Switch } from 'react-router-dom'
+import { Route, Switch, NavLink } from 'react-router-dom'
 
 const View = ( props ) => (
   <div>
     <header>
+      <Breadcrumbs
+        separator={<b> / </b>}
+        item={NavLink}
+        finalItem={'b'}
+        finalProps={{
+          style: {color: 'red'}
+        }}
+      />
       <Navbar>
         <Route exact path='/hubs' render={() => (<button onClick={() => props.changePage('/add-hub')} className="button button--alt">ADD HUB</button>)}/>
         <Route exact path={['/hubs/:hubId', '/hubs/:hubId/sensors']} render={() => (<button onClick={() => props.changePage('/add-sensor')} className="button button--alt profilePreview__element">ADD SENSOR</button>)}/>

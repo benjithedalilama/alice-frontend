@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { fetchHub } from '../../actions/hubActions'
+import { BreadcrumbsItem } from 'react-breadcrumbs-dynamic'
 import Code from '../code'
 import List from '../list'
 import Command from '../command'
@@ -21,6 +22,10 @@ export class CodeView extends Component {
 
     return (
       <div className='list__container'>
+        <BreadcrumbsItem to={`/hubs`}>Hubs</BreadcrumbsItem>
+        <BreadcrumbsItem to={`/hubs/${this.props.hub.id}`}>{this.props.hub.id}</BreadcrumbsItem>
+        <BreadcrumbsItem to={`/hubs/${this.props.hub.id}/codes`}>Codes</BreadcrumbsItem>
+        <BreadcrumbsItem to={`/hubs/${this.props.hub.id}/codes/${code.id}`}>{code.id}</BreadcrumbsItem>
         <div className='list'>
           <Code code={code}>
             <div className='list__text--main'>{code.name}</div>

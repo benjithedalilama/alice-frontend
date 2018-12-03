@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { fetchHub } from '../../actions/hubActions'
 import { Link } from 'react-router-dom'
+import { BreadcrumbsItem } from 'react-breadcrumbs-dynamic'
 import Sensor from '../sensor'
 import List from '../list'
 
@@ -16,6 +17,9 @@ export class SensorListView extends Component {
 
     return (
       <List>
+        <BreadcrumbsItem to={`/hubs`}>Hubs</BreadcrumbsItem>
+        <BreadcrumbsItem to={`/hubs/${this.props.hub.id}`}>{this.props.hub.id}</BreadcrumbsItem>
+        <BreadcrumbsItem to={`/hubs/${this.props.hub.id}/sensors`}>Sensors</BreadcrumbsItem>
           {sensors.map(sensor =>
             <Sensor sensor={sensor}>
               <Link className='list__text--main' to={{ pathname: `/hubs/${this.props.match.params.hubId}/sensors/${sensor.id}`, sensor: sensor}}>{sensor.name}</Link>

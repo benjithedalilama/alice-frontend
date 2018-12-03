@@ -5972,6 +5972,12 @@ rc@^1.0.1, rc@^1.1.6, rc@^1.2.7:
     minimist "^1.2.0"
     strip-json-comments "~2.0.1"
 
+react-breadcrumbs-dynamic@^1.1.1:
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/react-breadcrumbs-dynamic/-/react-breadcrumbs-dynamic-1.1.1.tgz#f7de3abd9da8abaaf723f1c6cc5ec0283263d240"
+  dependencies:
+    react-through "^1.0.3"
+
 react-dev-utils@^5.0.2:
   version "5.0.2"
   resolved "https://registry.yarnpkg.com/react-dev-utils/-/react-dev-utils-5.0.2.tgz#7bb68d2c4f6ffe7ed1184c5b0124fcad692774d2"
@@ -6116,6 +6122,10 @@ react-test-renderer@^16.6.3:
     prop-types "^15.6.2"
     react-is "^16.6.3"
     scheduler "^0.11.2"
+
+react-through@^1.0.3, react-through@^1.1.1:
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/react-through/-/react-through-1.1.1.tgz#4a0465ad1f870e74d45df98fd3f78114deca4717"
 
 react@^16.5.2:
   version "16.5.2"

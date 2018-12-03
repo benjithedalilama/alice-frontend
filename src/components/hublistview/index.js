@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { fetchHubs } from '../../actions/hubsActions'
 import { Link } from 'react-router-dom'
+import { BreadcrumbsItem } from 'react-breadcrumbs-dynamic'
 import Hub from '../hub'
 import List from '../list'
 
@@ -15,6 +16,7 @@ export class HubListView extends Component {
 
     return (
       <List>
+        <BreadcrumbsItem to='/hubs'>Hubs</BreadcrumbsItem>
           {hubs.map(hub =>
             <Hub hub={hub}>
               <Link className='list__text--main' to={{ pathname: `/hubs/${hub.id}`, hub: hub}}>{hub.name}</Link>

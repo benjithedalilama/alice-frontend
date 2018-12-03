@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { fetchHub } from '../../actions/hubActions'
+import { BreadcrumbsItem } from 'react-breadcrumbs-dynamic'
 import Sensor from '../sensor'
 import List from '../list'
 import Reading from '../reading'
@@ -15,12 +16,21 @@ export class SensorView extends Component {
     let sensor
 
     const { sensors } = this.props.hub
-    sensor = !sensor ?
-      sensors[0] :
-      sensors.find(sensor => sensor.id === parseInt(this.props.match.params.sensorId, 10))
+
+    if (sensor == null) {
+      sensor = sensors[0]
+      console.log(sensor)
+    }
+    else {
+      sensor = sensors.find(newSensor => newSensor.id == this.props.match.params.sensorId)
+    }
 
     return (
       <div className='list__container'>
+        <BreadcrumbsItem to={`/hubs`}>Hubs</BreadcrumbsItem>
+        <BreadcrumbsItem to={`/hubs/${this.props.hub.id}`}>{this.props.hub.id}</BreadcrumbsItem>
+        <BreadcrumbsItem to={`/hubs/${this.props.hub.id}/sensors`}>Sensors</BreadcrumbsItem>
+        <BreadcrumbsItem to={`/hubs/${this.props.hub.id}/sensors/${sensor.id}`}>{sensor.id}</BreadcrumbsItem>
         <div className='list'>
           <Sensor sensor={sensor}>
             <div className='list__text--main'>{sensor.name}</div>

@@ -8,7 +8,7 @@ export const HUBS = [
       {
         id: 1,
         createdAt: '20180223',
-        type: 'humidity',
+        type: 'temperature',
         name: 'super-sensor',
         readings: [
           {
@@ -138,7 +138,7 @@ export const HUBS = [
       {
         id: 1,
         createdAt: '20180223',
-        type: 'humidity',
+        type: 'temperature',
         name: 'super-sensor',
         readings: [
           {
@@ -268,7 +268,7 @@ export const HUBS = [
       {
         id: 1,
         createdAt: '20180223',
-        type: 'humidity',
+        type: 'temperature',
         name: 'super-sensor',
         readings: [
           {
@@ -398,7 +398,7 @@ export const HUBS = [
       {
         id: 1,
         createdAt: '20180223',
-        type: 'humidity',
+        type: 'temperature',
         name: 'super-sensor',
         readings: [
           {
@@ -528,7 +528,7 @@ export const HUBS = [
       {
         id: 1,
         createdAt: '20180223',
-        type: 'humidity',
+        type: 'temperature',
         name: 'super-sensor',
         readings: [
           {
@@ -658,7 +658,7 @@ export const HUBS = [
       {
         id: 1,
         createdAt: '20180223',
-        type: 'humidity',
+        type: 'temperature',
         name: 'super-sensor',
         readings: [
           {
@@ -788,7 +788,7 @@ export const HUBS = [
       {
         id: 1,
         createdAt: '20180223',
-        type: 'humidity',
+        type: 'temperature',
         name: 'super-sensor',
         readings: [
           {

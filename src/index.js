@@ -1,6 +1,7 @@
 import React from 'react'
 import { render } from 'react-dom'
 import { Provider } from 'react-redux'
+import { ThroughProvider } from 'react-through'
 import { ConnectedRouter } from 'connected-react-router'
 import store, { history } from './store'
 import App from './components/app'
@@ -17,9 +18,9 @@ const target = document.querySelector('#root')
 render(
   <Provider store={store}>
     <ConnectedRouter basename={process.env.PUBLIC_URL} history={history}>
-      <div>
+      <ThroughProvider>
         <App />
-      </div>
+      </ThroughProvider>
     </ConnectedRouter>
   </Provider>,
   target

@@ -4,6 +4,7 @@ import { fetchHub } from '../../actions/hubActions'
 import Hub from '../hub'
 import SensorList from '../sensorlist'
 import CodeList from '../codelist'
+import { BreadcrumbsItem } from 'react-breadcrumbs-dynamic'
 
 export class HubView extends Component {
   componentDidMount() {
@@ -16,6 +17,8 @@ export class HubView extends Component {
 
     return (
       <div className='list__container'>
+        <BreadcrumbsItem to={`/hubs`}>Hubs</BreadcrumbsItem>
+        <BreadcrumbsItem to={`/hubs/${hub.id}`}>{hub.id}</BreadcrumbsItem>
         <div className='list'>
           <Hub hub={hub}>
             <div className='list__text--main'>{hub.name}</div>
