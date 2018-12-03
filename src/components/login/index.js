@@ -19,15 +19,11 @@ const Login = props => (
   </div>
 )
 
-const mapStateToProps = ({ counter }) => ({
-
-})
-
 const mapDispatchToProps = dispatch => bindActionCreators({
   changePage: (destination) => push(destination)
 }, dispatch)
 
 export default connect(
-  mapStateToProps,
+  null,
   mapDispatchToProps
 )(Login)

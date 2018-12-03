@@ -2,9 +2,12 @@ import React from 'react'
 import { push } from 'connected-react-router'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
+import { BreadcrumbsItem } from 'react-breadcrumbs-dynamic'
 
 const AddHubView = props => (
   <div className="form__container">
+    <BreadcrumbsItem to={`/hubs`}>Hubs</BreadcrumbsItem>
+    <BreadcrumbsItem to={`/add-hub`}>Add Hub</BreadcrumbsItem>
     <div className="form">
       <form className="form__form">
         <input className="form__input form__element" placeholder="Name"></input>

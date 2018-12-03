@@ -17,9 +17,9 @@ export class SensorView extends Component {
 
     const { sensors } = this.props.hub
 
+    // FIX ME
     if (sensor == null) {
       sensor = sensors[0]
-      console.log(sensor)
     }
     else {
       sensor = sensors.find(newSensor => newSensor.id === parseInt(this.props.match.params.sensorId,10))
@@ -39,7 +39,7 @@ export class SensorView extends Component {
             <List className='list__container'>
               <div className='list__itemContainer'>
                 <div className='list__item'>
-                  <div className='list__item__top list__text--main'>Commands</div>
+                  <div className='list__item__top list__text--main'>Readings</div>
                 </div>
               </div>
               {sensor.readings.map(reading =>
