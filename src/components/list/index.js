@@ -1,7 +1,7 @@
 import React from 'react'
 
 const List = (props) => (
-  <div className={'list__container ' + props.className}>
+  <div className={`${props.className} list__container`}>
     <div className='list'>
       {props.children}
     </div>

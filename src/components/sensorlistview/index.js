@@ -18,7 +18,7 @@ export class SensorListView extends Component {
       <List>
           {sensors.map(sensor =>
             <Sensor sensor={sensor}>
-              <Link className='list__text--main' to={{ pathname: '/hubs/' + this.props.match.params.hubId + '/sensors/' + sensor.id, sensor: sensor}}>{sensor.name}</Link>
+              <Link className='list__text--main' to={{ pathname: `/hubs/${this.props.match.params.hubId}/sensors/${sensor.id}`, sensor: sensor}}>{sensor.name}</Link>
             </Sensor>
           )}
       </List>

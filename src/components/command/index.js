@@ -1,5 +1,4 @@
 import React from 'react'
-import IconButton from '../iconbutton'
 
 const Command = ({command}) => (
   <div className='list__itemContainer' key={command.id}>

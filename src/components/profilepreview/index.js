@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import './profilepreview.css'
 
 const ProfilePreview = props => (
-  <div className={props.className + ' profilePreview'}>
+  <div className={`${props.className} profilePreview`}>
     {props.children}
     <p className="profilePreview__text profilePreview__element">USER.EMAIL</p>
     <img className="profilePreview__image profilePreview__element" src="https://lh3.googleusercontent.com/--SUy6eYwjwU/AAAAAAAAAAI/AAAAAAAAAAA/AGDgw-jKi24cBTO8NdPN3lLZeA2nUDGQ6g/s48-c-mo/photo.jpg" alt="Profile" />

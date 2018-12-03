@@ -18,7 +18,7 @@ export class CodeListView extends Component {
       <List>
           {codes.map(code =>
             <Code code={code}>
-              <Link className='list__text--main' to={{ pathname: '/hubs/' + this.props.match.params.hubId + '/codes/' + code.id, code: code}}>{code.name}</Link>
+              <Link className='list__text--main' to={{ pathname: `/hubs/${this.props.match.params.hubId}/codes/${code.id}`, code: code}}>{code.name}</Link>
             </Code>
           )}
       </List>

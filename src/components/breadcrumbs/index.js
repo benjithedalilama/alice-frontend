@@ -2,7 +2,7 @@ import React from 'react'
 import './breadcrumbs.css'
 
 const Breadcrumbs = props => (
-  <div className={'breadcrumbs ' + props.className}>
+  <div className={`${props.className} breadcrumbs`}>
     <p>BREADCRUMBS</p>
   </div>
 )

@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import './searchbar.css'
 
 const Searchbar = props => (
-  <div className={props.className + ' searchbar'}>
+  <div className={`${props.className} searchbar`}>
       <input className="searchbar__input" placeholder="Search"></input>
       <div className="searchbar__searchButton">
         <FontAwesomeIcon className="searchbar__icon" icon={['fas', 'search']} />

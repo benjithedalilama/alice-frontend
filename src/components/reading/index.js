@@ -1,5 +1,4 @@
 import React from 'react'
-import IconButton from '../iconbutton'
 
 const Reading = ({reading}) => (
   <div className='list__itemContainer' key={reading.id}>
