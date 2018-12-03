@@ -22,7 +22,7 @@ export class SensorView extends Component {
       console.log(sensor)
     }
     else {
-      sensor = sensors.find(newSensor => newSensor.id == this.props.match.params.sensorId)
+      sensor = sensors.find(newSensor => newSensor.id === parseInt(this.props.match.params.sensorId,10))
     }
 
     return (

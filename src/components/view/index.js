@@ -1,6 +1,7 @@
 import React from 'react'
-import Navbar from '../navbar'
 
+import Searchbar from '../searchbar'
+import ProfilePreview from '../profilepreview'
 import HubView from '../hubview'
 import HubListView from '../hublistview'
 import SensorView from '../sensorview'
@@ -15,24 +16,32 @@ import { Breadcrumbs } from 'react-breadcrumbs-dynamic'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import { push } from 'connected-react-router'
-import { Route, Switch, NavLink } from 'react-router-dom'
+import { Route, Switch, Link } from 'react-router-dom'
+
+const Loaf = (props) => (
+  <Link to={props.to} className='navbar__link'>
+    {props.children}
+  </Link>
+)
 
 const View = ( props ) => (
   <div>
     <header>
-      <Breadcrumbs
-        separator={<b> / </b>}
-        item={NavLink}
-        finalItem={'b'}
-        finalProps={{
-          style: {color: 'red'}
-        }}
-      />
-      <Navbar>
-        <Route exact path='/hubs' render={() => (<button onClick={() => props.changePage('/add-hub')} className="button button--alt">ADD HUB</button>)}/>
+      <div className="navbar">
+        <div className="navbar__element navbar__breadcrumbs">
+          <Breadcrumbs
+            separator={<b> / </b>}
+            item={Loaf}
+            finalItem={'b'}
+          />
+        </div>
+        <Searchbar className="navbar__element navbar__element--centered"></Searchbar>
+        <ProfilePreview className="navbar__element">
+        <Route exact path='/hubs' render={() => (<button onClick={() => props.changePage('/add-hub')} className="button button--alt profilePreview__element">ADD HUB</button>)}/>
         <Route exact path={['/hubs/:hubId', '/hubs/:hubId/sensors']} render={() => (<button onClick={() => props.changePage('/add-sensor')} className="button button--alt profilePreview__element">ADD SENSOR</button>)}/>
         <Route exact path={['/hubs/:hubId', '/hubs/:hubId/codes']} render={() => (<button onClick={() => props.changePage('/add-code')} className="button button--alt profilePreview__element">ADD CODE</button>)}/>
-      </Navbar>
+        </ProfilePreview>
+      </div>
     </header>
 
     <main>
