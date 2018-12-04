@@ -14,9 +14,6 @@ export class Login extends Component {
         password: '',
         submitted: false
     }
-
-    this.handleChange = this.handleChange.bind(this)
-    this.handleSubmit = this.handleSubmit.bind(this)
   }
 
   handleChange(e) {
@@ -42,10 +39,10 @@ export class Login extends Component {
     return (
       <div className="form__container">
         <div className="form">
-          <form className="form__form" onSubmit={this.handleSubmit} name="form">
+          <form className="form__form" onSubmit={e => this.handleSubmit(e)} name="form">
             <p className="form__text">Login</p>
-            <input className="form__input form__element" type="text" name="username" value={username} onChange={this.handleChange} placeholder="Username"></input>
-            <input className="form__input form__element" type="password" name="password" value={password} onChange={this.handleChange} placeholder="Password"></input>
+            <input className="form__input form__element" type="text" name="username" value={username} onChange={e => this.handleChange(e)} placeholder="Username"></input>
+            <input className="form__input form__element" type="password" name="password" value={password} onChange={e => this.handleChange(e)} placeholder="Password"></input>
             <button className="button button--main form__element">Login</button>
             <p className="form__text">Forgot password?</p>
             <button className="button button--alt form__element">Sign Up</button>
