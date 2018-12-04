@@ -1,3 +1,4 @@
+import { handleErrors } from '../helpers/responseHelper'
 import { HUBS } from '../fake_data'
 export const FETCH_HUBS_BEGIN   = 'FETCH_HUBS_BEGIN'
 export const FETCH_HUBS_SUCCESS = 'FETCH_HUBS_SUCCESS'
@@ -32,11 +33,4 @@ export const fetchHubs = () => {
       handleErrors(err)
     }
   }
-}
-
-export const handleErrors = response => {
-  if (!response.ok) {
-    throw Error(response.statusText)
-  }
-  return response
 }

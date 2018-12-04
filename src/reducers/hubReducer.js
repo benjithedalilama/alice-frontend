@@ -69,7 +69,7 @@ export default function hubReducer(state = initialState, action) {
         ...state,
         loading: false,
         error: action.payload.error,
-        item: []
+        item: {}
       }
 
     default:

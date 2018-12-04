@@ -49,7 +49,7 @@ export class CodeView extends Component {
 }
 
 const mapStateToProps = state => ({
-  hub: state.hub.item,
+  hub: state.hub.items,
   loading: state.hub.loading,
   error: state.hub.error
 })
