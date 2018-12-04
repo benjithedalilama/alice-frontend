@@ -1,11 +1,13 @@
-import userService from '../services/userService'
+import UserService from '../services/userService'
 import { handleErrors } from '../helpers/responseHelper'
+import { push } from 'connected-react-router'
 
 export const LOGIN_USER_BEGIN   = 'LOGIN_USER_BEGIN'
 export const LOGIN_USER_SUCCESS = 'LOGIN_USER_SUCCESS'
 export const LOGIN_USER_FAILURE = 'LOGIN_USER_FAILURE'
 
-export const LOGOUT_USER = 'LOGOUT_USER'
+export const LOGOUT_USER_SUCCESS = 'LOGOUT_USER_SUCCESS'
+export const LOGOUT_USER_FAILURE = 'LOGOUT_USER_FAILURE'
 
 export const REGISTER_USER_BEGIN = 'REGISTER_USER_BEGIN'
 export const REGISTER_USER_SUCCESS = 'REGISTER_USER_SUCCESS'
@@ -34,25 +36,46 @@ export const loginUserFailure = error => ({
   payload: { error }
 })
 
-export const login = async (username, password) => {
-    return dispatch => {
-      dispatch(loginUserBegin())
+export const login = (username, password) => {
+  return async dispatch => {
+    dispatch(loginUserBegin())
 
-      try {
-        const user = await userService.login(username, password)
-        dispatch(loginUserSuccess(user))
-        return user
-      }
-      catch (err) {
-        dispatch(loginUserFailure(err))
-        handleErrors(err)
-      }
+    try {
+      const user = await UserService.login(username, password)
+      dispatch(loginUserSuccess(user))
+      dispatch(push('/hubs'))
+      return user
     }
+    catch (err) {
+      dispatch(loginUserFailure(err))
+      handleErrors(err)
+    }
+  }
 }
 
-export const logout = async () => {
-    await userService.logout()
-    return { type: LOGOUT_USER }
+export const logoutUserSuccess = () => ({
+  type: LOGOUT_USER_SUCCESS,
+  payload: {}
+})
+
+export const logoutUserFailure = error => ({
+  type: LOGOUT_USER_FAILURE,
+  payload: { error }
+})
+
+export const logout = () => {
+  return async dispatch => {
+    try {
+      await UserService.logout()
+      dispatch(logoutUserSuccess())
+      return {}
+    }
+    catch (err) {
+      dispatch(logoutUserFailure())
+      console.log(err)
+      handleErrors(err)
+    }
+  }
 }
 
 export const registerUserBegin = user => ({
@@ -70,13 +93,14 @@ export const registerUserFailure = error => ({
   payload: { error }
 })
 
-export const register = async user => {
-  return dispatch => {
+export const register = user => {
+  return async dispatch => {
     dispatch(registerUserBegin(user))
 
     try {
-      await userService.register(user)
+      await UserService.register(user)
       dispatch(registerUserSuccess(user))
+      dispatch(push('/login'))
       return user
     }
     catch (err) {
@@ -101,12 +125,12 @@ export const deleteUserFailure = error => ({
   payload: { error }
 })
 
-export const _delete = async id => {
-  return dispatch => {
+export const _delete = id => {
+  return async dispatch => {
     dispatch(deleteUserBegin(id))
 
     try {
-      await userService._delete(id)
+      await UserService._delete(id)
       dispatch(deleteUserSuccess())
     }
     catch (err) {
@@ -131,12 +155,12 @@ export const updateUserFailure = error => ({
   payload: { error }
 })
 
-export const update = async user => {
-  return dispatch => {
+export const update = user => {
+  return async dispatch => {
     dispatch(updateUserBegin(user))
 
     try {
-      await userService.update(user)
+      await UserService.update(user)
       dispatch(updateUserSuccess(user))
     }
     catch (err) {

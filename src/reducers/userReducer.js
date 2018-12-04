@@ -1,4 +1,4 @@
-import getCookie from './cookieHelper'
+import { getCookie } from '../helpers/cookieHelper'
 import {
   LOGIN_USER_BEGIN,
   LOGIN_USER_SUCCESS,
@@ -9,10 +9,11 @@ import {
   DELETE_USER_BEGIN,
   DELETE_USER_SUCCESS,
   DELETE_USER_FAILURE,
-  LOGOUT_USER
+  LOGOUT_USER_SUCCESS,
+  LOGOUT_USER_FAILURE
 } from '../actions/userActions'
 
-let user = JSON.parse(getCookie('user'))
+let user = getCookie('user')
 
 const initialState = user ? {
   loggedIn: true,
@@ -74,11 +75,18 @@ export default function userReducer(state = initialState, action) {
         user: {}
       }
 
-    case LOGOUT_USER:
+    case LOGOUT_USER_SUCCESS:
       return {
         ...state,
         loading: false,
         error: null
+      }
+
+    case LOGOUT_USER_FAILURE:
+      return {
+        ...state,
+        loading: false,
+        error: action.payload.error
       }
 
     case DELETE_USER_BEGIN:

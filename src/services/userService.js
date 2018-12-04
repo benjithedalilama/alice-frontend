@@ -1,89 +1,98 @@
-import authHeader from '../helpers/authHelper'
+import { authHeader } from '../helpers/authHelper'
+import { handleResponse } from '../helpers/responseHelper'
 
-export const login = async (username, password) => {
+const url = 'http://localhost:8080'
+
+class UserService {
+  static async login(username, password){
     try {
       const requestOptions = {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ username, password })
       }
-      const user = await fetch(`api/users/login`, requestOptions)
+      const response = await fetch(`${url}/api/users/login`, requestOptions)
+      await handleResponse(response)
+      return response
+    }
+    catch (err) {
+      throw err
+    }
+  }
+
+  static async logout() {
+    try {
+      const requestOptions = {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' }
+      }
+      await fetch(`${url}/api/users/logout`, requestOptions)
+      return {}
+    }
+    catch (err) {
+      throw err
+    }
+  }
+
+  static async getById(id) {
+    try {
+      const requestOptions = {
+        method: 'GET',
+        headers: authHeader()
+      }
+      const user = await fetch(`${url}/api/users/${id}`, requestOptions)
       return user
     }
     catch (err) {
       throw err
     }
-}
+  }
 
-export const logout = async () => {
-  try {
-    const requestOptions = {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' }
+  static async register(user) {
+    try {
+      const requestOptions = {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(user)
+      }
+      const registeredUser = await fetch(`${url}/api/users`, requestOptions)
+      return registeredUser
     }
-    await fetch(`api/users/logout`, requestOptions)
-    return {}
-  }
-  catch (err) {
-    throw err
-  }
-}
-
-export const getById = async id => {
-  try {
-    const requestOptions = {
-      method: 'GET',
-      headers: authHeader()
+    catch (err) {
+      throw err
     }
-    const user = await fetch(`api/users/${id}`, requestOptions).then(handleResponse)
-    return user
   }
-  catch (err) {
-    throw err
-  }
-}
 
-export const register = async user => {
-  try {
-    const requestOptions = {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(user)
+  static async update(user) {
+    try {
+      const requestOptions = {
+        method: 'PUT',
+        headers: { ...authHeader(), 'Content-Type': 'application/json' },
+        body: JSON.stringify(user)
+      }
+
+      const updatedUser = await fetch(`${url}/api/users/${user.id}`, requestOptions)
+      return updatedUser
     }
-    const user = await fetch(`api/users`, requestOptions)
-    return user
-  }
-  catch (err) {
-    throw err
-  }
-}
-
-export const update = async user => {
-  try {
-    const requestOptions = {
-      method: 'PUT',
-      headers: { ...authHeader(), 'Content-Type': 'application/json' },
-      body: JSON.stringify(user)
+    catch (err) {
+      throw err
     }
-
-    const user = await fetch(`api/users/${user.id}`, requestOptions)
-    return user
   }
-  catch (err) {
-    throw err
-  }
-}
 
-export const _delete = async id => {
-  try {
-    const requestOptions = {
-      method: 'DELETE',
-      headers: authHeader()
+  static async _delete(id) {
+    try {
+      const requestOptions = {
+        method: 'DELETE',
+        headers: authHeader()
+      }
+
+      await fetch(`${url}/api/users/${id}`, requestOptions)
     }
-
-    await fetch(`api/users/${id}`, requestOptions)
-  }
-  catch (err) {
-    throw err
+    catch (err) {
+      throw err
+    }
   }
 }
+
+
+export default UserService
