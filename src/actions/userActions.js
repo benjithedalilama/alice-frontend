@@ -6,6 +6,7 @@ export const LOGIN_USER_BEGIN   = 'LOGIN_USER_BEGIN'
 export const LOGIN_USER_SUCCESS = 'LOGIN_USER_SUCCESS'
 export const LOGIN_USER_FAILURE = 'LOGIN_USER_FAILURE'
 
+export const LOGOUT_USER_BEGIN = 'LOGOUT_USER_BEGIN'
 export const LOGOUT_USER_SUCCESS = 'LOGOUT_USER_SUCCESS'
 export const LOGOUT_USER_FAILURE = 'LOGOUT_USER_FAILURE'
 
@@ -53,6 +54,11 @@ export const login = (username, password) => {
   }
 }
 
+export const logoutUserBegin = () => ({
+  type: LOGOUT_USER_BEGIN,
+  payload: {}
+})
+
 export const logoutUserSuccess = () => ({
   type: LOGOUT_USER_SUCCESS,
   payload: {}
@@ -65,6 +71,8 @@ export const logoutUserFailure = error => ({
 
 export const logout = () => {
   return async dispatch => {
+    dispatch(logoutUserBegin)
+
     try {
       await UserService.logout()
       dispatch(logoutUserSuccess())
@@ -72,7 +80,6 @@ export const logout = () => {
     }
     catch (err) {
       dispatch(logoutUserFailure())
-      console.log(err)
       handleErrors(err)
     }
   }
