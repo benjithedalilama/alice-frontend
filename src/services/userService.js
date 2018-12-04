@@ -1,7 +1,7 @@
 import { authHeader } from '../helpers/authHelper'
 import { handleResponse } from '../helpers/responseHelper'
 
-const url = 'http://localhost:8080'
+const url = 'http://localhost:8080/api'
 
 class UserService {
   static async login(username, password){
@@ -11,7 +11,7 @@ class UserService {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ username, password })
       }
-      const response = await fetch(`${url}/api/users/login`, requestOptions)
+      const response = await fetch(`${url}/users/login`, requestOptions)
       await handleResponse(response)
       return response
     }
@@ -26,7 +26,7 @@ class UserService {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' }
       }
-      await fetch(`${url}/api/users/logout`, requestOptions)
+      await fetch(`${url}/users/logout`, requestOptions)
       return {}
     }
     catch (err) {
@@ -40,7 +40,7 @@ class UserService {
         method: 'GET',
         headers: authHeader()
       }
-      const user = await fetch(`${url}/api/users/${id}`, requestOptions)
+      const user = await fetch(`${url}/users/${id}`, requestOptions)
       return user
     }
     catch (err) {
@@ -55,7 +55,7 @@ class UserService {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(user)
       }
-      const registeredUser = await fetch(`${url}/api/users`, requestOptions)
+      const registeredUser = await fetch(`${url}/users`, requestOptions)
       return registeredUser
     }
     catch (err) {
@@ -71,7 +71,7 @@ class UserService {
         body: JSON.stringify(user)
       }
 
-      const updatedUser = await fetch(`${url}/api/users/${user.id}`, requestOptions)
+      const updatedUser = await fetch(`${url}/users/${user.id}`, requestOptions)
       return updatedUser
     }
     catch (err) {
@@ -86,7 +86,7 @@ class UserService {
         headers: authHeader()
       }
 
-      await fetch(`${url}/api/users/${id}`, requestOptions)
+      await fetch(`${url}/users/${id}`, requestOptions)
     }
     catch (err) {
       throw err
