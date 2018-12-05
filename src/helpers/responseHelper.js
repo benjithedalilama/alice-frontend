@@ -2,7 +2,7 @@ import UserService from '../services/userService'
 
 export const handleErrors = response => {
   if (!response.ok) {
-    return Promise.reject(response.statusText)
+    return Error(response.statusText)
   }
   return response
 }

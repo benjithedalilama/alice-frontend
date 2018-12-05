@@ -29,7 +29,7 @@ export class Login extends Component {
       const { dispatch } = this.props
 
       if (username && password) {
-          dispatch(login(username, password))
+        dispatch(login(username, password))
       }
   }
 
