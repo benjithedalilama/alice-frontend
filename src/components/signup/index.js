@@ -8,7 +8,6 @@ const Signup = props => (
   <div className="form__container">
     <div className="form">
       <form className="form__form">
-        <p className="form__text">Sign Up</p>
         <input className="form__input form__element" placeholder="Email"></input>
         <input className="form__input form__element" placeholder="Password"></input>
         <input className="form__input form__element" placeholder="Confirm Password"></input>

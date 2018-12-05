@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { push } from 'connected-react-router'
 import { login, logout } from '../../actions/userActions'
 import './login.css'
 
@@ -33,6 +34,10 @@ export class Login extends Component {
       }
   }
 
+  changePage(path) {
+    this.props.dispatch(push(path))
+  }
+
   render () {
     const { username, password } = this.state
 
@@ -40,12 +45,11 @@ export class Login extends Component {
       <div className="form__container">
         <div className="form">
           <form className="form__form" onSubmit={e => this.handleSubmit(e)} name="form">
-            <p className="form__text">Login</p>
             <input className="form__input form__element" type="text" name="username" value={username} onChange={e => this.handleChange(e)} placeholder="Username"></input>
             <input className="form__input form__element" type="password" name="password" value={password} onChange={e => this.handleChange(e)} placeholder="Password"></input>
             <button className="button button--main form__element">Login</button>
             <p className="form__text">Forgot password?</p>
-            <button className="button button--alt form__element">Sign Up</button>
+            <button className="button button--alt form__element" onClick={e => this.changePage('/signup')}>Sign Up</button>
           </form>
         </div>
       </div>
