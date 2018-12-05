@@ -11,6 +11,7 @@ import CodeListView from '../codelistview'
 import AddHubView from '../addhubview'
 import AddSensorView from '../addsensorview'
 import AddCodeView from '../addcodeview'
+import ProtectedRoute from '../protectedroute'
 import { Breadcrumbs } from 'react-breadcrumbs-dynamic'
 
 import { bindActionCreators } from 'redux'
@@ -54,15 +55,15 @@ export class View extends Component {
         <main>
           <Switch>
             <div className='view'>
-              <Route exact path='/hubs' component={HubListView} />
-              <Route exact path='/hubs/:hubId' component={HubView} />
-              <Route exact path='/hubs/:hubId/sensors' component={SensorListView} />
-              <Route exact path='/hubs/:hubId/sensors/:sensorId' component={SensorView} />
-              <Route exact path='/hubs/:hubId/codes' component={CodeListView} />
-              <Route exact path='/hubs/:hubId/codes/:codeId' component={CodeView} />
-              <Route exact path='/add-hub' component={AddHubView} />
-              <Route exact path='/hubs/:hubId/add-sensor' component={AddSensorView} />
-              <Route exact path='/hubs/:hubId/add-code' component={AddCodeView} />
+              <ProtectedRoute exact path='/hubs' component={HubListView} isAuthenticated={this.props.isAuthenticated}/>
+              <ProtectedRoute exact path='/hubs/:hubId' component={HubView} isAuthenticated={this.props.isAuthenticated} />
+              <ProtectedRoute exact path='/hubs/:hubId/sensors' component={SensorListView} isAuthenticated={this.props.isAuthenticated} />
+              <ProtectedRoute exact path='/hubs/:hubId/sensors/:sensorId' component={SensorView} isAuthenticated={this.props.isAuthenticated} />
+              <ProtectedRoute exact path='/hubs/:hubId/codes' component={CodeListView} isAuthenticated={this.props.isAuthenticated} />
+              <ProtectedRoute exact path='/hubs/:hubId/codes/:codeId' component={CodeView} isAuthenticated={this.props.isAuthenticated} />
+              <ProtectedRoute exact path='/add-hub' component={AddHubView} isAuthenticated={this.props.isAuthenticated} />
+              <ProtectedRoute exact path='/hubs/:hubId/add-sensor' component={AddSensorView} isAuthenticated={this.props.isAuthenticated} />
+              <ProtectedRoute exact path='/hubs/:hubId/add-code' component={AddCodeView} isAuthenticated={this.props.isAuthenticated} />
             </div>
           </Switch>
         </main>
@@ -71,11 +72,15 @@ export class View extends Component {
   }
 }
 
+const mapStateToProps = state => ({
+  isAuthenticated: state.user.loggedIn
+})
+
 const mapDispatchToProps = dispatch => bindActionCreators({
   changePage: (destination) => push(destination)
 }, dispatch)
 
 export default connect(
-  null,
+  mapStateToProps,
   mapDispatchToProps
 )(View)

@@ -40,6 +40,7 @@ export default function userReducer(state = initialState, action) {
       return {
         ...state,
         loading: false,
+        loggedIn: true,
         error: null,
         user: action.payload.user
       }
