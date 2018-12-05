@@ -1,4 +1,5 @@
-import UserService from '../services/userService'
+import store from '../store'
+import { logout } from '../actions/userActions'
 
 export const handleErrors = response => {
   if (!response.ok) {
@@ -13,7 +14,7 @@ export const handleResponse = async response => {
 
   if (!response.ok) {
     if (response.status === 401) {
-      UserService.logout()
+      store.dispatch(logout())
     }
 
     const err = (data && data.message) || response.statusText
