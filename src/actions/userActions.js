@@ -22,9 +22,9 @@ export const UPDATE_USER_BEGIN = 'UPDATE_USER_BEGIN'
 export const UPDATE_USER_SUCCESS = 'UPDATE_USER_SUCCESS'
 export const UPDATE_USER_FAILURE = 'UPDATE_USER_FAILURE'
 
-export const loginUserBegin = user => ({
+export const loginUserBegin = () => ({
   type: LOGIN_USER_BEGIN,
-  payload: { user }
+  payload: {}
 })
 
 export const loginUserSuccess = user => ({
@@ -43,6 +43,7 @@ export const login = (username, password) => {
 
     try {
       if (!username || !password) throw Error('Please enter both fields')
+
       const user = await UserService.login(username, password)
       dispatch(loginUserSuccess(user))
       dispatch(push('/hubs'))
@@ -50,6 +51,41 @@ export const login = (username, password) => {
     }
     catch (err) {
       dispatch(loginUserFailure(err))
+      handleErrors(err)
+    }
+  }
+}
+
+export const registerUserBegin = () => ({
+  type: REGISTER_USER_BEGIN,
+  payload: {}
+})
+
+export const registerUserSuccess = user => ({
+  type: REGISTER_USER_SUCCESS,
+  payload: { user }
+})
+
+export const registerUserFailure = error => ({
+  type: REGISTER_USER_FAILURE,
+  payload: { error }
+})
+
+export const register = (username, password, confirmPassword) => {
+  return async dispatch => {
+    dispatch(registerUserBegin())
+
+    try {
+      if (!username || !password || !confirmPassword) throw Error('Please enter all fields')
+      if (password !== confirmPassword) throw Error('Passwords do not match')
+
+      const user = await UserService.register(username, password)
+      dispatch(registerUserSuccess(user))
+      dispatch(push('/login'))
+      return user
+    }
+    catch (err) {
+      dispatch(registerUserFailure(err))
       handleErrors(err)
     }
   }
@@ -72,7 +108,7 @@ export const logoutUserFailure = error => ({
 
 export const logout = () => {
   return async dispatch => {
-    dispatch(logoutUserBegin)
+    dispatch(logoutUserBegin())
 
     try {
       await UserService.logout()
@@ -81,38 +117,6 @@ export const logout = () => {
     }
     catch (err) {
       dispatch(logoutUserFailure())
-      handleErrors(err)
-    }
-  }
-}
-
-export const registerUserBegin = user => ({
-  type: REGISTER_USER_BEGIN,
-  payload: { user }
-})
-
-export const registerUserSuccess = user => ({
-  type: REGISTER_USER_SUCCESS,
-  payload: { user }
-})
-
-export const registerUserFailure = error => ({
-  type: REGISTER_USER_FAILURE,
-  payload: { error }
-})
-
-export const register = user => {
-  return async dispatch => {
-    dispatch(registerUserBegin(user))
-
-    try {
-      await UserService.register(user)
-      dispatch(registerUserSuccess(user))
-      dispatch(push('/login'))
-      return user
-    }
-    catch (err) {
-      dispatch(registerUserFailure(err))
       handleErrors(err)
     }
   }

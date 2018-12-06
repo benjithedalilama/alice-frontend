@@ -12,8 +12,7 @@ export class Login extends Component {
 
     this.state = {
         username: '',
-        password: '',
-        submitted: false
+        password: ''
     }
   }
 
@@ -24,11 +23,8 @@ export class Login extends Component {
 
   handleSubmit(e) {
       e.preventDefault()
-
       const { username, password } = this.state
-      const { dispatch } = this.props
-
-      dispatch(login(username, password))
+      this.props.dispatch(login(username, password))
   }
 
   changePage(path) {

@@ -46,8 +46,7 @@ export default function userReducer(state = initialState, action) {
     case REGISTER_USER_BEGIN:
       return {
         ...state,
-        loading: true,
-        error: null
+        loading: true
       }
 
     case REGISTER_USER_SUCCESS:

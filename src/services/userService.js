@@ -12,7 +12,7 @@ class UserService {
         body: JSON.stringify({ username, password })
       }
       const response = await fetch(`${url}/users/login`, requestOptions)
-      await handleResponse(response)
+      handleResponse(response)
       return response
     }
     catch (err) {
@@ -48,15 +48,16 @@ class UserService {
     }
   }
 
-  static async register(user) {
+  static async register(username, password) {
     try {
       const requestOptions = {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(user)
+        body: JSON.stringify({ username, password })
       }
-      const registeredUser = await fetch(`${url}/users`, requestOptions)
-      return registeredUser
+      const response = await fetch(`${url}/users`, requestOptions)
+      handleResponse(response)
+      return response
     }
     catch (err) {
       throw err

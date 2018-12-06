@@ -1,6 +1,3 @@
-import store from '../store'
-import { logout } from '../actions/userActions'
-
 export const handleErrors = response => {
   if (!response.ok) {
     return Error(response.statusText)
@@ -15,6 +12,8 @@ export const handleResponse = response => {
         throw Error('Authentication failed')
       case 404:
         throw Error('Authentication failed')
+      case 500:
+        throw Error('Username already exists')
       default:
         throw Error(response.statusText)
     }
