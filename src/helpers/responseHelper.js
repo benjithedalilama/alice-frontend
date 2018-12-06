@@ -8,14 +8,17 @@ export const handleErrors = response => {
   return response
 }
 
-export const handleResponse = async response => {
-  const text = await response.text()
-  const data = text
-
+export const handleResponse = response => {
   if (!response.ok) {
-    const err = (data && data.message) || response.statusText
-    throw Error(err)
+    switch (response.status) {
+      case 401:
+        throw Error('Authentication failed')
+      case 404:
+        throw Error('Authentication failed')
+      default:
+        throw Error(response.statusText)
+    }
   }
 
-  return data
+  return response
 }
