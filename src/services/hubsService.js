@@ -1,5 +1,4 @@
 import { authHeader } from '../helpers/authHelper'
-// import { handleResponse } from '../helpers/responseHelper'
 import { getCookie } from '../helpers/cookieHelper'
 
 const url = 'http://localhost:8080/api'

@@ -1,5 +1,4 @@
 import HubsService from '../services/hubsService'
-import {HUBS} from '../fake_data'
 import { handleErrors } from '../helpers/responseHelper'
 export const FETCH_HUBS_BEGIN   = 'FETCH_HUBS_BEGIN'
 export const FETCH_HUBS_SUCCESS = 'FETCH_HUBS_SUCCESS'
