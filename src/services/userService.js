@@ -9,7 +9,8 @@ class UserService {
       const requestOptions = {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ username, password })
+        body: JSON.stringify({ username, password }),
+        credentials: 'include'
       }
       const response = await fetch(`${url}/users/login`, requestOptions)
       handleResponse(response)
@@ -24,7 +25,8 @@ class UserService {
     try {
       const requestOptions = {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' }
+        headers: { 'Content-Type': 'application/json' },
+        credentials: 'include'
       }
       await fetch(`${url}/users/logout`, requestOptions)
       return {}
@@ -53,7 +55,8 @@ class UserService {
       const requestOptions = {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ username, password })
+        body: JSON.stringify({ username, password }),
+        credentials: 'include'
       }
       const response = await fetch(`${url}/users`, requestOptions)
       handleResponse(response)
@@ -69,7 +72,8 @@ class UserService {
       const requestOptions = {
         method: 'PUT',
         headers: { ...authHeader(), 'Content-Type': 'application/json' },
-        body: JSON.stringify(user)
+        body: JSON.stringify({ user }),
+        credentials: 'include'
       }
 
       const updatedUser = await fetch(`${url}/users/${user.id}`, requestOptions)
@@ -84,7 +88,8 @@ class UserService {
     try {
       const requestOptions = {
         method: 'DELETE',
-        headers: authHeader()
+        headers: authHeader(),
+        credentials: 'include'
       }
 
       await fetch(`${url}/users/${id}`, requestOptions)

@@ -1,5 +1,6 @@
+import HubsService from '../services/hubsService'
+import {HUBS} from '../fake_data'
 import { handleErrors } from '../helpers/responseHelper'
-import { HUBS } from '../fake_data'
 export const FETCH_HUBS_BEGIN   = 'FETCH_HUBS_BEGIN'
 export const FETCH_HUBS_SUCCESS = 'FETCH_HUBS_SUCCESS'
 export const FETCH_HUBS_FAILURE = 'FETCH_HUBS_FAILURE'
@@ -19,12 +20,11 @@ export const fetchHubsFailure = error => ({
 })
 
 export const fetchHubs = () => {
-  return dispatch => {
+  return async dispatch => {
     dispatch(fetchHubsBegin())
 
     try {
-      // get hubs API call
-      const hubs = HUBS
+      const hubs = await HubsService.getAll()
       dispatch(fetchHubsSuccess(hubs))
       return hubs
     }
