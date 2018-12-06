@@ -1,4 +1,3 @@
-import { getCookie } from '../helpers/cookieHelper'
 import {
   LOGIN_USER_BEGIN,
   LOGIN_USER_SUCCESS,
@@ -13,17 +12,9 @@ import {
   LOGOUT_USER_FAILURE
 } from '../actions/userActions'
 
-let user = getCookie('user')
-
-const initialState = user ? {
-  loggedIn: true,
-  user,
+const initialState = {
   loading: false,
-  error: null
-} : {
   loggedIn: false,
-  user: {},
-  loading: false,
   error: null
 }
 
@@ -32,15 +23,14 @@ export default function userReducer(state = initialState, action) {
     case LOGIN_USER_BEGIN:
       return {
         ...state,
-        loading: true,
-        error: null
+        loading: true
       }
 
     case LOGIN_USER_SUCCESS:
       return {
         ...state,
-        loading: false,
         loggedIn: true,
+        loading: false,
         error: null,
         user: action.payload.user
       }
@@ -79,8 +69,8 @@ export default function userReducer(state = initialState, action) {
     case LOGOUT_USER_SUCCESS:
       return {
         ...state,
-        loading: false,
         loggedIn: false,
+        loading: false,
         error: null
       }
 

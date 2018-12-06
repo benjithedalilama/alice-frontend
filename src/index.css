@@ -151,6 +151,13 @@ body {
 
 .form__text {
   align-self: center;
+
+  color: #707070;
+  font-size: 12px;
+}
+
+.form__text--error {
+  color: #CC0000
 }
 
 .form__input {

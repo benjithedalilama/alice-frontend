@@ -13,10 +13,6 @@ export const handleResponse = async response => {
   const data = text
 
   if (!response.ok) {
-    if (response.status === 401) {
-      store.dispatch(logout())
-    }
-
     const err = (data && data.message) || response.statusText
     throw Error(err)
   }

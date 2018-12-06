@@ -25,13 +25,10 @@ export class Login extends Component {
   handleSubmit(e) {
       e.preventDefault()
 
-      this.setState({ submitted: true })
       const { username, password } = this.state
       const { dispatch } = this.props
 
-      if (username && password) {
-        dispatch(login(username, password))
-      }
+      dispatch(login(username, password))
   }
 
   changePage(path) {
@@ -45,6 +42,7 @@ export class Login extends Component {
       <div className="form__container">
         <div className="form">
           <form className="form__form" onSubmit={e => this.handleSubmit(e)} name="form">
+            {this.props.error && <span className="form__text form__text--error">{this.props.error.message}</span>}
             <input className="form__input form__element" type="text" name="username" value={username} onChange={e => this.handleChange(e)} placeholder="Username"></input>
             <input className="form__input form__element" type="password" name="password" value={password} onChange={e => this.handleChange(e)} placeholder="Password"></input>
             <button className="button button--main form__element">Login</button>
@@ -57,4 +55,10 @@ export class Login extends Component {
   }
 }
 
-export default connect()(Login)
+const mapStateToProps = state => ({
+  error: state.user.error
+})
+
+export default connect(
+  mapStateToProps
+)(Login)

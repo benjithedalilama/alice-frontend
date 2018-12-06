@@ -42,6 +42,7 @@ export const login = (username, password) => {
     dispatch(loginUserBegin())
 
     try {
+      if (!username || !password) throw Error('Please enter both fields')
       const user = await UserService.login(username, password)
       dispatch(loginUserSuccess(user))
       dispatch(push('/hubs'))
