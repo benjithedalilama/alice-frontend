@@ -1,9 +1,10 @@
 version: "2"
 services:
   frontend:
-    image: benjithedalilama/alice-frontend:MVP
     volumes:
       - .:/app
+    environment:
+      - NODE_ENV=development
     command: yarn start
     ports:
       - "35729:35729"

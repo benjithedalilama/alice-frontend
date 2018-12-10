@@ -1,7 +1,7 @@
 import reducer from './hubsReducer'
 import * as types from '../actions/hubsActions'
 
-describe('todos reducer', () => {
+describe('hubs reducer', () => {
   it('should return the initial state', () => {
     expect(reducer(undefined, {})).toEqual(
       {
