@@ -1,5 +1,6 @@
 import { handleErrors } from '../helpers/responseHelper'
 import { HUBS } from '../fake_data'
+import { fetchHubs } from './hubsActions.js'
 export const FETCH_HUB_BEGIN   = 'FETCH_HUB_BEGIN'
 export const FETCH_HUB_SUCCESS = 'FETCH_HUB_SUCCESS'
 export const FETCH_HUB_FAILURE = 'FETCH_HUB_FAILURE'
