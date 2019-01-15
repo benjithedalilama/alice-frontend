@@ -3,7 +3,7 @@ import { getCookie } from '../helpers/cookieHelper'
 
 const url = 'http://localhost:8080/api'
 
-class HubsService {
+class HubService {
   static async getAll() {
     try {
       const requestOptions = {
@@ -27,8 +27,10 @@ class HubsService {
         headers: authHeader(),
         credentials: 'include'
       }
-      const hub = await fetch(`${url}/users/${getCookie('userId')}/hubs/${id}`, requestOptions)
-      return hub
+      const response = await fetch(`${url}/users/${getCookie('userId')}/hubs/${id}`, requestOptions)
+      const parsed = await response.json()
+      console.log(parsed)
+      return parsed.hub
     }
     catch (err) {
       throw err
@@ -60,8 +62,8 @@ class HubsService {
         credentials: 'include'
       }
 
-      const updatedUser = await fetch(`${url}/users/${getCookie('userId')}/${hub.id}`, requestOptions)
-      return updatedUser
+      const updatedHub = await fetch(`${url}/users/${getCookie('userId')}/hubs/${hub.id}`, requestOptions)
+      return updatedHub
     }
     catch (err) {
       throw err
@@ -76,7 +78,7 @@ class HubsService {
         credentials: 'include'
       }
 
-      await fetch(`${url}/users/${id}`, requestOptions)
+      await fetch(`${url}/${getCookie('userId')}/hubs/${id}`, requestOptions)
     }
     catch (err) {
       throw err
@@ -85,4 +87,4 @@ class HubsService {
 }
 
 
-export default HubsService
+export default HubService

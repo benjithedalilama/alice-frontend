@@ -2,16 +2,16 @@ import React from 'react'
 import IconButton from '../iconbutton'
 
 const Sensor = ({sensor, children}) => (
-  <div className='list__itemContainer' key={sensor.id}>
+  <div className='list__itemContainer' key={sensor._id}>
     <div className='list__item'>
       <div className='list__item__top'>
         <div className='list__text'>
           {children}
-          <div className='list__text--alt'>{sensor.id}</div>
+          <div className='list__text--alt'>{sensor._id}</div>
         </div>
         <div className='list__buttons'>
-          <IconButton className='list__button' id={sensor.id} type='delete'/>
-          <IconButton className='list__button' id={sensor.id} type='edit'/>
+          <IconButton className='list__button' id={sensor._id} type='delete'/>
+          <IconButton className='list__button' id={sensor._id} type='edit'/>
         </div>
       </div>
       <div className='list__item__bottom'>

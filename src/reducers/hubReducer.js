@@ -1,24 +1,27 @@
 import {
   FETCH_HUB_BEGIN,
   FETCH_HUB_SUCCESS,
-  FETCH_HUB_FAILURE
+  FETCH_HUB_FAILURE,
+  FETCH_HUBS_BEGIN,
+  FETCH_HUBS_SUCCESS,
+  FETCH_HUBS_FAILURE
 } from '../actions/hubActions'
 
 const initialState = {
   item: {
-    id: [],
+    _id: [],
     name: [],
     deployed:	[],
     createdAt: [],
     sensors: [
       {
-        id: [],
+        _id: [],
         createdAt: [],
         type: [],
         name: [],
         readings: [
           {
-            id: [],
+            _id: [],
             createdAt: [],
             action: [],
             data: []
@@ -28,13 +31,13 @@ const initialState = {
     ],
     codes: [
       {
-        id: [],
+        _id: [],
         createdAt: [],
         type: [],
         name: [],
         commands: [
           {
-            id: [],
+            _id: [],
             createdAt: [],
             action: [],
             data: []
@@ -43,6 +46,7 @@ const initialState = {
       }
     ]
   },
+  items: [],
   loading: false,
   error: null
 }
@@ -70,6 +74,29 @@ export default function hubReducer(state = initialState, action) {
         loading: false,
         error: action.payload.error,
         item: {}
+      }
+
+    case FETCH_HUBS_BEGIN:
+      return {
+        ...state,
+        loading: true,
+        error: null
+      }
+
+    case FETCH_HUBS_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        error: null,
+        items: action.payload.hubs
+      }
+
+    case FETCH_HUBS_FAILURE:
+      return {
+        ...state,
+        loading: false,
+        error: action.payload.error,
+        items: []
       }
 
     default:

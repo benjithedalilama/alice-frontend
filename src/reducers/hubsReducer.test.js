@@ -1,5 +1,5 @@
 import reducer from './hubsReducer'
-import * as types from '../actions/hubsActions'
+import * as types from '../actions/hubActions'
 
 describe('hubs reducer', () => {
   it('should return the initial state', () => {

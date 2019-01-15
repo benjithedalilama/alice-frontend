@@ -18,7 +18,7 @@ export class HubView extends Component {
     return (
       <div className='list__container'>
         <BreadcrumbsItem to={`/hubs`}>Hubs</BreadcrumbsItem>
-        <BreadcrumbsItem to={`/hubs/${hub.id}`}>{hub.id}</BreadcrumbsItem>
+        <BreadcrumbsItem to={`/hubs/${hub._id}`}>{hub._id}</BreadcrumbsItem>
         <div className='list'>
           <Hub hub={hub}>
             <div className='list__text--main'>{hub.name}</div>

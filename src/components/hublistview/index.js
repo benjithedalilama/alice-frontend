@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { fetchHubs } from '../../actions/hubsActions'
+import { fetchHubs } from '../../actions/hubActions'
 import { Link } from 'react-router-dom'
 import { BreadcrumbsItem } from 'react-breadcrumbs-dynamic'
 import Hub from '../hub'
@@ -28,9 +28,9 @@ export class HubListView extends Component {
 }
 
 const mapStateToProps = state => ({
-  hubs: state.hubs.items,
-  loading: state.hubs.loading,
-  error: state.hubs.error
+  hubs: state.hub.items,
+  loading: state.hub.loading,
+  error: state.hub.error
 })
 
 export default connect(
