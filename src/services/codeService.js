@@ -27,8 +27,9 @@ class CodeService {
         headers: authHeader(),
         credentials: 'include'
       }
-      const hub = await fetch(`${url}/users/${getCookie('userId')}/hubs/${hubId}/codes/${id}`, requestOptions)
-      return hub
+      const response = await fetch(`${url}/users/${getCookie('userId')}/hubs/${hubId}/codes/${id}`, requestOptions)
+      const parsed = await response.json()
+      return parsed.code
     }
     catch (err) {
       throw err

@@ -1,38 +1,34 @@
-import CodesService from '../services/codeService'
 import { handleErrors } from '../helpers/responseHelper'
-export const FETCH_CODES_BEGIN   = 'FETCH_CODES_BEGIN'
-export const FETCH_CODES_SUCCESS = 'FETCH_CODES_SUCCESS'
-export const FETCH_CODES_FAILURE = 'FETCH_CODES_FAILURE'
+import CodeService from '../services/codeService'
+export const FETCH_CODE_BEGIN   = 'FETCH_CODE_BEGIN'
+export const FETCH_CODE_SUCCESS = 'FETCH_CODE_SUCCESS'
+export const FETCH_CODE_FAILURE = 'FETCH_CODE_FAILURE'
 
-export const fetchCodesBegin = () => ({
-  type: FETCH_CODES_BEGIN
+export const fetchCodeBegin = () => ({
+  type: FETCH_CODE_BEGIN
 })
 
-export const fetchCodesSuccess = code => ({
-  type: FETCH_CODES_SUCCESS,
+export const fetchCodeSuccess = code => ({
+  type: FETCH_CODE_SUCCESS,
   payload: { code }
 })
 
-export const fetchCodesFailure = error => ({
-  type: FETCH_CODES_FAILURE,
+export const fetchCodeFailure = error => ({
+  type: FETCH_CODE_FAILURE,
   payload: { error }
 })
 
-export const fetchCodes = (hubId, id) => {
-  return dispatch => {
-    dispatch(fetchCodesBegin())
+export const fetchCode = (hubId, id) => {
+  return async dispatch => {
+    dispatch(fetchCodeBegin())
 
     try {
-      // get all codes
-      const codes = CodeService.getAll(hubId)
-      // get code by id API call
-      // need to change ._id to ._id when action uses codes service
-      const code = codes.find(code => code._id === parseInt(id, 10))
-      dispatch(fetchCodesSuccess(code))
+      const code = await CodeService.getById(hubId, id)
+      dispatch(fetchCodeSuccess(code))
       return code
     }
     catch (err) {
-      dispatch(fetchCodesFailure(err))
+      dispatch(fetchCodeFailure(err))
       handleErrors(err)
     }
   }
