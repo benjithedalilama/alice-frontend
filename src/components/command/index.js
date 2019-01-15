@@ -1,7 +1,7 @@
 import React from 'react'
 
 const Command = ({command}) => (
-  <div className='list__itemContainer' key={command.id}>
+  <div className='list__itemContainer' key={command._id}>
     <div className='list__item'>
       <div className='list__item__top'>
         <div className='list__text'>

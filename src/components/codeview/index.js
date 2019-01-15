@@ -18,14 +18,14 @@ export class CodeView extends Component {
     const { codes } = this.props.hub
     code = !code ?
       codes[0] :
-      codes.find(code => code.id === parseInt(this.props.match.params.codeId, 10))
+      codes.find(code => code._id === parseInt(this.props.match.params.codeId, 10))
 
     return (
       <div className='list__container'>
         <BreadcrumbsItem to={`/hubs`}>Hubs</BreadcrumbsItem>
-        <BreadcrumbsItem to={`/hubs/${this.props.hub.id}`}>{this.props.hub.id}</BreadcrumbsItem>
-        <BreadcrumbsItem to={`/hubs/${this.props.hub.id}/codes`}>Codes</BreadcrumbsItem>
-        <BreadcrumbsItem to={`/hubs/${this.props.hub.id}/codes/${code.id}`}>{code.id}</BreadcrumbsItem>
+        <BreadcrumbsItem to={`/hubs/${this.props.hub._id}`}>{this.props.hub._id}</BreadcrumbsItem>
+        <BreadcrumbsItem to={`/hubs/${this.props.hub._id}/codes`}>Codes</BreadcrumbsItem>
+        <BreadcrumbsItem to={`/hubs/${this.props.hub._id}/codes/${code._id}`}>{code._id}</BreadcrumbsItem>
         <div className='list'>
           <Code code={code}>
             <div className='list__text--main'>{code.name}</div>

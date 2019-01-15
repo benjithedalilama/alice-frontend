@@ -62,7 +62,7 @@ class HubService {
         credentials: 'include'
       }
 
-      const updatedHub = await fetch(`${url}/users/${getCookie('userId')}/hubs/${hub.id}`, requestOptions)
+      const updatedHub = await fetch(`${url}/users/${getCookie('userId')}/hubs/${hub._id}`, requestOptions)
       return updatedHub
     }
     catch (err) {

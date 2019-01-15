@@ -18,7 +18,6 @@ const initialState = {
         _id: [],
         createdAt: [],
         type: [],
-        name: [],
         readings: [
           {
             _id: [],
@@ -34,7 +33,6 @@ const initialState = {
         _id: [],
         createdAt: [],
         type: [],
-        name: [],
         commands: [
           {
             _id: [],

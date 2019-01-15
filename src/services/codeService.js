@@ -60,7 +60,7 @@ class CodeService {
         credentials: 'include'
       }
 
-      const updatedCode = await fetch(`${url}/users/${getCookie('userId')}/hubs/${hubId}/codes/${code.id}`, requestOptions)
+      const updatedCode = await fetch(`${url}/users/${getCookie('userId')}/hubs/${hubId}/codes/${code._id}`, requestOptions)
       return updatedCode
     }
     catch (err) {

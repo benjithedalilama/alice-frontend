@@ -22,15 +22,15 @@ export class SensorView extends Component {
       sensor = sensors[0]
     }
     else {
-      sensor = sensors.find(newSensor => newSensor.id === parseInt(this.props.match.params.sensorId,10))
+      sensor = sensors.find(newSensor => newSensor._id === parseInt(this.props.match.params.sensorId,10))
     }
 
     return (
       <div className='list__container'>
         <BreadcrumbsItem to={`/hubs`}>Hubs</BreadcrumbsItem>
-        <BreadcrumbsItem to={`/hubs/${this.props.hub.id}`}>{this.props.hub.id}</BreadcrumbsItem>
-        <BreadcrumbsItem to={`/hubs/${this.props.hub.id}/sensors`}>Sensors</BreadcrumbsItem>
-        <BreadcrumbsItem to={`/hubs/${this.props.hub.id}/sensors/${sensor.id}`}>{sensor.id}</BreadcrumbsItem>
+        <BreadcrumbsItem to={`/hubs/${this.props.hub._id}`}>{this.props.hub._id}</BreadcrumbsItem>
+        <BreadcrumbsItem to={`/hubs/${this.props.hub._id}/sensors`}>Sensors</BreadcrumbsItem>
+        <BreadcrumbsItem to={`/hubs/${this.props.hub._id}/sensors/${sensor._id}`}>{sensor._id}</BreadcrumbsItem>
         <div className='list'>
           <Sensor sensor={sensor}>
             <div className='list__text--main'>{sensor.name}</div>

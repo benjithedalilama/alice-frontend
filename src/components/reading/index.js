@@ -1,7 +1,7 @@
 import React from 'react'
 
 const Reading = ({reading}) => (
-  <div className='list__itemContainer' key={reading.id}>
+  <div className='list__itemContainer' key={reading._id}>
     <div className='list__item'>
       <div className='list__item__top'>
         <div className='list__text'>

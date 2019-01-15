@@ -18,11 +18,11 @@ export class SensorListView extends Component {
     return (
       <List>
         <BreadcrumbsItem to={`/hubs`}>Hubs</BreadcrumbsItem>
-        <BreadcrumbsItem to={`/hubs/${this.props.hub.id}`}>{this.props.hub.id}</BreadcrumbsItem>
-        <BreadcrumbsItem to={`/hubs/${this.props.hub.id}/sensors`}>Sensors</BreadcrumbsItem>
+        <BreadcrumbsItem to={`/hubs/${this.props.hub._id}`}>{this.props.hub._id}</BreadcrumbsItem>
+        <BreadcrumbsItem to={`/hubs/${this.props.hub._id}/sensors`}>Sensors</BreadcrumbsItem>
           {sensors.map(sensor =>
             <Sensor sensor={sensor}>
-              <Link className='list__text--main' to={{ pathname: `/hubs/${this.props.match.params.hubId}/sensors/${sensor.id}`, sensor: sensor}}>{sensor.name}</Link>
+              <Link className='list__text--main' to={{ pathname: `/hubs/${this.props.match.params.hubId}/sensors/${sensor._id}`, sensor: sensor}}>{sensor.name}</Link>
             </Sensor>
           )}
       </List>

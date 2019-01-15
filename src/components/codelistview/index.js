@@ -18,11 +18,11 @@ export class CodeListView extends Component {
     return (
       <List>
         <BreadcrumbsItem to={`/hubs`}>Hubs</BreadcrumbsItem>
-        <BreadcrumbsItem to={`/hubs/${this.props.hub.id}`}>{this.props.hub.id}</BreadcrumbsItem>
-        <BreadcrumbsItem to={`/hubs/${this.props.hub.id}/codes`}>Codes</BreadcrumbsItem>
+        <BreadcrumbsItem to={`/hubs/${this.props.hub._id}`}>{this.props.hub._id}</BreadcrumbsItem>
+        <BreadcrumbsItem to={`/hubs/${this.props.hub._id}/codes`}>Codes</BreadcrumbsItem>
           {codes.map(code =>
             <Code code={code}>
-              <Link className='list__text--main' to={{ pathname: `/hubs/${this.props.match.params.hubId}/codes/${code.id}`, code: code}}>{code.name}</Link>
+              <Link className='list__text--main' to={{ pathname: `/hubs/${this.props.match.params.hubId}/codes/${code._id}`, code: code}}>{code.name}</Link>
             </Code>
           )}
       </List>

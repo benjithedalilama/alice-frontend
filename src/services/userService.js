@@ -76,7 +76,7 @@ class UserService {
         credentials: 'include'
       }
 
-      const updatedUser = await fetch(`${url}/users/${user.id}`, requestOptions)
+      const updatedUser = await fetch(`${url}/users/${user._id}`, requestOptions)
       return updatedUser
     }
     catch (err) {

@@ -26,8 +26,8 @@ export const fetchCodes = (hubId, id) => {
       // get all codes
       const codes = CodeService.getAll(hubId)
       // get code by id API call
-      // need to change .id to ._id when action uses codes service
-      const code = codes.find(code => code.id === parseInt(id, 10))
+      // need to change ._id to ._id when action uses codes service
+      const code = codes.find(code => code._id === parseInt(id, 10))
       dispatch(fetchCodesSuccess(code))
       return code
     }
