@@ -6,9 +6,35 @@ describe('hub reducer', () => {
     expect(reducer(undefined, {})).toEqual(
       {
         "error": null,
-        "items": [],
-        "loading": false
-      }
+        "item": {
+          "_id": [],
+          "codes": [{
+            "_id": [],
+            "commands": [{
+              "_id": [],
+              "action": [],
+              "createdAt": [],
+              "data": []
+            }],
+            "createdAt": [],
+            "type": []
+          }],
+          "createdAt": [],
+          "deployed": [],
+          "name": [],
+          "sensors": [{
+            "_id": [],
+            "createdAt": [],
+            "readings": [{
+              "_id": [],
+              "action": [],
+              "createdAt": [],
+              "data": []
+            }],
+            "type": []
+          }]},
+          "items": [],
+          "loading": false}
     )
   })
 
@@ -45,6 +71,7 @@ describe('hub reducer', () => {
       )
     ).toEqual(
       {
+        "error": null,
         "loading": false,
         "items": [{
           id: 1,
