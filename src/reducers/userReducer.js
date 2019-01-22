@@ -13,6 +13,7 @@ import {
 } from '../actions/userActions'
 
 const initialState = {
+  user: null,
   loading: false,
   loggedIn: false,
   error: null
@@ -23,6 +24,7 @@ export default function userReducer(state = initialState, action) {
     case LOGIN_USER_BEGIN:
       return {
         ...state,
+        error: null,
         loading: true
       }
 
@@ -46,7 +48,8 @@ export default function userReducer(state = initialState, action) {
     case REGISTER_USER_BEGIN:
       return {
         ...state,
-        loading: true
+        loading: true,
+        error: null
       }
 
     case REGISTER_USER_SUCCESS:
