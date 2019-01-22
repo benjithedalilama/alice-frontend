@@ -3,8 +3,7 @@ import * as types from '../actions/hubActions'
 
 describe('hub reducer', () => {
   it('should return the initial state', () => {
-    expect(reducer(undefined, {})).toEqual(
-      {
+    expect(reducer(undefined, {})).toEqual({
         "error": null,
         "item": {
           "_id": [],
@@ -32,10 +31,11 @@ describe('hub reducer', () => {
               "data": []
             }],
             "type": []
-          }]},
-          "items": [],
-          "loading": false}
-    )
+          }
+        ]},
+        "items": [],
+        "loading": false
+    })
   })
 
   it('should handle FETCH_HUBS_BEGIN', () => {
