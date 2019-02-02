@@ -29,7 +29,6 @@ class HubService {
       }
       const response = await fetch(`${url}/users/${getCookie('userId')}/hubs/${id}`, requestOptions)
       const parsed = await response.json()
-      console.log(parsed)
       return parsed.hub
     }
     catch (err) {
@@ -42,11 +41,12 @@ class HubService {
       const requestOptions = {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ hub }),
+        body: JSON.stringify(hub),
         credentials: 'include'
       }
       const response = await fetch(`${url}/users/${getCookie('userId')}/hubs`, requestOptions)
-      return response
+      const parsed = await response.json()
+      return parsed.hub
     }
     catch (err) {
       throw err
@@ -62,8 +62,9 @@ class HubService {
         credentials: 'include'
       }
 
-      const updatedHub = await fetch(`${url}/users/${getCookie('userId')}/hubs/${hub._id}`, requestOptions)
-      return updatedHub
+      const response = await fetch(`${url}/users/${getCookie('userId')}/hubs/${hub._id}`, requestOptions)
+      const parsed = await response.json()
+      return parsed.hub
     }
     catch (err) {
       throw err
