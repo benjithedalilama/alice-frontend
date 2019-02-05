@@ -11,6 +11,10 @@
   outline: none;
 }
 
+.searchbar__form {
+  width: 100%;
+}
+
 .searchbar__searchButton {
   position: relative;
   display: flex;

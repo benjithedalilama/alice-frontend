@@ -12,12 +12,13 @@ export class HubListView extends Component {
   }
 
   render() {
-    const { hubs } = this.props
+    const { hubs, filteredHubs } = this.props
+    const displayedHubs = filteredHubs? filteredHubs : hubs
 
     return (
       <List>
         <BreadcrumbsItem to='/hubs'>Hubs</BreadcrumbsItem>
-          {hubs.map(hub =>
+          {displayedHubs.map(hub =>
             <Hub hub={hub}>
               <Link className='list__text--main' to={{ pathname: `/hubs/${hub._id}`, hub: hub}}>{hub.name}</Link>
             </Hub>
@@ -29,6 +30,7 @@ export class HubListView extends Component {
 
 const mapStateToProps = state => ({
   hubs: state.hub.items,
+  filteredHubs: state.hub.filteredItems,
   loading: state.hub.loading,
   error: state.hub.error
 })

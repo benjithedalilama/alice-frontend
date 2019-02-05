@@ -7,6 +7,9 @@ export const FETCH_HUB_FAILURE = 'FETCH_HUB_FAILURE'
 export const FETCH_HUBS_BEGIN   = 'FETCH_HUBS_BEGIN'
 export const FETCH_HUBS_SUCCESS = 'FETCH_HUBS_SUCCESS'
 export const FETCH_HUBS_FAILURE = 'FETCH_HUBS_FAILURE'
+export const SEARCH_HUBS_BEGIN   = 'SEARCH_HUBS_BEGIN'
+export const SEARCH_HUBS_SUCCESS = 'SEARCH_HUBS_SUCCESS'
+export const SEARCH_HUBS_FAILURE = 'SEARCH_HUBS_FAILURE'
 export const ADD_HUB_BEGIN = 'ADD_HUB_BEGIN'
 export const ADD_HUB_SUCCESS = 'ADD_HUB_SUCCESS'
 export const ADD_HUB_FAILURE = 'ADD_HUB_FAILURE'
@@ -66,6 +69,45 @@ export const fetchHubs = () => {
     }
     catch (err) {
       dispatch(fetchHubsFailure(err))
+      handleErrors(err)
+    }
+  }
+}
+
+export const searchHubsBegin = () => ({
+  type: SEARCH_HUBS_BEGIN
+})
+
+export const searchHubsSuccess = hubs => ({
+  type: SEARCH_HUBS_SUCCESS,
+  payload: { hubs }
+})
+
+export const searchHubsFailure = error => ({
+  type: SEARCH_HUBS_FAILURE,
+  payload: { error }
+})
+
+export const searchHubs = (query) => {
+  return async dispatch => {
+    dispatch(searchHubsBegin())
+
+    try {
+      // Optimize this to pull from hubs we already have. Takes 36 ms every time
+      const hubs = await HubService.getAll()
+
+      // Not the best way, but running into problems with undefined using filter
+      let results = []
+      hubs.forEach( hub => {
+        if (typeof hub.name === "undefined") { return }
+        if (hub.name.toLowerCase().includes(query.toLowerCase())) { results.push(hub) }
+      })
+
+      dispatch(searchHubsSuccess(results))
+      return results
+    }
+    catch (err) {
+      dispatch(searchHubsFailure(err))
       handleErrors(err)
     }
   }

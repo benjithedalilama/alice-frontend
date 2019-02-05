@@ -5,6 +5,9 @@ import {
   FETCH_HUBS_BEGIN,
   FETCH_HUBS_SUCCESS,
   FETCH_HUBS_FAILURE,
+  SEARCH_HUBS_BEGIN,
+  SEARCH_HUBS_SUCCESS,
+  SEARCH_HUBS_FAILURE,
   ADD_HUB_BEGIN,
   ADD_HUB_SUCCESS,
   ADD_HUB_FAILURE
@@ -98,6 +101,29 @@ export default function hubReducer(state = initialState, action) {
         loading: false,
         error: action.payload.error,
         items: []
+      }
+
+    case SEARCH_HUBS_BEGIN:
+      return {
+        ...state,
+        loading: true,
+        error: null
+      }
+
+    case SEARCH_HUBS_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        error: null,
+        filteredItems: action.payload.hubs
+      }
+
+    case SEARCH_HUBS_FAILURE:
+      return {
+        ...state,
+        loading: false,
+        error: action.payload.error,
+        filteredItems: []
       }
 
     case ADD_HUB_BEGIN:
