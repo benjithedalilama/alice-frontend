@@ -13,6 +13,9 @@ export const SEARCH_HUBS_FAILURE = 'SEARCH_HUBS_FAILURE'
 export const ADD_HUB_BEGIN = 'ADD_HUB_BEGIN'
 export const ADD_HUB_SUCCESS = 'ADD_HUB_SUCCESS'
 export const ADD_HUB_FAILURE = 'ADD_HUB_FAILURE'
+export const DELETE_HUB_BEGIN   = 'DELETE_HUB_BEGIN'
+export const DELETE_HUB_SUCCESS = 'DELETE_HUB_SUCCESS'
+export const DELETE_HUB_FAILURE = 'DELETE_HUB_FAILURE'
 
 export const fetchHubBegin = () => ({
   type: FETCH_HUB_BEGIN
@@ -142,6 +145,37 @@ export const addHub = (name, lat, long) => {
     }
     catch (err) {
       dispatch(addHubFailure(err))
+      handleErrors(err)
+    }
+  }
+}
+
+export const deleteHubBegin = () => ({
+  type: DELETE_HUB_BEGIN
+})
+
+export const deleteHubSuccess = (id) => ({
+  type: DELETE_HUB_SUCCESS,
+  payload: { id }
+})
+
+export const deleteHubFailure = error => ({
+  type: DELETE_HUB_FAILURE,
+  payload: { error }
+})
+
+export const deleteHub = id => {
+  return async dispatch => {
+    dispatch(deleteHubBegin())
+
+    try {
+      await HubService._delete(id)
+      dispatch(deleteHubSuccess(id))
+      dispatch(push(`/hubs`))
+      return {}
+    }
+    catch (err) {
+      dispatch(deleteHubFailure(err))
       handleErrors(err)
     }
   }

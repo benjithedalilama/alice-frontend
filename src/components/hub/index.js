@@ -1,9 +1,17 @@
 import React, { Component } from 'react'
 import IconButton from '../iconbutton'
+import { connect } from 'react-redux'
+import { deleteHub } from '../../actions/hubActions'
 
 export class Hub extends Component {
+
+  handleDelete(id) {
+    this.props.dispatch(deleteHub(id))
+  }
+
   render () {
     const { hub, children } = this.props
+
     // This is terrible. Fix it.
     const date = new Date(hub.createdAt)
     const dateString = `${date.getFullYear()} ${date.getMonth()} ${date.getDate()}`
@@ -16,8 +24,8 @@ export class Hub extends Component {
               {children}
               <div className='list__text--alt'>{hub._id}</div>
             </div>
-            <div className='list__buttons'>
-              <IconButton className='list__button' id={hub._id} type='delete'/>
+            <div className='list__buttons' onClick={() => this.handleDelete(hub._id)}>
+              <IconButton className='list__button' id={hub._id} type='delete' onClick={() => this.handleDelete(hub._id)}/>
               <IconButton className='list__button' id={hub._id} type='edit'/>
               <IconButton className='list__button' id={hub._id} type='play'/>
               <IconButton className='list__button' id={hub._id} type='stop'/>
@@ -37,4 +45,10 @@ export class Hub extends Component {
   }
 }
 
-export default Hub
+const mapStateToProps = state => ({
+  error: state.hub.error
+})
+
+export default connect(
+  mapStateToProps
+)(Hub)

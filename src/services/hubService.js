@@ -78,8 +78,7 @@ class HubService {
         headers: authHeader(),
         credentials: 'include'
       }
-
-      await fetch(`${url}/${getCookie('userId')}/hubs/${id}`, requestOptions)
+      await fetch(`${url}/users/${getCookie('userId')}/hubs/${id}`, requestOptions)
     }
     catch (err) {
       throw err
