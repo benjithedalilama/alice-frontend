@@ -25,8 +25,8 @@ class IconButton extends Component {
 
   render () {
     return (
-      <div className={this.props.className}>
-        <FontAwesomeIcon icon={this.iconType} />
+      <div className={this.props.className} onClick={this.props.onClick}>
+        <FontAwesomeIcon icon={this.iconType}/>
       </div>
     )
   }

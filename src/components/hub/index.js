@@ -5,7 +5,8 @@ import { deleteHub } from '../../actions/hubActions'
 
 export class Hub extends Component {
 
-  handleDelete(id) {
+  handleDelete(e, id) {
+    e.preventDefault()
     this.props.dispatch(deleteHub(id))
   }
 
@@ -24,11 +25,9 @@ export class Hub extends Component {
               {children}
               <div className='list__text--alt'>{hub._id}</div>
             </div>
-            <div className='list__buttons' onClick={() => this.handleDelete(hub._id)}>
-              <IconButton className='list__button' id={hub._id} type='delete' onClick={() => this.handleDelete(hub._id)}/>
+            <div className='list__buttons'>
+              <IconButton className='list__button' id={hub._id} type='delete' onClick={(e) => this.handleDelete(e, hub._id)}/>
               <IconButton className='list__button' id={hub._id} type='edit'/>
-              <IconButton className='list__button' id={hub._id} type='play'/>
-              <IconButton className='list__button' id={hub._id} type='stop'/>
             </div>
           </div>
           <div className='list__item__bottom'>

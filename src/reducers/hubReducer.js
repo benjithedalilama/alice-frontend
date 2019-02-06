@@ -160,12 +160,8 @@ export default function hubReducer(state = initialState, action) {
       }
 
     case DELETE_HUB_SUCCESS:
-      var newState = JSON.parse(JSON.stringify(state))
-      const indexToDelete = newState.items.findIndex(hub => {
-        return hub._id == action.payload.id
-      })
-
-      newState.items.splice(indexToDelete, 1)
+      const newState = JSON.parse(JSON.stringify(state))
+      newState.items = state.items.filter(hub => hub._id !== action.payload.id)
 
       return {
         ...newState,

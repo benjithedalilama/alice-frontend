@@ -170,8 +170,8 @@ export const deleteHub = id => {
 
     try {
       await HubService._delete(id)
-      dispatch(deleteHubSuccess(id))
       dispatch(push(`/hubs`))
+      dispatch(deleteHubSuccess(id))
       return {}
     }
     catch (err) {
