@@ -219,3 +219,36 @@ export const deleteCode = (hubId, id) => {
     }
   }
 }
+
+export const addCodeBegin = () => ({
+  type: ADD_CODE_BEGIN
+})
+
+export const addCodeSuccess = (code) => ({
+  type: ADD_CODE_SUCCESS,
+  payload: { code }
+})
+
+export const addCodeFailure = error => ({
+  type: ADD_CODE_FAILURE,
+  payload: { error }
+})
+
+export const addCode = (hubId, name, action) => {
+  return async dispatch => {
+    dispatch(addCodeBegin())
+
+    try {
+      if (!name || !action) throw Error('Please enter all fields')
+
+      const code = await CodeService.create(hubId, {name, action})
+      dispatch(addCodeSuccess(code))
+      dispatch(push(`/hubs/${hubId}`))
+      return code
+    }
+    catch (err) {
+      dispatch(addCodeFailure(err))
+      handleErrors(err)
+    }
+  }
+}

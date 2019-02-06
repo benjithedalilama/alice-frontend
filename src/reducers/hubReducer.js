@@ -14,6 +14,9 @@ import {
   DELETE_HUB_BEGIN,
   DELETE_HUB_SUCCESS,
   DELETE_HUB_FAILURE,
+  ADD_CODE_BEGIN,
+  ADD_CODE_SUCCESS,
+  ADD_CODE_FAILURE,
   DELETE_CODE_BEGIN,
   DELETE_CODE_SUCCESS,
   DELETE_CODE_FAILURE
@@ -179,6 +182,30 @@ export default function hubReducer(state = initialState, action) {
         loading: false,
         error: action.payload.error,
         item: []
+      }
+
+    case ADD_CODE_BEGIN:
+      return {
+        ...state,
+        loading: true,
+        error: null
+      }
+
+    case ADD_CODE_SUCCESS:
+      var newState = JSON.parse(JSON.stringify(state))
+      newState.item.codes.push(action.payload.code)
+
+      return {
+        ...newState,
+        loading: false,
+        error: null,
+      }
+
+    case ADD_CODE_FAILURE:
+      return {
+        ...state,
+        loading: false,
+        error: action.payload.error
       }
 
     case DELETE_CODE_BEGIN:
