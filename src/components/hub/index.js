@@ -15,7 +15,7 @@ export class Hub extends Component {
 
     // This is terrible. Fix it.
     const date = new Date(hub.createdAt)
-    const dateString = `${date.getFullYear()} ${date.getMonth()} ${date.getDate()}`
+    const dateString = `${date.getFullYear()}/${date.getMonth()}/${date.getDate()}`
 
     return (
       <div className='list__itemContainer' key={hub._id}>
@@ -35,7 +35,7 @@ export class Hub extends Component {
               <div>Sensors: {hub.sensors.length}</div>
             </div>
             <div className='list__text list__text--main'>
-            <div>Created at {dateString}</div>
+            <div>Created on {dateString}</div>
           </div>
           </div>
         </div>

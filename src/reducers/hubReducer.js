@@ -13,7 +13,10 @@ import {
   ADD_HUB_FAILURE,
   DELETE_HUB_BEGIN,
   DELETE_HUB_SUCCESS,
-  DELETE_HUB_FAILURE
+  DELETE_HUB_FAILURE,
+  DELETE_CODE_BEGIN,
+  DELETE_CODE_SUCCESS,
+  DELETE_CODE_FAILURE
 } from '../actions/hubActions'
 
 const initialState = {
@@ -160,7 +163,7 @@ export default function hubReducer(state = initialState, action) {
       }
 
     case DELETE_HUB_SUCCESS:
-      const newState = JSON.parse(JSON.stringify(state))
+      var newState = JSON.parse(JSON.stringify(state))
       newState.items = state.items.filter(hub => hub._id !== action.payload.id)
 
       return {
@@ -176,6 +179,30 @@ export default function hubReducer(state = initialState, action) {
         loading: false,
         error: action.payload.error,
         item: []
+      }
+
+    case DELETE_CODE_BEGIN:
+      return {
+        ...state,
+        loading: true,
+        error: null
+      }
+
+    case DELETE_CODE_SUCCESS:
+      var newState = JSON.parse(JSON.stringify(state))
+      newState.item.codes = state.item.codes.filter(code => code._id !== action.payload.id)
+
+      return {
+        ...newState,
+        loading: false,
+        error: null
+      }
+
+    case DELETE_CODE_FAILURE:
+      return {
+        ...state,
+        loading: false,
+        error: action.payload.error
       }
 
     default:

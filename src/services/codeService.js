@@ -77,7 +77,7 @@ class CodeService {
         credentials: 'include'
       }
 
-      await fetch(`${url}/${getCookie('userId')}/hubs/${hubId}/codes/${id}`, requestOptions)
+      await fetch(`${url}/users/${getCookie('userId')}/hubs/${hubId}/codes/${id}`, requestOptions)
     }
     catch (err) {
       throw err
