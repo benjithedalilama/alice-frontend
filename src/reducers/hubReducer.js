@@ -13,14 +13,24 @@ import {
   ADD_HUB_FAILURE,
   DELETE_HUB_BEGIN,
   DELETE_HUB_SUCCESS,
-  DELETE_HUB_FAILURE,
+  DELETE_HUB_FAILURE
+} from '../actions/hubActions'
+import {
   ADD_CODE_BEGIN,
   ADD_CODE_SUCCESS,
   ADD_CODE_FAILURE,
   DELETE_CODE_BEGIN,
   DELETE_CODE_SUCCESS,
   DELETE_CODE_FAILURE
-} from '../actions/hubActions'
+} from '../actions/codeActions'
+import {
+  ADD_SENSOR_BEGIN,
+  ADD_SENSOR_SUCCESS,
+  ADD_SENSOR_FAILURE,
+  DELETE_SENSOR_BEGIN,
+  DELETE_SENSOR_SUCCESS,
+  DELETE_SENSOR_FAILURE
+} from '../actions/sensorActions'
 
 const initialState = {
   item: {
@@ -224,6 +234,54 @@ export default function hubReducer(state = initialState, action) {
       }
 
     case DELETE_CODE_FAILURE:
+      return {
+        ...state,
+        loading: false,
+        error: action.payload.error
+      }
+
+    case ADD_SENSOR_BEGIN:
+      return {
+        ...state,
+        loading: true,
+        error: null
+      }
+
+    case ADD_SENSOR_SUCCESS:
+      var newState = JSON.parse(JSON.stringify(state))
+      newState.item.sensors.push(action.payload.sensor)
+
+      return {
+        ...newState,
+        loading: false,
+        error: null,
+      }
+
+    case ADD_SENSOR_FAILURE:
+      return {
+        ...state,
+        loading: false,
+        error: action.payload.error
+      }
+
+    case DELETE_SENSOR_BEGIN:
+      return {
+        ...state,
+        loading: true,
+        error: null
+      }
+
+    case DELETE_SENSOR_SUCCESS:
+      var newState = JSON.parse(JSON.stringify(state))
+      newState.item.sensors = state.item.sensors.filter(sensor => sensor._id !== action.payload.id)
+
+      return {
+        ...newState,
+        loading: false,
+        error: null
+      }
+
+    case DELETE_SENSOR_FAILURE:
       return {
         ...state,
         loading: false,

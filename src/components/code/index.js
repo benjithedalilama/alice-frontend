@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import IconButton from '../iconbutton'
 import { connect } from 'react-redux'
-import { deleteCode } from '../../actions/hubActions'
+import { deleteCode } from '../../actions/codeActions'
 
 export class Code extends Component {
 

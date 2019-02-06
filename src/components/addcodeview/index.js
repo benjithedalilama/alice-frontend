@@ -3,7 +3,7 @@ import { goBack } from 'connected-react-router'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { BreadcrumbsItem } from 'react-breadcrumbs-dynamic'
-import { addCode } from '../../actions/hubActions'
+import { addCode } from '../../actions/codeActions'
 
 export class AddCodeView extends Component {
   constructor(props) {
