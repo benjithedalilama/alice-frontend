@@ -86,7 +86,7 @@ export default function hubReducer(state = initialState, action) {
         ...state,
         loading: false,
         error: action.payload.error,
-        item: {}
+        item: []
       }
 
     case FETCH_HUBS_BEGIN:
@@ -172,16 +172,14 @@ export default function hubReducer(state = initialState, action) {
       return {
         ...newState,
         loading: false,
-        error: null,
-        item: []
+        error: null
       }
 
     case DELETE_HUB_FAILURE:
       return {
         ...state,
         loading: false,
-        error: action.payload.error,
-        item: []
+        error: action.payload.error
       }
 
     case ADD_CODE_BEGIN:
