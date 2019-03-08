@@ -31,14 +31,20 @@ import './profilepreview.css'
 const ProfilePreview = props => (
   <div className={`${props.className} profilePreview`}>
     {props.children}
-    <p className="profilePreview__text profilePreview__element">USER.EMAIL</p>
+    <p className="profilePreview__text profilePreview__element">USER.EMAIL
+
+    </p>
     <img className="profilePreview__image profilePreview__element" src="https://lh3.googleusercontent.com/--SUy6eYwjwU/AAAAAAAAAAI/AAAAAAAAAAA/AGDgw-jKi24cBTO8NdPN3lLZeA2nUDGQ6g/s48-c-mo/photo.jpg" alt="Profile" />
   </div>
 )
 
 export default connect()(ProfilePreview)
 ```
-<p align="center">Fig. 1: `ProfilePreview` component implementation</p>
+<p align="center">
+
+Fig. 1: `ProfilePreview` component implementation
+
+</p>
 
 ```
 <header>
@@ -59,7 +65,11 @@ export default connect()(ProfilePreview)
   </div>
 </header>
 ```
-<p align="center">Fig. 2: Header from `View` component implementation, renders `ProfilePreview` component</p>
+<p align="center">
+
+Fig. 2: Header from `View` component implementation, renders `ProfilePreview` component
+
+</p>
 
 ### Redux
 React pairs well with Redux, a design pattern and library, enforcing a central source of truth for the application, simplifying the process of state management. State is handled with the Redux store, instead of in the specific components. The store provides a centralized state for the application that can only be updated by dispatching actions, which are then processed by reducers, functions which return a newly minted state, often based on which action they received. My component design pattern helps with state management because each component has the ability to dispatch actions which are processed by the root reducer and ultimately return a new application state. This means that I can manage the view dynamically across my entire application by dispatching actions within components, further separating concerns related to state management. For example, the `HubListView` loads in the hubs by dispatching an action that loads in the hubs by hitting an API endpoint. Figure three below shows this pattern in action.
@@ -87,7 +97,11 @@ export class HubListView extends Component {
   }
 }
 ```
-<p align="center">Fig. 3: `HubListView` component dispatches an action to load the hubs after the component is mounted to the DOM (document object model)</p>
+<p align="center">
+
+Fig. 3: `HubListView` component dispatches an action to load the hubs after the component is mounted to the DOM (document object model)
+
+</p>
 
 Now you may ask, wouldn’t we be able to manage the state and the view of a component without Redux? Doesn’t it complicate things? Yes and no. The regular React pattern requires less upfront resources, but long term Redux helps handle complexity much better. An example of the regular React pattern is shown in figure four below where the `handleChange` function updates the state when an input’s `value` changes.
 
@@ -97,7 +111,11 @@ handleChange(e) {
     this.setState({ [name]: value })
 }
 ```
-<p align="center">Fig. 4: The `handleChange` function</p>
+<p align="center">
+
+Fig. 4: The `handleChange` function
+
+</p>
 
 React provides us with a simple and straightforward approach to component state. However, we don’t have an easy process for our component to React to changes in application state, and we don’t want to unnecessarily use component state. We only want to use the component state for highly localized use cases, such as the `handleChange` function above, and not for application state. In a medium article, Micah Powell cleverly states: “If global state has to be reset when a component un-mounts, it probably should have been in the component state to begin with” (Powell, 2018). Our application as a whole does not care about the state of an input form or a menu being opened/closed, so we limit knowledge to the component state. The state should be handled by the component, not by the Redux store because we don’t expect those properties to persist onto another page.
 
@@ -112,7 +130,11 @@ export const fetchHubsSuccess = hubs => ({
   payload: { hubs }
 })
 ```
-<p align="center">Fig. 5: `fetchHubsSuccess` action which returns a type and a payload of `hubs`</p>
+<p align="center">
+
+Fig. 5: `fetchHubsSuccess` action which returns a type and a payload of `hubs`
+
+</p>
 
 #### Services
 I make use of services to separate API calls for loading in data from the server side. This improves extensibility and separation of concerns, ensuring there is only one place where those API endpoints are being called. This also improves reusability because we can call the services from anywhere in our application. Figure six shows the `HubService.getAll` function being called, and figure seven shows what is going on under the hood.
@@ -134,7 +156,11 @@ export const fetchHubs = () => {
   }
 }
 ```
-<p align="center">Fig. 6: `fetchHubs` higher order action using the `HubService` class to get all hubs for a user</p>
+<p align="center">
+
+Fig. 6: `fetchHubs` higher order action using the `HubService` class to get all hubs for a user
+
+</p>
 
 ```
 class HubService {
@@ -154,7 +180,11 @@ class HubService {
     }
   }
 ```
-<p align="center">Fig. 7: `HubService` class `getAll` method implementation. This function gets all hubs for a specific user from an API, and returns all of the hubs.</p>
+<p align="center">
+
+Fig. 7: `HubService` class `getAll` method implementation. This function gets all hubs for a specific user from an API, and returns all of the hubs.
+
+</p>
 
 #### Reducers
 When actions are dispatched, reducers handle them, and return a newly minted application state. Reducers returning a new state, instead of modifying an existing state, helps simplify state management. Unexpected bugs can occur when mutating an existing state, so creating a new state every time a change needs to be made helps us reduce those bugs. As I mentioned earlier, there is a root reducer that is a combination of many smaller reducers that are split up for modularity purposes and separation of concerns. Figure eight below shows the `hubsReducer` which handles when the `fetchHubsSuccess` action is dispatched.
@@ -185,7 +215,11 @@ export default function hubReducer(state = initialState, action) {
         item: []
       }
 ```
-<p align="center">Fig. 8: `hubReducer` function that returns a new state</p>
+<p align="center">
+
+Fig. 8: `hubReducer` function that returns a new state
+
+</p>
 
 In a perfect world, the hub reducer would only be responsible for hubs in the state, but since development time is often unpredictable, and other pieces of the system take priority, I did not have time to break out the monolithic reducer into smaller, more manageable pieces, which would ultimately help with separation of concerns.
 
@@ -200,13 +234,19 @@ For CSS styling, I followed the [BEM](http://getbem.com/) (block, element, modif
       <input className="form__input form__element" type="text" name="username" value={username} onChange={e => this.handleChange(e)} placeholder="Username"></input>
       <input className="form__input form__element" type="password" name="password" value={password} onChange={e => this.handleChange(e)} placeholder="Password"></input>
       <button className="button button--main form__element">Login</button>
-      <p className="form__text">Forgot password?</p>
+      <p className="form__text">Forgot password?
+
+      </p>
       <button className="button button--alt form__element" onClick={e => this.changePage('/signup')}>Sign Up</button>
     </form>
   </div>
 </div>
 ```
-<p align="center">Fig. 9: BEM classes being used in the `Login` view</p>
+<p align="center">
+
+Fig. 9: BEM classes being used in the `Login` view
+
+</p>
 
 The `form__container`, `form`, `form__form`, `form__text`, and other form-related classes can be reused, such as in the `AddCodeView` component and `Signup` components seen below in figures ten and eleven respectively.
 
@@ -225,7 +265,11 @@ The `form__container`, `form`, `form__form`, `form__text`, and other form-relate
   </div>
 </div>
 ```
-<p align="center">Fig. 10: The `AddCodeView` component employs the use of form-related BEM classes</p>
+<p align="center">
+
+Fig. 10: The `AddCodeView` component employs the use of form-related BEM classes
+
+</p>
 
 ```
 <div className="form__container">
@@ -236,13 +280,19 @@ The `form__container`, `form`, `form__form`, `form__text`, and other form-relate
       <input className="form__input form__element" type="password" name="password" value={password} onChange={e => this.handleChange(e)} placeholder="Password"></input>
       <input className="form__input form__element" type="password" name="confirmPassword" value={confirmPassword} onChange={e => this.handleChange(e)} placeholder="Confirm Password"></input>
       <button className="button button--main form__element">Sign Up</button>
-      <p className="form__text">Already have an account?</p>
+      <p className="form__text">Already have an account?
+
+      </p>
       <button onClick={() => this.changePage('/login')} className="button button--alt form__element">Login</button>
     </form>
   </div>
 </div>
 ```
-<p align="center">Fig. 11: Similarly the `Signup` component makes use of these classes</p>
+<p align="center">
+
+Fig. 11: Similarly the `Signup` component makes use of these classes
+
+</p>
 
 The BEM pattern takes no extra memory as it is not a library, and is simply a naming convention. The main drawback of the BEM pattern is that it is not enforceable without using external tools like a [BEM linter](https://github.com/postcss/postcss-bem-linter). Thus, it relies on people in the organization to educate new team members and facilitate the use of the pattern, otherwise there will be a mess of non-BEM and BEM CSS. When shared and used properly, the BEM pattern provides reusability and a strict rule set that can be followed by a software team improving extensibility.
 
@@ -287,7 +337,11 @@ describe('hub reducer', () => {
     })
   })
 ```
-<p align="center">Fig. 12: Tests if the reducer returns the initial state when given an `undefined` state</p>
+<p align="center">
+
+Fig. 12: Tests if the reducer returns the initial state when given an `undefined` state
+
+</p>
 
 Tests are especially useful when you have multiple people working on the same codebase. Running a test suite can show which pieces of a software application were affected by a change. This is critical for maintainability, especially if the tests are well written and test things we actually care about as opposed to things that don’t matter as much. Poorly written tests don’t really count as tests, since they often hurt the team and application development. A poorly written test is unclear and does not test the underlying behavior of the system under test. Whereas a well written test is understandable, simple, and breaks when unexpected behavior arises. Testing is a beast of its own, and many would say requires its own paradigms for coding, but if understood and written clearly, and effectively, tests contribute immensely to the robustness of a codebase.
 
@@ -343,7 +397,11 @@ function validateToken (req, res, next) {
 
 export { validateToken }
 ```
-<p align="center">Fig. 13: `utils.js` file that houses `validateToken` function middleware</p>
+<p align="center">
+
+Fig. 13: `utils.js` file that houses `validateToken` function middleware
+
+</p>
 
 ```
 // Create new hub
@@ -368,7 +426,11 @@ app.get(`${base_path}/users/:userId/hubs`, validateToken, async (req, res, next)
   }
 })
 ```
-<p align="center">Fig. 14: `validateToken` middleware is being used for these endpoints. To create a new hub and get hubs, a valid user token is required</p>
+<p align="center">
+
+Fig. 14: `validateToken` middleware is being used for these endpoints. To create a new hub and get hubs, a valid user token is required
+
+</p>
 
 The centralized nature of middleware ensures that the `validateToken` function is the only function and code responsible for validating the token. If I needed to change the method of authentication, I could simply modify my middleware function and any necessary parameters/configuration, ensuring that if the user is not authenticated a 401 Error is thrown, and if they are, executing the intended task, in the above case, getting hubs, or creating a hub, illustrating the separation of concerns and extensibility.
 
