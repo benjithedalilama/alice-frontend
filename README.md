@@ -9,4 +9,6 @@ To run tests run `yarn test`. You may run into issues with the amount of files b
 
 For development run `docker-compose up`.
 
+Visit `localhost:3000` to use the application.
+
 If production deployment is set up, run `yarn deploy` to deploy the application.
