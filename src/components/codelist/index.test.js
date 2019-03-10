@@ -43,21 +43,4 @@ describe('CodeList component', () => {
     )
     expect(wrapper.find(Link).find('.list__text--main')).toHaveLength(3)
   })
-
-  it('renders the List component with 4 iconbuttons', () => {
-    codes = [
-      {
-        _id: 1,
-        name: 'zoop',
-        version: 1.0,
-        action: 'setHumidity',
-        commands: [],
-        createdAt: '20180124'
-      },
-    ]
-    const wrapper = shallow(
-      <CodeList className='list__container--small' codes={codes} parent={{ _id: 1 }} />
-    )
-    expect(wrapper.find(Code).dive().find('.list__button')).toHaveLength(2)
-  })
 })
