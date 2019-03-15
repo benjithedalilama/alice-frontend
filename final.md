@@ -2,28 +2,29 @@
 ##### An exploration into design patterns and best practices for sustainable and effective software development.
 
 ## Introduction
+### Abstract
 If code were written by computers, it could be arbitrarily complex. The code could represent something close to a dish of spaghetti, and as long as the computer understood how to read and write it, software development wouldn’t require much effort. The problem, however, is that humans are the primary writers, and readers of original (not compiled) code. As Robert Martin stated in his book Clean Code: A Handbook of Agile Software Craftsmanship, “Indeed, the ratio of time spent reading versus writing is well over 10 to 1. We are constantly reading old code as part of the effort to write new code. ...[Therefore,] making it easy to read makes it easier to write” (Martin, R. C., Coplien, J. O., Wampler, K., et al, 2016). Since humans are not computers, and cannot handle anywhere near the level of complexity computers can, the software development process focuses on reducing complexity. Thus, measures which aim to reduce the complexity of a system’s codebase are worthwhile investments and are a core part of designing and building the system. Considering this, Alice, a device management platform for industrial automated systems, is built with a focus on extensibility, simplified state management, and a strong separation of concerns. These principles improve development time and ease, enable me and outside developers to better improve the applications, and overall, reduce complexity.
 
 ### Extensibility
-At the core of software development is the extensibility of a codebase. Without the ability to change and update software easily, teams’ efforts to change software become extremely high friction and disastrous. Instead of precise and effective work that moves the application forward at the speed it needs to support growth and succeed, software development becomes akin to firefighting, constantly putting out small fires without the time or resources to focus on the core structural problems. As we add new features and build out a software application, our code needs to evolve to support the needs of our products and users. The more complex the codebase, the harder it is to extend, and the more unpredictable and harder to understand. Jeff Atwood writes that “the best code is no code at all” and that the real enemy is not code, it’s what you see in the mirror (Atwood, 2007). He says that we love to write code, too much, and “if [you] love writing code-- really, truly love to write code-- you'll love it enough to write as little of it as possible” (2007). Often times writing more code makes your system more complex, and harder to extend. Thus, a large part of extensibility is simplifying systems, reducing dependencies, standardizing processes, and abstracting out functionality. All of which can be accomplished by using frameworks with agreed upon rules, sometimes enforced by the framework itself, tests written to monitor the behavior of specific pieces of the system, and other actions which will be demonstrated in this paper.
+At the core of software development is the extensibility of a codebase. Without the ability to change and update software easily, teams’ efforts to change software become extremely high friction and disastrous. Instead of precise and effective work that moves the application forward at the speed it needs to support growth and succeed, software development becomes akin to firefighting, constantly putting out small fires without the time or resources to focus on the core structural problems. As we add new features and build out a software application, our code needs to evolve to support the needs of our products and users. The more complex the codebase, the harder it is to extend, and the more unpredictable and harder to understand. Jeff Atwood writes that “the best code is no code at all” and that the real enemy is not code, it’s what you see in the mirror (Atwood, 2007). He says that we love to write code, too much, and “if [you] love writing code-- really, truly love to write code-- you'll love it enough to write as little of it as possible” (2007). Often times writing more code makes your system more complex, and harder to extend. Thus, a large part of extensibility is separating systems by reducing dependencies, standardizing processes, and abstracting out functionality. All of which can be accomplished by using frameworks with agreed upon rules, sometimes enforced by the framework itself, tests written to monitor the behavior of specific pieces of the system, and other actions which will be demonstrated in this paper.
 
 ### Separation of Concerns
-Feeding into extensibility is separation of concerns, which is the separation of functionality or ‘jobs’ that certain pieces of the software system are responsible for. Breaking up the responsibilities of the entire system into smaller bite-sized concerns isolates the tasks at hand to specific subsystems. This isolation and separation improves the maintenance process and makes the system more extensible because of the natural plug-and-play behavior which emerges. A good separation of concerns can be illustrated by different files calling the same service to execute the same function. For example, the [`hubService.js`](https://github.com/benjithedalilama/alice-frontend/blob/master/src/services/hubService.js) file in the frontend is concerned with making API calls specifically for the Hub-related API endpoints. Figure seven, shown later, illustrates how the `HubService` class is the sole piece responsible for fetching hubs and can be called anywhere in the frontend to do its job. This separation of concerns enables us to control how and where the user can interact with their hubs, and gives us tighter control over security and access to the API.
+Feeding into extensibility is separation of concerns, which is the separation of functionality or ‘jobs’ that certain pieces of the software system are responsible for. Breaking up the responsibilities of the entire system into smaller bite-sized concerns isolates the tasks at hand to specific subsystems. This isolation and separation improves the maintenance process and makes the system more extensible because of the natural plug-and-play behavior which emerges. A good separation of concerns can be illustrated by different files calling the same service to execute the same function. For example, the [`hubService.js`](https://github.com/benjithedalilama/alice-frontend/blob/master/src/services/hubService.js) file in the frontend is concerned with making API calls specifically for the Hub-related API endpoints. Figure seven, shown later, illustrates how the HubService class is the sole piece responsible for fetching hubs and can be called anywhere in the frontend to do its job. This separation of concerns enables us to control how and where the user can interact with their hubs, and gives us tighter control over security and access to the API.
 
 ### Simplifying State Management
-State is one of the number one causes of pain and anguish for software developers; however, software developers can mitigate the complications associated with it by using frameworks that enforce rules, such as Redux. Imagine a car with hundreds of moving parts that work together. The pieces depend on each other and work harmoniously to ultimately get someone from point A to point B moving metal at high speeds. There are rules and constraints to the system like gear ratios in the transmission, oil, cooling liquid to keep the engine cool enough, and an exhaust pipe to expel gas from the combustion reaction. Now imagine a software system that has hundreds of moving parts, but does not have constraints and rules surrounding the state of the system. A user clicks a button to logout and they get redirected to the login, but for some reason the system still thinks the user is logged in and it displays the logout button once again. After jumping down a three-hour rabbit hole investigating what could possibly be causing the problem, you realize the problem is in a completely different place and restart your work on the problem. Keeping with the engine analogy, imagine opening up the hood of a car, unscrewing and lifting multiple parts, popping out the engine, and finally getting to what you think is the problem, only to find out that you were looking in the wrong place. This is the nightmare of state management, and has often been one of the hardest things about working with React specifically and other frameworks/systems. Redux, discussed later, imposes a strict set of rules on how the application state can be read and modified, simplifying state management.
+State is one of the number one causes of pain and anguish for software developers; however, software developers can mitigate the complications associated with it by using frameworks that enforce rules, such as Redux. The Redux website explains clearly and concisely that “the whole state of your app is stored in an object tree inside a single store. The only way to change the state tree is to emit an action, an object describing what happened. To specify how the actions transform the state tree, you write pure reducers” (“Getting Started with Redux”, 2018). Redux simplifies the state management process by enforcing a directionality in the flow of data that affects the state. Imagine a car with hundreds of moving parts that work together. The pieces depend on each other and work harmoniously to ultimately get someone from point A to point B moving metal at high speeds. There are rules and constraints to the system like gear ratios in the transmission, oil, cooling liquid to keep the engine cool enough, and an exhaust pipe to expel gas from the combustion reaction. Now imagine a software system that has hundreds of moving parts, but does not have constraints and rules surrounding the state of the system. A user clicks a button to logout and they get redirected to the login, but for some reason the system still thinks the user is logged in and it displays the logout button once again. After jumping down a three-hour rabbit hole investigating what could possibly be causing the problem, you realize the problem is in a completely different place and restart your work on the problem. Keeping with the engine analogy, imagine opening up the hood of a car, unscrewing and lifting multiple parts, popping out the engine, and finally getting to what you think is the problem, only to find out that you were looking in the wrong place. This is the nightmare of state management, and has often been one of the hardest things about working with React specifically and other frameworks/systems. Redux, discussed later, imposes a strict set of rules on how the application state can be read and modified, simplifying state management.
 
 ### Technical Overview
-Alice is a device management platform for industrial systems such as farms, factories, and other automated systems. Alice, in its fully built state, would provide users the capability to create hubs, sensors, and codes, and would enable the user to read sensor data and automatically control systems based on sensor data. Altogether my project consists of a backend server specifications to fit the product needs, frontend implementations of the user experience, backend implementations of the API server, application deployment automation, and workflow/project management considerations. Alice is made up of a [backend API server](https://github.com/benjithedalilama/alice-backend), a Mongo database, and a frontend static build directory served up with a [web server](https://github.com/benjithedalilama/alice-frontend).
+Alice is a device management platform for industrial systems such as farms, factories, and other automated systems. Specifically, Alice excels in managing sensors and control systems. Picture an automated farm with a sensor network full of temperature, humidity, soil pH, and other sensors. This farm has hubs: central nodes which receive data from sensors, while also being able to execute codes to control systems such as a drip irrigation system. This would allow the hub to monitor sensor data, and react to it in real time by executing codes in order to modify the farm environment. As an example, Entocycle, an insect farming company in London, is trying to optimize the size of black soldier fly larvae in a controlled environment. Currently, they manually collect data and adjust the temperature, humidity, and soil conditions; however, these changes are automatable. Alice would enable Entocycle to automate the data collection and control processes with the proper hardware and configuration. Altogether my project consists of a backend server specifications to fit the product needs, frontend implementations of the user experience, backend implementations of the API server, application deployment automation, and workflow/project management considerations. Alice is made up of a [backend API server](https://github.com/benjithedalilama/alice-backend), a Mongo database, and a frontend static build directory served up with a [web server](https://github.com/benjithedalilama/alice-frontend). A basic understanding of Javascript, HTML, CSS, React/Redux, Node.js, and other technologies mentioned in the paper is not necessary but will help the reader understand the examples; however, experience working with these technologies is preferred.
 
 ## Frontend Implementation
 ### React
-Keeping with the main principles I laid out earlier, I chose to use React as the frontend framework because of its component-based architecture, simplicity, strong community, and extensibility when paired with other patterns and best practices. React’s component-based architecture lends itself to a system that has well-defined separations of concerns, and great extensibility from the ability to built components into other components, creating an enforceable hierarchy within the application. For example, the `Hub` component can both be used in the `HubView` component and the `HubListView`, because the same basic hub component is present in both of those other components. The `Hub` component file is responsible solely for the `Hub` component, while the `HubView` is responsible for a specific display mode of the `Hub`. Separation of concerns and extensibility is built into React with its component-based architecture.
+Keeping with the main principles I laid out earlier, I chose to use React as the frontend framework because of its component-based architecture, simplicity, strong community, and extensibility when paired with other patterns and best practices. React’s component-based architecture lends itself to a system that has well-defined separations of concerns, and great extensibility from the ability to built components into other components, creating an enforceable hierarchy within the application. For example, the component can both be used in the `HubView` component and the `HubListView`, because the same basic hub component is present in both of those other components. The `Hub` component file is responsible solely for the `Hub` component, while the `HubView` is responsible for a specific display mode of the `Hub`. Separation of concerns and extensibility is built into React with its component-based architecture.
 
-#### Components
+#### React Components
 I defined the components in my application for reusability and separation of concerns. Much like the `Hub` component, some of the components like the `List` component are meant to be extended into components like the `SensorList`, `CommandList`, and lists of other components that need customizable styling. Other components like the `ProfilePreview` and `Searchbar` are only called once in the code, but are created for modularity and future extensibility. Instead of housing a bunch of directives (`div`’s) in one JS file, I am able to ‘outsource’ the code into a React component and make the code cleaner, more modular, and ultimately easier to debug. Figures one and two below show the `ProfilePreview` component implementation and rendering. This example demonstrates that although components are meant to be reusable, they can still provide value even if they are only used once throughout the application. The tradeoffs between the time it takes to built an abstracted component, and the time saved by the component is important to consider, but sometimes building an abstract component is valuable just for the sake of modularity, separation of concerns, and future extensibility.
 
-```
+```javascript
 import React from 'react'
 import { connect } from 'react-redux'
 import './profilepreview.css'
@@ -44,7 +45,7 @@ Fig. 1: `ProfilePreview` component implementation
 
 </span>
 
-```
+```html
 <header>
   <div className="navbar">
     <div className="navbar__element navbar__breadcrumbs">
@@ -72,7 +73,7 @@ Fig. 2: Header from `View` component implementation, renders `ProfilePreview` co
 ### Redux
 React pairs well with Redux, a design pattern and library, enforcing a central source of truth for the application, simplifying the process of state management. State is handled with the Redux store, instead of in the specific components. The store provides a centralized state for the application that can only be updated by dispatching actions, which are then processed by reducers, functions which return a newly minted state, often based on which action they received. My component design pattern helps with state management because each component has the ability to dispatch actions which are processed by the root reducer and ultimately return a new application state. This means that I can manage the view dynamically across my entire application by dispatching actions within components, further separating concerns related to state management. For example, the `HubListView` loads in the hubs by dispatching an action that loads in the hubs by hitting an API endpoint. Figure three below shows this pattern in action.
 
-```
+```javascript
 export class HubListView extends Component {
   componentDidMount() {
     this.props.dispatch(fetchHubs())
@@ -103,7 +104,7 @@ Fig. 3: `HubListView` component dispatches an action to load the hubs after the 
 
 Now you may ask, wouldn’t we be able to manage the state and the view of a component without Redux? Doesn’t it complicate things? Yes and no. The regular React pattern requires less upfront resources, but long term Redux helps handle complexity much better. An example of the regular React pattern is shown in figure four below where the `handleChange` function updates the state when an input’s `value` changes.
 
-```
+```javascript
 handleChange(e) {
     const { name, value } = e.target
     this.setState({ [name]: value })
@@ -115,14 +116,14 @@ Fig. 4: The `handleChange` function
 
 </span>
 
-React provides us with a simple and straightforward approach to component state. However, we don’t have an easy process for our component to React to changes in application state, and we don’t want to unnecessarily use component state. We only want to use the component state for highly localized use cases, such as the `handleChange` function above, and not for application state. In a medium article, Micah Powell cleverly states: “If global state has to be reset when a component un-mounts, it probably should have been in the component state to begin with” (Powell, 2018). Our application as a whole does not care about the state of an input form or a menu being opened/closed, so we limit knowledge to the component state. The state should be handled by the component, not by the Redux store because we don’t expect those properties to persist onto another page.
+Component state is an object tree which defines how a component is rendered and behaves in your application, while application state is an overarching object tree which can be accessed from anywhere in the application. React provides us with a simple and straightforward approach to component state. However, we don’t have an easy process for our component to React to changes in application state, and we don’t want to unnecessarily use component state. We only want to use the component state for highly localized use cases, such as the `handleChange` function above, and not for application state. In a medium article, Micah Powell cleverly states: “If global state has to be reset when a component unmounts, it probably should have been in the component state to begin with” (Powell, 2018). Our application as a whole does not care about the state of an input form or a menu being opened/closed, so we limit knowledge to the component state. The state should be handled by the component, not by the Redux store because we don’t expect those properties to persist onto another page.
 
 In summary, State management becomes increasingly complex as we add more moving parts to our application, and the standardized process Redux enforces allows us to keep track of actions that affect our application. This does not come without costs, of course. Often developers will rely to heavily on Redux, making the actions and reducers unnecessarily bloated and unmanageable (2018). There is also a balance between presentational and container components. Many components may not need to be aware of the global state Redux introduces, and wrongfully making them aware of the global state further complicates the software system and frontend state management. Taking this all into account, Redux is well worth the investment of time and energy if used thoughtfully and effectively to reduce the complexity of state management.
 
-#### Actions
+#### Redux Actions
 When dispatched, actions hold information about what happened, which allows us to handle the actions separately from where they were called, further improving separation of concerns and extensibility. If actions are written clearly and atomically they contribute to a more extensible application overall by allowing the ability to create, modify, or remove an action. With confidence, a developer trusts that the action is the only element of the application concerned with a certain function or role. To demonstrate, figure five below shows an action notifying Redux that hubs were successfully fetched (loaded). When `fetchHubsSuccess` is dispatched with a `hubs` parameter, Redux receives the action, and can modify the application state based on the type and payload of the action. If we wanted to extend this action to return a payload including a timestamp, we could easily add that as a parameter in both the action definition and where we dispatch the action if necessary. This behavior simplifies state management because the central store is being accessed in a regulated way, which can make it easier to understand the flow of data in the application.
 
-```
+```javascript
 export const fetchHubsSuccess = hubs => ({
   type: FETCH_HUBS_SUCCESS,
   payload: { hubs }
@@ -134,10 +135,10 @@ Fig. 5: `fetchHubsSuccess` action which returns a type and a payload of `hubs`
 
 </span>
 
-#### Services
-I make use of services to separate API calls for loading in data from the server side. This improves extensibility and separation of concerns, ensuring there is only one place where those API endpoints are being called. This also improves reusability because we can call the services from anywhere in our application. Figure six shows the `HubService.getAll` function being called, and figure seven shows what is going on under the hood.
+#### Redux Reducers
+When actions are dispatched, reducers handle them, and return a newly minted application state. Reducers returning a new state, instead of modifying an existing state, helps simplify state management. Unexpected bugs can occur when mutating an existing state, so creating a new state every time a change needs to be made helps us reduce those bugs. As I mentioned earlier, there is a root reducer that is a combination of many smaller reducers that are split up for modularity purposes and separation of concerns. Figure six below shows the `hubsReducer` which handles when the `fetchHubsSuccess` action is dispatched.
 
-```
+```javascript
 export const fetchHubs = () => {
   return async dispatch => {
     dispatch(fetchHubsBegin())
@@ -160,7 +161,13 @@ Fig. 6: `fetchHubs` higher order action using the `HubService` class to get all 
 
 </span>
 
-```
+In a perfect world, the hub reducer would only be responsible for hubs in the state, but since development time is often unpredictable, and other pieces of the system take priority, I did not have time to break out the monolithic reducer into smaller, more manageable pieces, which would
+ultimately help with separation of concerns.
+
+### Services
+I make use of services to separate API calls for loading in data from the server side. This improves extensibility and separation of concerns, ensuring there is only one place where those API endpoints are being called. This also improves reusability because we can call the services from anywhere in our application. Figure seven shows the `HubService.getAll` function being called, and figure eight shows what is going on under the hood.
+
+```javascript
 class HubService {
   static async getAll() {
     try {
@@ -184,10 +191,7 @@ Fig. 7: `HubService` class `getAll` method implementation. This function gets al
 
 </span>
 
-#### Reducers
-When actions are dispatched, reducers handle them, and return a newly minted application state. Reducers returning a new state, instead of modifying an existing state, helps simplify state management. Unexpected bugs can occur when mutating an existing state, so creating a new state every time a change needs to be made helps us reduce those bugs. As I mentioned earlier, there is a root reducer that is a combination of many smaller reducers that are split up for modularity purposes and separation of concerns. Figure eight below shows the `hubsReducer` which handles when the `fetchHubsSuccess` action is dispatched.
-
-```
+```javascript
 export default function hubReducer(state = initialState, action) {
   switch(action.type) {
     case FETCH_HUB_BEGIN:
@@ -219,12 +223,10 @@ Fig. 8: `hubReducer` function that returns a new state
 
 </span>
 
-In a perfect world, the hub reducer would only be responsible for hubs in the state, but since development time is often unpredictable, and other pieces of the system take priority, I did not have time to break out the monolithic reducer into smaller, more manageable pieces, which would ultimately help with separation of concerns.
-
 ### CSS Styling
 For CSS styling, I followed the [BEM](http://getbem.com/) (block, element, modifier) pattern which helps set a strict pattern on CSS formatting and naming conventions, and if used correctly in an organization, leads to extensibility improvements. Additionally, the CSS classes are highly reusable throughout the application. Below figure nine shows the Login component which uses BEM-based classes for forms and their different components.
 
-```
+```html
 <div className="form__container">
   <div className="form">
     <form className="form__form" onSubmit={e => this.handleSubmit(e)} name="form">
@@ -246,7 +248,7 @@ Fig. 9: BEM classes being used in the `Login` view
 
 The `form__container`, `form`, `form__form`, `form__text`, and other form-related classes can be reused, such as in the `AddCodeView` component and `Signup` components seen below in figures ten and eleven respectively.
 
-```
+```html
 <div className="form__container">
   <BreadcrumbsItem to={`/hubs`}>Hubs</BreadcrumbsItem>
   <BreadcrumbsItem to={`/hubs/${this.props.match.params.hubId}`}>{this.props.match.params.hubId}</BreadcrumbsItem>
@@ -267,7 +269,7 @@ Fig. 10: The `AddCodeView` component employs the use of form-related BEM classes
 
 </span>
 
-```
+```html
 <div className="form__container">
   <div className="form">
     <form className="form__form" onSubmit={e => this.handleSubmit(e)} name="form">
@@ -291,9 +293,9 @@ Fig. 11: Similarly the `Signup` component makes use of these classes
 The BEM pattern takes no extra memory as it is not a library, and is simply a naming convention. The main drawback of the BEM pattern is that it is not enforceable without using external tools like a [BEM linter](https://github.com/postcss/postcss-bem-linter). Thus, it relies on people in the organization to educate new team members and facilitate the use of the pattern, otherwise there will be a mess of non-BEM and BEM CSS. When shared and used properly, the BEM pattern provides reusability and a strict rule set that can be followed by a software team improving extensibility.
 
 ### Tests
-Testing is an important part of any application, and depending on how they are written, tests can bring attention to unexpected behaviors or broken features in your application. Figure twelve shows a test for the `hubsReducer` function that tests the reducer for specific behavior when the reducer does not receive a state parameter.
+Testing is an important part of any application, and depending on how they are written, tests can bring attention to unexpected behaviors or broken features in your application. Figure twelve shows a test for the `hubsReducer` function that tests the reducer for specific behavior when the reducer does not receive a `state` parameter.
 
-```
+```javascript
 describe('hub reducer', () => {
   it('should return the initial state', () => {
     expect(reducer(undefined, {})).toEqual({
@@ -349,7 +351,7 @@ Docker is a powerful tool that promotes modularity and reusability. Docker ensur
 ### System Architecture
 Separating my application into services separates concerns for each piece of the system improving extensibility. I designed my API system with a standard pattern using docker to deploy containers for three services: my backend API server, a Mongo database service, and the frontend service. The backend API service is responsible for handling incoming and outgoing requests and responses and communicating with the database, the database service is responsible for storing data, and the frontend service is responsible for running a web server that serves up a build directory with HTML, CSS, and Javascript to the client. If I needed to use a different variation of the Mongo database, or an entirely new database, I could change my Mongo-specific configuration and swap out Mongo for something like PostgreSQL. The interchangeability and modularity of the system demonstrates its extensibility. We can more easily extend our codebase because each piece of the system is concerned with different functions.
 
-### Swagger API Spec
+#### Swagger API Spec
 I wrote a [`swagger.yml`](https://github.com/benjithedalilama/alice-backend/blob/master/swagger.yml) file for my API that can be viewed on [this editor](https://editor.swagger.io/) to outline the API endpoints; however, my API is not automatically built from this file, nor vice versa, making this not very extensible. There are plenty of tradeoffs associated with different design and process decisions I have made; the spec was a necessary design piece that became an artifact as soon as I started implementing the API server. I should have maintained it as an up-to-date reference for documentation because this yaml file is useful for integrating my API with other applications, and provides a standard definition of my API for other apps to use. Without an up-to-date spec other users have to guess the format and requirements of the different endpoints, making it hard to use and unclear. For extensibility purposes, I could have linked the swagger file to my API in a more dynamic and data-based way, but the time tradeoffs forced me to focus my attention elsewhere. The swagger API spec demonstrates the realities of tradeoffs in developing a large system where you may need to sacrifice underlying principles because of limited resources.
 
 ## Backend Implementation
@@ -357,7 +359,7 @@ I wrote a [`swagger.yml`](https://github.com/benjithedalilama/alice-backend/blob
 #### Introduction
 I use MongoDB (Mongo) with the Mongoose ODM (object document model) to improve extensibility and state management. Mongoose helps make Mongo more extensible by enforcing schemas similar to SQL databases, providing built-in validation, instance methods, and returns more valuable data like the object that was updated instead of metadata. For example, Mongoose provides validation tools that absolve me of the need to write custom validation code, and allow me to focus on other elements of the database. The NoSQL nature of Mongo makes it fast and scalable, improving the application state management in both the frontend and the backend. I leverage the speed of Mongo by using embedded documents on the User object to quickly fetch the different data from users. By doing so, I can quickly fetch data for the frontend to display and ensure the state of the frontend application is updated rapidly and efficiently. In the backend, Mongo is the primary state management tool for application data; since the server is supposed to be stateless, the database is stateful and provides mutable information. Mongo’s intuitive and adaptable nature promotes extensibility and better state management. Additionally, Mongoose as an abstraction over the quick and robust Mongo makes for a highly extensible database and easier state management in the frontend and backend.
 
-#### Models
+#### Database Models
 Mongoose abstracts out a lot of the complicated bits from Mongo, enforcing separation of concerns. In a no-brainer fashion, I separated my models into individual files and their own folder; my models only have to define a schema and export a model, which separates concerns for the configuration of the database and improves reusability.
 
 ### API Server
@@ -365,9 +367,10 @@ Mongoose abstracts out a lot of the complicated bits from Mongo, enforcing separ
 The API Endpoints are accessible via a Node.js server running Express, which holds many benefits. These benefits help separate concerns, extensibility, and help with authentication-related state management by providing centralized and easily adaptable systems for core functions such as implementation of middleware, routes, and authentication.
 
 #### Middleware
-The use of middleware greatly demonstrates separation of concerns and enables extensibility of functions executed in the middleware. Since middleware only has to be defined in one place when designed properly, and can be called when any API endpoint is hit, it is highly reusable. For example, the `validateToken` middleware seen in figure thirteen is called on any routes that require authentication in the API. Following that, figure fourteen shows the `validateToken` middleware being called.
+The use of middleware greatly demonstrates separation of concerns and enables extensibility of functions executed in the middleware. Since middleware only has to be defined in one place when designed properly, and can be called when any API endpoint is hit, it is highly reusable. For example, the validateToken middleware seen in figure thirteen is called on any routes that require authentication in the API. Following that, figure fourteen shows the validateToken middleware being called.
 
-```
+
+```javascript
 import jwt from 'jsonwebtoken'
 
 function validateToken (req, res, next) {
@@ -397,7 +400,7 @@ Fig. 13: `utils.js` file that houses `validateToken` function middleware
 
 </span>
 
-```
+```javascript
 // Create new hub
 app.post(`${base_path}/users/:userId/hubs`, validateToken, async (req, res, next) => {
   try {
@@ -428,13 +431,10 @@ Fig. 14: `validateToken` middleware is being used for these endpoints. To create
 
 The centralized nature of middleware ensures that the `validateToken` function is the only function and code responsible for validating the token. If I needed to change the method of authentication, I could simply modify my middleware function and any necessary parameters/configuration, ensuring that if the user is not authenticated a 401 Error is thrown, and if they are, executing the intended task, in the above case, getting hubs, or creating a hub, illustrating the separation of concerns and extensibility.
 
-#### Routes
-I follow the standard REST and CRUD patterns, exchanging JSON data, to make the server as stateless as possible. The routes for different paths enable the client to modify and access different documents in the database through the backend API. The API acts as an interface into the application, and indirectly communicates with the (stateful) database through services.
+### Services
+Much like my frontend service, I implement a service pattern in my backend that separates the database access out from the API server file to services. These services enforce separation of concerns and abstract out database access. Figure fourteen shown above shows the `HubService` being used to create and get all hubs with their respective methods on the `HubService` class. If implemented correctly, this abstraction ensures I can expect a specific result to be returned by the class method, requiring only that I focus on the API server logic. This is especially powerful while working on teams that write robust and precise tests for behaviors of their systems’ individual parts, as they are able to more quickly collaborate and communicate behaviors. For example, I can write a test to describe the `HubService` and ensure that the delete method returns a promise while the `getAll` method returns an array. If a team member rewrites the `HubService` changing the behavior, running the test suite locally will result in the test suite failing, and more importantly the deployment tools should not build a breaking application.
 
-#### Services
-Much like my frontend service, I implement a service pattern in my backend that separates the database access out from the API server file to services. These services enforce separation of concerns and abstract out database access. Figure fourteen shown above shows the `HubService` being used to create and get all hubs with their respective methods on the `HubService` class. If implemented correctly, this abstraction ensures I can expect a specific result to be returned by the class method, requiring only that I focus on the API server logic. This is especially powerful while working on teams that write robust and precise tests for behaviors of their systems’ individual parts, as they are able to more quickly collaborate and communicate behaviors. For example, I can write a test to describe the `HubService` and ensure that the delete method returns a promise while the getAll method returns an array. If a team member rewrites the `HubService` changing the behavior, running the test suite locally will result in the test suite failing, and more importantly the deployment tools should not build a breaking application.
-
-#### Token Authentication
+### Token Authentication
 To simplify state management on my server I opted for token authentication instead of session-based authentication, which would require the server to store the state of the user session, increasing complexity. Instead, token authentication uses a ephemeral signed token that it validates on every protected request for a given user. This is a simple and highly secure way of authenticating. However, it does introduce some headaches, because if someone gets their hands on the token either by accessing the client’s cookies or by somehow impersonating the user, they can make requests on their behalf. I fight this by automatically logging out the user every time they leave the webpage or refresh. Also, since the token has a set expiration, there is not any direct way to invalidate a token, so I would have to implement a blacklist or other permissions models in the middleware if users want to invalidate tokens earlier than their expiry date. The stateless nature of token authentication further reduces the reliance on state in the backend server and reduces complexity for developers.
 
 ## Workflow and Project Management
@@ -444,3 +444,47 @@ I optimized my local development workflow by mounting a volume on my backend and
 
 #### Automatic Change Detection
 During development, both my frontend and backend services automatically recompile upon saving changes. This enables quick development time by automating the recompilation process.
+
+## Appendix
+### Appendix A
+#### LOs
+#abstraction - The service API calls are an abstraction of the actual service logic. In the backend, my service deals with the direct database modifications and reading which allows my API to use a much more abstract class to access the database indirectly. This abstraction relates to the separation of concerns because we do not need to worry about security or accessing the database in the API, just with the service. Abstraction is always a balance. Abstraction takes time and sometimes ends up increasing the complexity instead of reducing it when the actual code being run is hidden under layers and layers of abstractions. Thus, is important to weigh how much an abstraction will be used/understood to determine if its worth the time and effort.
+
+#designpatterns - I followed design patterns surrounding Docker and deployment with docker containers. For example, I have a docker-compose.yml and an override file that only overrides on development, but is not present in the production systems, a design pattern seen in the Docker community to ensure consistency and replicability of the image.
+
+#modularity - I dockerized my application to ensure that each component is self-contained (frontend, backend, database). I split my application into these different services because each of them has a server running. This way, they can talk to each other as independent agents to exchange information. Specifically, as discussed earlier, I split the backend service into the backend and database services because there is a prebuilt Mongo image that works out of the box for an easy dockerized database.
+
+#scalability - My deployment pipeline simply tests the different images, then deploys them in containers on Hyper.sh. This also allows for easy scalability in the future where I can add in automatic load balancing and other scaling functions on a platform like AWS ECR/EC2. Docker greatly enables scaling horizontally while the tests present in my application provide scalability by simplifying maintenance and debugging. Tests help with the more human side of scaling to ensure people understand when changes they made breaks the behavior of code someone else wrote which is especially useful when a team is growing and not all team members have knowledge of the codebase and the impacts of their changes.
+
+#separationofconcerns - My choice to outsource the database calls to services for specific models allowed me to greatly simplify the logic in my API calls. The service deals with making calls to the database, while the API uses the service. Throughout my codebase I separate concerns to isolate functionality and simplify structure.
+
+### Appendix B
+#### HCs
+#algorithms - Most of the codebase is not made up of algorithms, however in my API server logic I use algorithms to interact with the database using data from API calls from the client. For example, I check the hashed password the user attempts a login with the one stored in the database, and on any API calls made, I verify that the token the user sends with the API call is valid.
+
+#analogies - I use analogies to compare both spaghetti and car engines to a software system. I relate concepts from software development to accessible concepts from everyday life to help the reader understand the behavior of systems I’m describing.
+
+#biasmitigation - Sunk cost is rife in software development. Developers implement features, code, algorithms, endpoints, and then hang on to it for dear life, but code has to be let go. I avoided sunk cost fallacies by deleting thousands of lines of code, when necessary, in the process of building Alice.
+
+#breakitdown - I split the project into multiple hierarchies and multiple subproblems. I first split it into user research & product, interface design, frontend implementation, backend implementation, infrastructure, deployment, and devops
+
+#constraints - Imposing constraints around codebase complexity forced me to pragmatically design and implement my product by not over-optimizing code. More specifically, constraining the standard form of CSS files with BEM, access to the database with services, and implementing Redux to manage the frontend, among other measures, enabled me to reduce the complexity of the codebase and aided in building a more sustainable codebase.
+
+#expectedutility - Software development is a constant optimization problem where you approximate where the best use of your time is to improve the codebase and move towards the goals you set. Upon changing code, my docker images had to be rebuilt and pushed up. I spent time figuring out how to speed this process up/automate it/get rid of it. Automating the docker image process by mounting a volume sped up development time by at least 1 minute every time I spin up my application, which happens about 4 times per day during development, 15 days per month, for four months. I weighed the amount of time I would save over four months (~4 hours) and the time it would take to automate the process (~1 hour) to determine that it was worth my time (+3 hours of productivity).
+
+#multipleagents - Miscommunication between engineers is one cause of risk in a software system. Although only one person worked on this system, I wrote it for a nonexistent team. I needed to write the system with the understanding that multiple people are needed to work on a software system. My main design decisions factor in that miscommunication between people is what causes catastrophic failure.
+
+#nudge - If you write tests effectively you can nudge engineers to use sustainable software development practices. Due to the automated deployment pipeline, if there is a problem with newly pushed code, it does not deploy it because breaking tests warn the system that the engineer is pushing up broken code. If the engineer really wanted to push up breaking code they would have to manually deploy the system which would be difficult and unreliable. Tests are to nudge engineers to make sure their code doesn’t break parts of the application.
+
+#plausibility - I learned the hard way that building out a massive device management platform was implausible given the time and resources I had. The plans I had were too grand; however, my ability to iterate and adapt my project helped me shave down the system to become much more plausible.
+
+#rightproblem - Instead of trying to write code for concision and beauty I wrote it for clarity and effectiveness. Code is not meant to be beautiful, its meant to be understandable so other people can read and write it.
+
+## References
+Atwood, J. (2007, May 30). Coding Horror.
+
+Getting Started with Redux · Redux. (2018, December 9).
+
+Martin, R. C., Coplien, J. O., Wampler, K., Grenning, J. W., Schuchert, B. L., Langr, J., . . . Feathers, M. C. (2016). Clean code: A handbook of agile software craftsmanship. Prentice Hall.
+
+Powell, M. (2018, April 29). React State Management Patterns.
