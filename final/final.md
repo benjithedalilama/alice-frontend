@@ -290,7 +290,7 @@ Fig. 11: Similarly the `Signup` component makes use of these classes
 
 </span>
 
-The BEM pattern takes no extra memory as it is not a library, and is simply a naming convention. The main drawback of the BEM pattern is that it is not enforceable without using external tools like a [BEM linter](https://github.com/postcss/postcss-bem-linter). Thus, it relies on people in the organization to educate new team members and facilitate the use of the pattern, otherwise there will be a mess of non-BEM and BEM CSS. When shared and used properly, the BEM pattern provides reusability and a strict rule set that can be followed by a software team improving extensibility.
+The BEM pattern takes no extra memory as it is not a library, its simply a naming convention. The main drawback of the BEM pattern is that it is not enforceable without using external tools like a [BEM linter](https://github.com/postcss/postcss-bem-linter). Thus, it relies on people in the organization to educate new team members and facilitate the use of the pattern, otherwise there will be a mess of non-BEM and BEM CSS. When shared and used properly, the BEM pattern provides reusability and a standard rule set that can be followed by a software team, improving extensibility.
 
 ### Tests
 Testing is an important part of any application, and depending on how they are written, tests can bring attention to unexpected behaviors or broken features in your application. Figure twelve shows a test for the `hubsReducer` function that tests the reducer for specific behavior when the reducer does not receive a `state` parameter.
@@ -369,7 +369,6 @@ The API Endpoints are accessible via a Node.js server running Express, which hol
 #### Middleware
 The use of middleware greatly demonstrates separation of concerns and enables extensibility of functions executed in the middleware. Since middleware only has to be defined in one place when designed properly, and can be called when any API endpoint is hit, it is highly reusable. For example, the validateToken middleware seen in figure thirteen is called on any routes that require authentication in the API. Following that, figure fourteen shows the validateToken middleware being called.
 
-
 ```javascript
 import jwt from 'jsonwebtoken'
 
@@ -431,6 +430,9 @@ Fig. 14: `validateToken` middleware is being used for these endpoints. To create
 
 The centralized nature of middleware ensures that the `validateToken` function is the only function and code responsible for validating the token. If I needed to change the method of authentication, I could simply modify my middleware function and any necessary parameters/configuration, ensuring that if the user is not authenticated a 401 Error is thrown, and if they are, executing the intended task, in the above case, getting hubs, or creating a hub, illustrating the separation of concerns and extensibility.
 
+### Scalability
+My application is scalable by design; however, I have not tested it by putting it under extreme traffic loads. Firstly, Node.js' event-driven I/O (input/output) helps it stay lightweight and efficient. "Where Node.js really shines is in building fast, scalable network applications, as it’s capable of handling a huge number of simultaneous connections with high throughput, which equates to high scalability" (Capan, 2017). Node.js enables me to have hundreds of thousands of users interacting with my app simultaneously and would handle it well. Mongo, with appropriate configuration, is highly scalable and can both scale data, clusters, and performance. Mongo is fast by design, storing unstructured data in hash tables for quick reading and writing.
+
 ### Services
 Much like my frontend service, I implement a service pattern in my backend that separates the database access out from the API server file to services. These services enforce separation of concerns and abstract out database access. Figure fourteen shown above shows the `HubService` being used to create and get all hubs with their respective methods on the `HubService` class. If implemented correctly, this abstraction ensures I can expect a specific result to be returned by the class method, requiring only that I focus on the API server logic. This is especially powerful while working on teams that write robust and precise tests for behaviors of their systems’ individual parts, as they are able to more quickly collaborate and communicate behaviors. For example, I can write a test to describe the `HubService` and ensure that the delete method returns a promise while the `getAll` method returns an array. If a team member rewrites the `HubService` changing the behavior, running the test suite locally will result in the test suite failing, and more importantly the deployment tools should not build a breaking application.
 
@@ -448,13 +450,13 @@ During development, both my frontend and backend services automatically recompil
 ## Appendix
 ### Appendix A
 #### LOs
-#abstraction - The service API calls are an abstraction of the actual service logic. In the backend, my service deals with the direct database modifications and reading which allows my API to use a much more abstract class to access the database indirectly. This abstraction relates to the separation of concerns because we do not need to worry about security or accessing the database in the API, just with the service. Abstraction is always a balance. Abstraction takes time and sometimes ends up increasing the complexity instead of reducing it when the actual code being run is hidden under layers and layers of abstractions. Thus, is important to weigh how much an abstraction will be used/understood to determine if its worth the time and effort.
+#abstraction - The service API calls are an abstraction of the actual service logic. In the backend, my service deals with the direct database modifications and reading which allows my API to use a much more abstract class to access the database indirectly. This abstraction relates to the separation of concerns because we do not need to worry about security or accessing the database in the API, just with the service.
 
 #customercentricity - I interviewed and worked with automation engineers at Entocycle, an insect farming company, to make sure product research stemmed directly from potential customers in a highly specified field. Working directly with my customer (engineers at an automated farm), and not less relevant users (e.g. HR director at the farm), helped me stay focused on the target customer.
 
-#designpatterns - I followed design patterns surrounding Docker and deployment with docker containers. For example, I have a docker-compose.yml and an override file that only overrides on development, but is not present in the production systems, a design pattern seen in the Docker community to ensure consistency and replicability of the image.
+#designpatterns - I effectively used multiple design patterns in the technology, structure, and subsystems of my application. For example, I use the facade pattern when building out my services, abstracting out complexity and providing an interface to modify subsystems. Additionally, I utilize relatively new design patterns like Redux and BEM to reduce complexity in my application.
 
-#modularity - I dockerized my application to ensure that each component is self-contained (frontend, backend, database). I split my application into these different services because each of them has a server running. This way, they can talk to each other as independent agents to exchange information. Specifically, as discussed earlier, I split the backend service into the backend and database services because there is a prebuilt Mongo image that works out of the box for an easy dockerized database.
+#modularity - I dockerized my application to ensure that each component is self-contained (frontend, backend, database) and plugs into other subsystems. I split my application into these different services so they can talk to each other as independent agents to exchange information. Specifically, as discussed earlier, I split the backend service into the backend and database services because there is a prebuilt Mongo image that works out of the box for an easy dockerized database. Modularity is related to separation of concerns as rectangles are to squares. Just because something is modular does not necessarily mean its concerns are separated. However, if concerns are separated, chances are it's designed in a modular way. For example, a group of subsystems that are highly codependent are modular, but concerns are not separated. A group of subsystems that all are responsible with their own function is probably modular.
 
 #newproductdesign - By listening to users directly during product development I was able to shape the product around the customer. Specifically, conducting user centered research enabled me to draw specific product features directly from research. I used methods such as card sorting, unbiased interviews, and service blueprints to understand user needs and develop the product.
 
@@ -476,7 +478,7 @@ During development, both my frontend and backend services automatically recompil
 
 #expectedutility - Software development is a constant optimization problem where you approximate where the best use of your time is to improve the codebase and move towards the goals you set. Upon changing code, my docker images had to be rebuilt and pushed up. I spent time figuring out how to speed this process up/automate it/get rid of it. Automating the docker image process by mounting a volume sped up development time by at least 1 minute every time I spin up my application, which happens about 4 times per day during development, 15 days per month, for four months. I weighed the amount of time I would save over four months (~4 hours) and the time it would take to automate the process (~1 hour) to determine that it was worth my time (+3 hours of productivity).
 
-#multipleagents - Miscommunication between engineers is one cause of risk in a software system. Although only one person worked on this system, I wrote it for a nonexistent team. I needed to write the system with the understanding that multiple people are needed to work on a software system. My main design decisions factor in that miscommunication between people is what causes catastrophic failure.
+#multipleagents - Miscommunication between engineers is one cause of risk in a software system. Although only one person worked on this system, I wrote this software as if I was a small part of a larger team, and I focused on establishing and following clear coding standards. I needed to write the system with the understanding that multiple people are needed to work on a software system. My main design decisions factor in that miscommunication between people is what causes catastrophic failure.
 
 #nudge - If you write tests effectively you can nudge engineers to use sustainable software development practices. Due to the automated deployment pipeline, if there is a problem with newly pushed code, it does not deploy it because breaking tests warn the system that the engineer is pushing up broken code. If the engineer really wanted to push up breaking code they would have to manually deploy the system which would be difficult and unreliable. Tests are to nudge engineers to make sure their code doesn’t break parts of the application.
 
@@ -629,6 +631,8 @@ Using methods I have learned through classes such as *Human Computer Interaction
 ## References
 
 Atwood, J. (2007, May 30). Coding Horror.
+
+Capan, T. (2017, February 24). Why the Hell Would You Use Node.js.
 
 Feathers, M. C. (2016). Clean code: A handbook of agile software craftsmanship. Prentice Hall.
 
