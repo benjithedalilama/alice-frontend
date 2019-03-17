@@ -44,10 +44,10 @@ This is the nightmare of state management, and has often been one of the hardest
 
 ## Frontend Implementation
 ### React
-React, a Javascript-based client-side library, has a component-based architecture which lends itself to a system that has well-defined separations of concerns, great extensibility, and allows us to manage state in a standard way. React uses components which can modify the skeleton of a webpage, called the DOM (document object model). Each component is a JavaScript function that returns a piece of code that represents a piece of a web page (Domes, 2017). For example, the `Hub` component can both be used in the `HubView` component and the `HubListView` because the same basic component is present in both of those other components. The `Hub` component file is responsible solely for the `Hub` component, while the `HubView` is responsible for a specific display mode of the `Hub`. This architecture allows for developers to modify the `Hub` component without having to worry about changing the other components. This demonstrates the advantages of React: separation of concerns and extensibility is built into React with its component-based architecture.
+[React](https://reactjs.org/), a Javascript-based client-side library, has a component-based architecture which lends itself to a system that has well-defined separations of concerns, great extensibility, and allows us to manage state in a standard way. React uses components which can modify the skeleton of a webpage, called the DOM (document object model). Each component is a JavaScript function that returns a piece of code that represents a piece of a web page (Domes, 2017). For example, the [`Hub`](https://github.com/benjithedalilama/alice-frontend/blob/master/src/components/hub/index.js) component can both be used in the [`HubView`](https://github.com/benjithedalilama/alice-frontend/blob/master/src/components/hubview/index.js) component and the [`HubListView`](https://github.com/benjithedalilama/alice-frontend/blob/master/src/components/hublistview/index.js) because the same basic component is present in both of those other components. The [`Hub`](https://github.com/benjithedalilama/alice-frontend/blob/master/src/components/hub/index.js) component file is responsible solely for the [`Hub`](https://github.com/benjithedalilama/alice-frontend/blob/master/src/components/hub/index.js) component, while the [`HubView`](https://github.com/benjithedalilama/alice-frontend/blob/master/src/components/hubview/index.js) is responsible for a specific display mode of the [`Hub`](https://github.com/benjithedalilama/alice-frontend/blob/master/src/components/hub/index.js). This architecture allows for developers to modify the [`Hub`](https://github.com/benjithedalilama/alice-frontend/blob/master/src/components/hub/index.js) component without having to worry about changing the other components. This demonstrates the advantages of React: separation of concerns and extensibility is built into React with its component-based architecture.
 
 #### React Components
-I defined the components in my application for reusability and separation of concerns. Much like the `Hub` component, some of the components like the `List` component are meant to be extended into components like the `SensorList`, `CommandList`, and lists of other components that need customizable styling. Other components like the `ProfilePreview` and `Searchbar` are only called once in the code, but are created for modularity and future extensibility. Instead of housing a bunch of directives (`div`’s) in one JS file, I am able to ‘outsource’ the code into a React component and make the code cleaner, more modular, and ultimately easier to debug. Figures one and two below show the `ProfilePreview` component implementation and rendering. This example demonstrates that although components are meant to be reusable, they can still provide value even if they are only used once throughout the application. The tradeoffs between the time it takes to built an abstracted component, and the time saved by the component is important to consider, but sometimes building an abstract component is valuable just for the sake of modularity, separation of concerns, and future extensibility.
+I defined the components in my application for reusability and separation of concerns. Much like the [`Hub`](https://github.com/benjithedalilama/alice-frontend/blob/master/src/components/hub/index.js) component, some of the components like the [`List`](https://github.com/benjithedalilama/alice-frontend/blob/master/src/components/list/index.js) component are meant to be extended into components like the [`SensorList`](https://github.com/benjithedalilama/alice-frontend/blob/master/src/components/sensorlist/index.js), [`CommandList`](https://github.com/benjithedalilama/alice-frontend/blob/master/src/components/commandlist/index.js), and lists of other components that need customizable styling. Other components like the [`ProfilePreview`](https://github.com/benjithedalilama/alice-frontend/blob/master/src/components/profilepreview/index.js) and [`Searchbar`](https://github.com/benjithedalilama/alice-frontend/blob/master/src/components/searchbar/index.js) are only called once in the code, but are created for modularity and future extensibility. Instead of housing a bunch of directives (`div`’s) in one JS file, I am able to ‘outsource’ the code into a React component and make the code cleaner, more modular, and ultimately easier to debug. Figures one and two below show the [`ProfilePreview`](https://github.com/benjithedalilama/alice-frontend/blob/master/src/components/profilepreview/index.js) component implementation and rendering. This example demonstrates that although components are meant to be reusable, they can still provide value even if they are only used once throughout the application. The tradeoffs between the time it takes to built an abstracted component, and the time saved by the component is important to consider, but sometimes building an abstract component is valuable just for the sake of modularity, separation of concerns, and future extensibility.
 
 ```javascript
 import React from 'react'
@@ -66,7 +66,7 @@ export default connect()(ProfilePreview)
 ```
 <span style="display:block" align="center">
 
-Fig. 1: `ProfilePreview` component implementation
+Fig. 1: [`ProfilePreview`](https://github.com/benjithedalilama/alice-frontend/blob/master/src/components/profilepreview/index.js) component implementation
 
 </span>
 
@@ -91,7 +91,7 @@ Fig. 1: `ProfilePreview` component implementation
 ```
 <span style="display:block" align="center">
 
-Fig. 2: Header from `View` component implementation, renders `ProfilePreview` component
+Fig. 2: Header from [`View`](https://github.com/benjithedalilama/alice-frontend/blob/master/src/components/view/index.js) component implementation, renders [`ProfilePreview`](https://github.com/benjithedalilama/alice-frontend/blob/master/src/components/profilepreview/index.js) component
 
 </span>
 
@@ -100,7 +100,7 @@ By enforcing a central source of truth and standardizing the direction of data f
 
 Advantageously, React pairs well with Redux. React's component-based design pattern helps with state management because each component has the ability to dispatch actions which are processed by the root reducer and ultimately return a new application state. This means that I can manage the view dynamically across my entire application by dispatching actions within components, further separating concerns related to state management.
 
-Actions are dispatched using Javascript in the React components themselves. The actions are received by reducers, explained later, which decide how to modify the store (the Redux centralized application state). For example, the `HubListView` loads in the hubs by dispatching an action that loads in the hubs by hitting an API endpoint. Figure three below shows this pattern in action.
+Actions are dispatched using Javascript in the React components themselves. The actions are received by reducers, explained later, which decide how to modify the store (the Redux centralized application state). For example, the [`HubListView`](https://github.com/benjithedalilama/alice-frontend/blob/master/src/components/hublistview/index.js) loads in the hubs by dispatching an action that loads in the hubs by hitting an API endpoint. Figure three below shows this pattern in action.
 
 ```javascript
 export class HubListView extends Component {
@@ -127,13 +127,13 @@ export class HubListView extends Component {
 ```
 <span style="display:block" align="center">
 
-Fig. 3: `HubListView` component dispatches an action to load the hubs after the component is mounted to the DOM (document object model)
+Fig. 3: [`HubListView`](https://github.com/benjithedalilama/alice-frontend/blob/master/src/components/hublistview/index.js) component dispatches an action to load the hubs after the component is mounted to the DOM (document object model)
 
 </span>
 
-Once the `fetchHubs` action is dispatched and received by the root reducer (a combination of all of the smaller reducers), our `hubs` and `filteredHubs` arrays are updated because the reducer returns a new state object including the modifications the action specified.
+Once the [`fetchHubs`](https://github.com/benjithedalilama/alice-frontend/blob/30877ae5c4d66610d1e3930e5bf10bc13bdc23ff/src/actions/hubActions.js#L65) action is dispatched and received by the root reducer (a combination of all of the smaller reducers), our [`hubs`](https://github.com/benjithedalilama/alice-frontend/blob/30877ae5c4d66610d1e3930e5bf10bc13bdc23ff/src/components/hublistview/index.js#L32) and [`filteredHubs`](https://github.com/benjithedalilama/alice-frontend/blob/30877ae5c4d66610d1e3930e5bf10bc13bdc23ff/src/components/hublistview/index.js#L33) arrays are updated because the reducer returns a new state object including the modifications the action specified.
 
-Now you may ask, wouldn’t we be able to manage the state and the view of a component without Redux? Doesn’t it complicate things? Yes and no. The regular React pattern requires less upfront resources, but long term Redux helps handle complexity much better. An example of the regular React pattern is shown in figure four below where the `handleChange` function updates the state when an input’s `value` changes.
+Now you may ask, wouldn’t we be able to manage the state and the view of a component without Redux? Doesn’t it complicate things? Yes and no. The regular React pattern requires less upfront resources, but long term Redux helps handle complexity much better. An example of the regular React pattern is shown in figure four below where the [`handleChange`](https://github.com/benjithedalilama/alice-frontend/blob/30877ae5c4d66610d1e3930e5bf10bc13bdc23ff/src/components/addhubview/index.js#L19) function updates the state when an input’s [`value`](https://github.com/benjithedalilama/alice-frontend/blob/30877ae5c4d66610d1e3930e5bf10bc13bdc23ff/src/components/addhubview/index.js#L20) changes.
 
 ```javascript
 handleChange(e) {
@@ -143,16 +143,16 @@ handleChange(e) {
 ```
 <span style="display:block" align="center">
 
-Fig. 4: The `handleChange` function
+Fig. 4: The [`handleChange`](https://github.com/benjithedalilama/alice-frontend/blob/30877ae5c4d66610d1e3930e5bf10bc13bdc23ff/src/components/addhubview/index.js#L19) function
 
 </span>
 
-Component state is an object tree which defines how a component is rendered and behaves in your application, while application state is an overarching object tree which can be accessed from anywhere in the application. React provides us with a simple and straightforward approach to component state. However, we don’t have an easy process for our component to React to changes in application state, and we don’t want to unnecessarily use component state. We only want to use the component state for highly localized use cases, such as the `handleChange` function above, and not for application state. In a medium article, Micah Powell cleverly states: “If global state has to be reset when a component un-mounts, it probably should have been in the component state to begin with” (Powell, 2018). Powell is saying it is unnecessary to store application state if a page doesn't need the state to stay in memory when leaving or reloading the page. Concretely, our application as a whole does not care about the state of an input form or a menu being opened/closed, so we limit knowledge and memory to the component state. The state should be handled by the component, not by the Redux store because we don’t expect those properties to persist onto another page.
+Component state is an object tree which defines how a component is rendered and behaves in your application, while application state is an overarching object tree which can be accessed from anywhere in the application. React provides us with a simple and straightforward approach to component state. However, we don’t have an easy process for our component to React to changes in application state, and we don’t want to unnecessarily use component state. We only want to use the component state for highly localized use cases, such as the [`handleChange`](https://github.com/benjithedalilama/alice-frontend/blob/30877ae5c4d66610d1e3930e5bf10bc13bdc23ff/src/components/addhubview/index.js#L19) function above, and not for application state. In a medium article, Micah Powell cleverly states: “If global state has to be reset when a component un-mounts, it probably should have been in the component state to begin with” (Powell, 2018). Powell is saying it is unnecessary to store application state if a page doesn't need the state to stay in memory when leaving or reloading the page. Concretely, our application as a whole does not care about the state of an input form or a menu being opened/closed, so we limit knowledge and memory to the component state. The state should be handled by the component, not by the Redux store because we don’t expect those properties to persist onto another page.
 
 In summary, State management becomes increasingly complex as we add more moving parts to our application, and the standardized process Redux enforces allows us to keep track of actions that affect our application. This does not come without costs, of course. Often developers will rely too heavily on Redux, making the actions and reducers unnecessarily bloated and unmanageable (2018). There is also a balance between presentational and container components. Many components may not need to be aware of the global state Redux introduces, and wrongfully making them aware of the global state further complicates the software system and frontend state management. Taking this all into account, Redux is well worth the investment of time and energy if used thoughtfully and effectively to reduce the complexity of state management.
 
 #### Redux Actions
-Actions hold information about what happened, which allows us to handle the actions separately from where they were called, further improving separation of concerns and extensibility. If actions are written clearly and atomically they contribute to a more extensible application overall by allowing the ability to create, modify, or remove an action. With confidence, a developer trusts that the action is the only element of the application concerned with a certain function or role. To demonstrate, figure five below shows an action notifying Redux that hubs were successfully fetched (loaded). When `fetchHubsSuccess` is dispatched with a `hubs` parameter, Redux receives the action, and can modify the application state based on the type and payload of the action. If we wanted to extend this action to return a payload including a timestamp, we could easily add that as a parameter in both the action definition and where we dispatch the action if necessary. This behavior simplifies state management because the central store is being accessed in a regulated way, which can make it easier to understand the flow of data in the application.
+Actions hold information about what happened, which allows us to handle the actions separately from where they were called, further improving separation of concerns and extensibility. If actions are written clearly and atomically they contribute to a more extensible application overall by allowing the ability to create, modify, or remove an action. With confidence, a developer trusts that the action is the only element of the application concerned with a certain function or role. To demonstrate, figure five below shows an action notifying Redux that hubs were successfully fetched (loaded). When [`fetchHubsSuccess`](https://github.com/benjithedalilama/alice-frontend/blob/30877ae5c4d66610d1e3930e5bf10bc13bdc23ff/src/actions/hubActions.js#L55) is dispatched with the `hubs` parameter, Redux receives the action, and can modify the application state based on the type and payload of the action. If we wanted to extend this action to return a payload including a timestamp, we could easily add that as a parameter in both the action definition and where we dispatch the action if necessary. This behavior simplifies state management because the central store is being accessed in a regulated way, which can make it easier to understand the flow of data in the application.
 
 ```javascript
 export const fetchHubsSuccess = hubs => ({
@@ -162,12 +162,12 @@ export const fetchHubsSuccess = hubs => ({
 ```
 <span style="display:block" align="center">
 
-Fig. 5: `fetchHubsSuccess` action which returns a type and a payload of `hubs`
+Fig. 5: [`fetchHubsSuccess`](https://github.com/benjithedalilama/alice-frontend/blob/30877ae5c4d66610d1e3930e5bf10bc13bdc23ff/src/actions/hubActions.js#L55) action which returns a type and a payload of [`hubs`](https://github.com/benjithedalilama/alice-frontend/blob/30877ae5c4d66610d1e3930e5bf10bc13bdc23ff/src/actions/hubActions.js#L57)
 
 </span>
 
 #### Redux Reducers
-When actions are dispatched, reducers handle them, and return a newly minted application state. Reducers returning a new state, instead of modifying an existing state, helps simplify state management. Unexpected bugs can occur when mutating an existing state, so creating a new state every time a change needs to be made helps us reduce the occurrence of those bugs. To illustrate, figure six below shows the `hubReducer` which handles when the `fetchHubsSuccess` action is dispatched.
+When actions are dispatched, reducers handle them, and return a newly minted application state. Reducers returning a new state, instead of modifying an existing state, helps simplify state management. Unexpected bugs can occur when mutating an existing state, so creating a new state every time a change needs to be made helps us reduce the occurrence of those bugs. To illustrate, figure six below shows the [`hubReducer`](https://github.com/benjithedalilama/alice-frontend/blob/30877ae5c4d66610d1e3930e5bf10bc13bdc23ff/src/reducers/hubReducer.js#L102) which handles when the [`fetchHubsSuccess`](https://github.com/benjithedalilama/alice-frontend/blob/30877ae5c4d66610d1e3930e5bf10bc13bdc23ff/src/actions/hubActions.js#L55) action is dispatched.
 
 ```javascript
 export default function hubReducer(state = initialState, action) {
@@ -199,14 +199,14 @@ export default function hubReducer(state = initialState, action) {
 ```
 <span style="display:block" align="center">
 
-Fig. 6: `hubReducer` function that returns a new state
+Fig. 6: [`hubReducer`](https://github.com/benjithedalilama/alice-frontend/blob/30877ae5c4d66610d1e3930e5bf10bc13bdc23ff/src/reducers/hubReducer.js#L102) function that returns a new state
 
 </span>
 
-Upon receiving an action with the type of `FETCH_HUBS_SUCCESS`, the reducer returns a new state with the `action.payload.hubs` set as the value for the `items` key in the Redux store object tree. The `items` are later displayed in the `HubListView` component shown in figure three earlier. The enforced directionality of data flow paired with a centralized state and standardized data modification process (action, reducer, store) aids in separating concerns and improving the state management process.
+Upon receiving an action with the type of [`FETCH_HUBS_SUCCESS`](https://github.com/benjithedalilama/alice-frontend/blob/30877ae5c4d66610d1e3930e5bf10bc13bdc23ff/src/reducers/hubReducer.js#L109), the reducer returns a new state with the [`action.payload.hubs`](https://github.com/benjithedalilama/alice-frontend/blob/30877ae5c4d66610d1e3930e5bf10bc13bdc23ff/src/reducers/hubReducer.js#L114) set as the value for the `items` key in the Redux store object tree. The `items` are later displayed in the [`HubListView`](https://github.com/benjithedalilama/alice-frontend/blob/master/src/components/hublistview/index.js) component shown in figure three earlier. The enforced directionality of data flow paired with a centralized state and standardized data modification process (action, reducer, store) aids in separating concerns and improving the state management process.
 
 ### Services
-I make use of services to separate API calls for loading in data from the server side. This improves extensibility and separation of concerns, ensuring there is only one place where those API endpoints are being called. This also improves reusability because we can call the services from anywhere in our application. Figure seven shows the `HubService.getAll` function being called, and figure eight shows what is going on under the hood.
+I make use of services to separate API calls for loading in data from the server side. This improves extensibility and separation of concerns, ensuring there is only one place where those API endpoints are being called. This also improves reusability because we can call the services from anywhere in our application. Figure seven shows the [`HubService.getAll`](https://github.com/benjithedalilama/alice-frontend/blob/30877ae5c4d66610d1e3930e5bf10bc13bdc23ff/src/services/hubService.js#L7) function being called, and figure eight shows what is going on under the hood.
 
 ```javascript
 export const fetchHubs = () => {
@@ -227,7 +227,7 @@ export const fetchHubs = () => {
 ```
 <span style="display:block" align="center">
 
-Fig. 7: `fetchHubs` higher order action using the `HubService` class to get all hubs for a user
+Fig. 7: [`fetchHubs`](https://github.com/benjithedalilama/alice-frontend/blob/30877ae5c4d66610d1e3930e5bf10bc13bdc23ff/src/actions/hubActions.js#L65) higher order action using the [`HubService`](https://github.com/benjithedalilama/alice-frontend/blob/master/src/services/hubService.js#L7) class to get all hubs for a user
 
 </span>
 
@@ -252,7 +252,7 @@ class HubService {
 ```
 <span style="display:block" align="center">
 
-Fig. 8: `HubService` class `getAll` method implementation. This function gets all hubs for a specific user from an API, and returns all of the hubs.
+Fig. 8: [`HubService`](https://github.com/benjithedalilama/alice-frontend/blob/master/src/services/hubService.js#L7) class https://github.com/benjithedalilama/alice-frontend/blob/master/src/services/hubService.js#L7 method implementation. This function gets all hubs for a specific user from an API, and returns all of the hubs.
 
 </span>
 
@@ -277,11 +277,11 @@ For CSS styling, I followed the [BEM](http://getbem.com/) (block, element, modif
 ```
 <span style="display:block" align="center">
 
-Fig. 9: BEM classes being used in the `Login` view
+Fig. 9: BEM classes being used in the [`Login`](https://github.com/benjithedalilama/alice-frontend/blob/master/src/components/login/index.js) view
 
 </span>
 
-The `form__container`, `form`, `form__form`, `form__text`, and other form-related classes can be reused, such as in the `AddCodeView` component and `Signup` components seen below in figures ten and eleven respectively.
+The [`form__container`](https://github.com/benjithedalilama/alice-frontend/blob/30877ae5c4d66610d1e3930e5bf10bc13bdc23ff/src/index.css#L40), [`form`](https://github.com/benjithedalilama/alice-frontend/blob/30877ae5c4d66610d1e3930e5bf10bc13bdc23ff/src/index.css#L130), [`form__form`](https://github.com/benjithedalilama/alice-frontend/blob/30877ae5c4d66610d1e3930e5bf10bc13bdc23ff/src/index.css#L143), [`form__text`](https://github.com/benjithedalilama/alice-frontend/blob/30877ae5c4d66610d1e3930e5bf10bc13bdc23ff/src/index.css#L152), and other form-related classes can be reused, such as in the [`AddCodeView`](https://github.com/benjithedalilama/alice-frontend/blob/master/src/components/addcodeview/index.js) component and [`Signup`](https://github.com/benjithedalilama/alice-frontend/blob/master/src/components/signup/index.js) components seen below in figures ten and eleven respectively.
 
 ```html
 <div className="form__container">
@@ -300,7 +300,7 @@ The `form__container`, `form`, `form__form`, `form__text`, and other form-relate
 ```
 <span style="display:block" align="center">
 
-Fig. 10: The `AddCodeView` component employs the use of form-related BEM classes
+Fig. 10: The [`AddCodeView`](https://github.com/benjithedalilama/alice-frontend/blob/master/src/components/addcodeview/index.js) component employs the use of form-related BEM classes
 
 </span>
 
@@ -321,14 +321,14 @@ Fig. 10: The `AddCodeView` component employs the use of form-related BEM classes
 ```
 <span style="display:block" align="center">
 
-Fig. 11: Similarly the `Signup` component makes use of these classes
+Fig. 11: Similarly the [`Signup`](https://github.com/benjithedalilama/alice-frontend/blob/master/src/components/signup/index.js) component makes use of these classes
 
 </span>
 
 The BEM pattern takes no extra memory as it is not a library, its simply a naming convention. The main drawback of the BEM pattern is that it is not enforceable without using external tools like a [BEM linter](https://github.com/postcss/postcss-bem-linter). Thus, it relies on people in the organization to educate new team members and facilitate the use of the pattern, otherwise there will be a mess of non-BEM and BEM CSS. When shared and used properly, the BEM pattern provides reusability and a standard rule set that can be followed by a software team, improving extensibility.
 
 ### Tests
-Testing is an important part of any application, and depending on how they are written, tests can bring attention to unexpected behaviors or broken features in your application. Figure twelve shows a test for the `userReducer` function that tests the reducer for specific behavior when the reducer receive an undefined `state` parameter.
+Testing is an important part of any application, and depending on how they are written, tests can bring attention to unexpected behaviors or broken features in your application. Figure twelve shows a test for the [`userReducer`](https://github.com/benjithedalilama/alice-frontend/blob/30877ae5c4d66610d1e3930e5bf10bc13bdc23ff/src/reducers/userReducer.js#L22) function that tests the reducer for specific behavior when the reducer receive an undefined `state` parameter.
 
 ```javascript
 describe('user reducer', () => {
@@ -345,7 +345,7 @@ describe('user reducer', () => {
 ```
 <span style="display:block" align="center">
 
-Fig. 12: Tests if the reducer returns the initial state when given an `undefined` state.
+Fig. 12: Tests if the [`userReducer`](https://github.com/benjithedalilama/alice-frontend/blob/30877ae5c4d66610d1e3930e5bf10bc13bdc23ff/src/reducers/userReducer.js#L22) returns the initial state when given an `undefined` state.
 
 </span>
 
@@ -358,10 +358,10 @@ Thoughtfully designing and implementing deployment systems using Docker and rela
 
 When working on a software team and a large codebase, every second counts. To illustrate, if deploying my application took 10 seconds total, as opposed to 2 seconds, I would experience a loss of 8 seconds of productivity each time I needed to deploy. With a repeatable task like deploying an application, which happens maybe three or four times per day per team member, for a team of ten engineers we would waste 4 - 5 minutes everyday. Overtime this loss of time accumulates, thus every second we can shave off of repeatable tasks has lasting benefits for the team.
 
-Docker is a powerful tool that promotes modularity, separation of concerns, and extensibility. Docker ensures replicability with systems and extensibility from development to production. Anyone can pull down my docker image and spin up a container running my backend and frontend services, as long as they have a docker daemon running on their machine. This greatly simplifies the development and deployment processes due to the configuration being bundled into the image. It also allows me to run opaque services like Mongo with little configuration which creates a dependency but greatly simplifies the codebase. By using docker-compose, a tool which spins up docker containers based on the `docker-compose.yml` and `docker-compose.override.yml` configuration files, I am able to run one command to deploy the frontend service. Alice uses Docker to separate concerns of the frontend, backend, and database services. Any change made to these services can be reflected by pushing a new image to the Docker Hub, a repository for Docker images, proving Docker's extensibility advantages. To recap, Docker helps me save time and separates concerns of the application fundamentally.
+Docker is a powerful tool that promotes modularity, separation of concerns, and extensibility. Docker ensures replicability with systems and extensibility from development to production. Anyone can pull down my docker images and spin up a container running my [backend](https://cloud.docker.com/u/benjithedalilama/repository/docker/benjithedalilama/alice-backend) and [frontend](https://cloud.docker.com/u/benjithedalilama/repository/docker/benjithedalilama/alice-frontend) services, as long as they have a docker daemon running on their machine. This greatly simplifies the development and deployment processes due to the configuration being bundled into the image. It also allows me to run opaque services like Mongo with little configuration which creates a dependency but greatly simplifies the codebase. By using docker-compose, a tool which spins up docker containers based on the [`docker-compose.yml`](https://github.com/benjithedalilama/alice-frontend/blob/master/docker-compose.yml) and [`docker-compose.override.yml`](https://github.com/benjithedalilama/alice-frontend/blob/master/docker-compose.override.yml) configuration files, I am able to run one command to deploy the frontend service. Alice uses Docker to separate concerns of the frontend, backend, and database services. Any change made to these services can be reflected by pushing a new image to the Docker Hub, a repository for Docker images, proving Docker's extensibility advantages. To recap, Docker helps me save time and separates concerns of the application fundamentally.
 
 ## Overview
-The previous section was all about the frontend. Remember that the frontend application is built into a static `build` directory and served to the client. The client can browse through the application and make requests to the backend through the application interface, which uses Javascript code present in the build directory to make those requests. The next section is all about the backend, where the actual logic of the application lives. The backend application lives on a remote server in production, or on my local machine during development, and is responsible for writing and reading data from the database, passing data to the user that they requested, and creating and distributing tokens for authentication. Keep this architecture and data flow in mind when reading the next sections.
+The previous section was all about the frontend. Remember that in production the frontend application is built into a static `build` directory and served to the client. The client uses their browser to use the application and make requests to the backend through the web application interface, which uses Javascript code present in the build directory to make those requests. The next section is all about the backend, where the actual logic of the application lives. The backend application lives on a remote server in production, or on my local machine during development, and is responsible for writing and reading data from the database, passing data to the user that they requested, and creating and distributing tokens for authentication. Keep this architecture and data flow in mind when reading the next sections.
 
 ## Backend API Server Specifications
 ### System Architecture
@@ -377,7 +377,7 @@ I use MongoDB (Mongo) with the Mongoose ODM (object document model) to improve e
 Mongoose abstracts out a lot of the complicated bits from Mongo, enforcing separation of concerns. In a no-brainer fashion, I separated my models into individual files and their own folder; my models only have to define a schema and export a model, which separates concerns for the configuration of the database and improves reusability.
 
 ### API Server
-The API Endpoints are accessible via a Node.js server running Express, which holds many benefits. These benefits help separate concerns, extensibility, and help with authentication-related state management by providing centralized and easily adaptable systems for core functions such as implementation of middleware, routes, and authentication.
+The API Endpoints are accessible via a [Node.js](https://nodejs.org/en/about/) server running Express, which holds many benefits. These benefits help separate concerns, extensibility, and help with authentication-related state management by providing centralized and easily adaptable systems for core functions such as implementation of middleware, routes, and authentication.
 
 #### Middleware
 The use of middleware greatly demonstrates separation of concerns and enables extensibility of functions executed in the middleware. Middleware is code that is run in 'the middle' of an operation, and usually, it is run before the final operation in a process. Applications can use middleware to determine whether a user is allowed to execute a sensitive operation before executing it, parse data from requests before passing that data on, and parse cookies from requests to use later in making requests to the API server, among other examples. Since middleware only has to be defined in one place when designed properly, and can be called when any API endpoint is hit, it is highly reusable. For example, Alice uses the validateToken middleware seen in figure thirteen, which is called on any API routes that require authentication. Following that, figure fourteen shows the validateToken middleware being called.
@@ -408,7 +408,7 @@ export { validateToken }
 ```
 <span style="display:block" align="center">
 
-Fig. 13: `utils.js` file that houses `validateToken` function middleware
+Fig. 13: [`utils.js`](https://github.com/benjithedalilama/alice-backend/blob/master/utils.js) file that houses [`validateToken`](https://github.com/benjithedalilama/alice-backend/blob/7e612b6537160dde6fc2f81d396f475dc77feb50/utils.js#L3) function middleware
 
 </span>
 
@@ -437,17 +437,17 @@ app.get(`${base_path}/users/:userId/hubs`, validateToken, async (req, res, next)
 ```
 <span style="display:block" align="center">
 
-Fig. 14: `validateToken` middleware is being used for these endpoints. To create a new hub and get hubs, a valid user token is required
+Fig. 14: [`validateToken`](https://github.com/benjithedalilama/alice-backend/blob/7e612b6537160dde6fc2f81d396f475dc77feb50/utils.js#L3) middleware is being used for [these endpoints](https://github.com/benjithedalilama/alice-backend/blob/7e612b6537160dde6fc2f81d396f475dc77feb50/api.js#L120). To create a new hub and get hubs, a valid user token is required
 
 </span>
 
-The centralized nature of middleware ensures that the `validateToken` function is the only function and code responsible for validating the token. If I needed to change the method of authentication, I could simply modify my middleware function and any necessary parameters/configuration, ensuring that if the user is not authenticated a 401 Error is thrown, and if they are, executing the intended task, in the above case, getting hubs, or creating a hub, illustrating the separation of concerns and extensibility.
+The centralized nature of middleware ensures that the [`validateToken`](https://github.com/benjithedalilama/alice-backend/blob/7e612b6537160dde6fc2f81d396f475dc77feb50/utils.js#L3) function is the only function and code responsible for validating the token. If I needed to change the method of authentication, I could simply modify my middleware function and any necessary parameters/configuration, ensuring that if the user is not authenticated a 401 Error is thrown, and if they are, executing the intended task, in the above case, getting hubs, or creating a hub, illustrating the separation of concerns and extensibility.
 
 ### Scalability
 My application is scalable by design; however, I have not tested it by putting it under extreme traffic loads. Firstly, Node.js' event-driven I/O (input/output) helps it stay lightweight and efficient. "Where Node.js really shines is in building fast, scalable network applications, as it’s capable of handling a huge number of simultaneous connections with high throughput, which equates to high scalability" (Capan, 2017). Node.js enables me to have hundreds of thousands of users interacting with my app simultaneously and would handle it well. Mongo, with appropriate configuration, is highly scalable and can both scale data, clusters, and performance. Mongo is fast by design, storing unstructured data in hash tables for quick reading and writing.
 
 ### Services
-Much like my frontend service, I implement a service pattern in my backend that separates the database access out from the API server file to services. These services enforce separation of concerns and abstract out database access. Figure fourteen shown above shows the `HubService` being used to create and get all hubs with their respective methods on the `HubService` class. If implemented correctly, this abstraction ensures I can expect a specific result to be returned by the class method, requiring only that I focus on the API server logic. This is especially powerful while working on teams that write robust and precise tests for behaviors of their systems’ individual parts, as they are able to more quickly collaborate and communicate behaviors. For example, I can write a test to describe the `HubService` and ensure that the delete method returns a promise while the `getAll` method returns an array. If a team member rewrites the `HubService` changing the behavior, running the test suite locally will result in the test suite failing, and more importantly the deployment tools should not build a breaking application.
+Much like my frontend service, I implement a service pattern in my backend that separates the database access out from the API server file to services. These services enforce separation of concerns and abstract out database access. Figure fourteen shown above shows the [`HubService`](https://github.com/benjithedalilama/alice-backend/blob/master/services/HubService.js) being used to create and get all hubs with their respective methods on the [`HubService`](https://github.com/benjithedalilama/alice-backend/blob/master/services/HubService.js) class. If implemented correctly, this abstraction ensures I can expect a specific result to be returned by the class method, requiring only that I focus on the API server logic. This is especially powerful while working on teams that write robust and precise tests for behaviors of their systems’ individual parts, as they are able to more quickly collaborate and communicate behaviors. For example, I can write a test to describe the [`HubService`](https://github.com/benjithedalilama/alice-backend/blob/master/services/HubService.js) and ensure that the [`delete`](https://github.com/benjithedalilama/alice-backend/blob/7e612b6537160dde6fc2f81d396f475dc77feb50/services/HubService.js#L43) method returns a promise while the [`getAll`](https://github.com/benjithedalilama/alice-backend/blob/7e612b6537160dde6fc2f81d396f475dc77feb50/services/HubService.js#L16) method returns an array. If a team member rewrites the [`HubService`](https://github.com/benjithedalilama/alice-backend/blob/master/services/HubService.js) changing the behavior, running the test suite locally will result in the test suite failing, and more importantly the deployment tools should not build a breaking application.
 
 ### Token Authentication
 To simplify state management on my server I opted for token authentication instead of session-based authentication, which would require the server to store the state of the user session, increasing complexity. Instead, token authentication uses a ephemeral signed token that it validates on every protected request for a given user. This is a simple and highly secure way of authenticating. However, it does introduce some headaches, because if someone gets their hands on the token either by accessing the client’s cookies or by somehow impersonating the user, they can make requests on their behalf. I fight this by automatically logging out the user every time they leave the webpage or refresh. Also, since the token has a set expiration, there is not any direct way to invalidate a token, so I would have to implement a blacklist or other permissions models in the middleware if users want to invalidate tokens earlier than their expiry date. The stateless nature of token authentication further reduces the reliance on state in the backend server and reduces complexity for developers.
