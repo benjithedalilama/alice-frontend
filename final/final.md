@@ -494,7 +494,7 @@ Software systems are complex amalgamations of many moving parts and subsystems t
 
 Before diving into building a software platform, I had to figure out what users needed. Instead of assuming all of the features a user would want in the product, I set out to interview and learn about users' needs. Despite software development being the focus of this capstone, I included this section to show the process of product development.
 
-### Preliminary User Interview
+#### Preliminary User Interview
 
 I conducted an informal interview with Sul and Mohamed, two engineers from Entocycle. The following questions were asked to understand how they currently manage their data, a function they previously expressed needed improvement.
 
@@ -511,13 +511,13 @@ I conducted an informal interview with Sul and Mohamed, two engineers from Entoc
 
 Through this interview, data management is the most important need of Mohamed and Sul. They are currently using IBM Bluemix, but it is not optimal for their application, and will become quite expensive. An in-house built platform to manage data would benefit their bottom line, and personalization will come in handy when they scale. The main objective of the product is to provide a clear and easy way to manage/test the hubs (raspberry pi devices) and the contents they own (sensors, sensor readings, codes, commands).
 
-### Card Sorting Exercise
+#### Card Sorting Exercise
 
 I had users sort five cards according to different intangible objects in my cation (Mears, 2017). I used the resulting hierarchy and grouping to in the service blueprint and rough UI. Talking to the users I interviewed, I found that people grouped sensors and control codes on the same hierarchy, and in different groups.
 
 This is partly because sensor readings and control commands take the same form. Control code and sensors are also similar in behavior, so I decided in my interface I would have a Hub view (overarching hierarchical element) that includes sensors and control commands side by side. The main takeaway of the card sorting is that sensors and control codes have similar behaviors, as do their output, control commands and sensor readings.
 
-### Service Blueprint
+#### Service Blueprint
 
 “The service blueprint illustrates a service journey, specifying and detailing each aspect of a service” (Kertesz, 2018). An updated version of the blueprint seen below exists [here](https://www.figma.com/file/bKTtoa2yy0ht2QIwKPmYbJs3/Alice-Service-Blueprint?node-id=0%3A1).
 
@@ -531,8 +531,8 @@ MVP Service Blueprint Overview
 
 The different actors are seen on the left side (user, system, logger) as well as the “evidence,” which are views/pages in this case (Gibbens, 2017). For each page I generated necessary features for an MVP stemming from the interview. Breaking out the MVP into actors allows me to more clearly visualize different features which would live inside certain views and determine user flows.
 
-### Secondary User Interview
-#### Study Goals
+#### Secondary User Interview
+##### Study Goals
 Instead of doing a usability test, I aim to discover the needs of my users outside of the core functionality of device management.
 I hypothesize that:
 
@@ -543,10 +543,10 @@ I hypothesize that:
 
 I want to make sure not to bias people with leading questions, or to unintentionally expose my hypotheses to people. I will make sure to adhere to user-centered design principles in my interviews.
 
-#### Study Recruits
+##### Study Recruits
 I was not able to borrow the time of the engineers at Entocycle, so instead I reached out to a previous coworker back home who has experience with automated system management and asked them questions after giving them a quick introduction on the product.
 
-#### Interview Questions
+##### Interview Questions
 1. What is the information you need to know when managing your sensors and hubs?
     - “I need to know any critical information like sensor data, status (up, down, booting up, etc.), issues, metadata”
 2. Using this platform, what would you do if you wanted to manage a specific hub?
@@ -564,7 +564,7 @@ I was not able to borrow the time of the engineers at Entocycle, so instead I re
 8. What do you think is missing from this product?
     - “I think a central sort of landing page for the user is missing. I don’t really know where I can see my system from a high level. Where do I go if I want to know the average temperature across my sensors?”
 
-### Resulting Feature
+#### Resulting Feature
 
 Following the user interview, I mostly took from questions 7 and 8 above. There needs to be a central page where users can go to understand their system at a glance. This would be a dashboard page that includes alerts, favorite hubs, and average values graphs across hubs and sensors with filters. I mocked up this page (feature) in my high-fidelity mockup (seen below).
 
@@ -578,8 +578,7 @@ Dashboard page view: shows alerts and favorites
 
 The alerts and favorites gives the user shortcuts to their most viewed devices and allows them to easily see devices with known and unknown problems or abnormalities based on thresholds the user sets.
 
-## User Interface and Experience
-### High Fidelity Mockup
+#### High Fidelity Mockup
 
 A high-fidelity mockup of my application exists [here](https://www.figma.com/proto/erI8IOjAPQWTqAHjEnCPW1C7/User-Flows?node-id=0%3A1&scaling=scale-down-width). You can click through it to see some different views. Figma is a powerful tool that allowed me to easily create mockups and even use CSS to put directly into my application code.
 
@@ -591,7 +590,7 @@ High Fidelity Mockup Overview
 
 </span>
 
-### The Importance of Customer Centric Products
+#### The Importance of Customer Centric Products
 Being customer centric when building products is vital, and often times extremely difficult. Accurately identifying user needs requires in depth interviewing and testing. When users' needs are effectively uncovered and addressed in product development, the customer ends up using something they need. The lack of customer centricity leaves the customer feeling frustrated and unheard.
 
 Using methods I have learned through classes such as *Human Computer Interaction* and *Needs Identification and Product Development*, I conducted customer centric research to identify user needs. Research, testing, and product design should not be compromised when building a product, and can often be critical to its success.
