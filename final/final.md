@@ -1,5 +1,5 @@
-# Alice: Code as Design
-##### An exploration into best practices for development of sustainable software systems.
+# Code as Design
+## An exploration into best practices for development of sustainable software systems.
 
 ## Introduction
 To begin, my project focuses on broad problems present in software development and code design itself, as opposed to focusing on the function of the product. This project is concerned with the *how* and *why* much more than it is concerned with the *what*. I *am not* trying to develop the next best way to manage devices and data in automated farming systems. I *am* trying to explore code as design and demonstrate the power of code as design through the system I am implementing.
@@ -15,7 +15,7 @@ Considering this, Alice, a device management platform for industrial automated s
 These principles improve development time and ease, enable me and outside developers to better improve the applications, and overall, lead to sustainable software systems: systems which support users and can be maintained effectively over time.
 
 ### Technical Overview
-Alice is a device management platform for industrial systems such as farms, factories, and other automated systems. Specifically, Alice excels in managing sensor and control systems through the [web application](#appendix-c-user-interviews-research-and-testing)).
+Alice is a device management platform for industrial systems such as farms, factories, and other automated systems. Specifically, Alice excels in managing sensor and control systems through the [web application](https://github.com/benjithedalilama/alice-frontend/blob/master/final/final.md#appendix-c-user-interviews-research-and-testing).
 
 Picture an automated farm with a sensor network full of temperature, humidity, soil pH, and other sensors. This farm has hubs: central nodes which receive data from sensors, while also being able to execute codes to control systems such as a drip irrigation system. This would allow the hub to monitor sensor data, and react to it in real time by executing codes in order to modify the farm environment.
 
