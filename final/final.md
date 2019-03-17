@@ -15,7 +15,7 @@ Considering this, Alice, a device management platform for industrial automated s
 These principles improve development time and ease, enable me and outside developers to better improve the applications, and overall, lead to sustainable software systems: systems which support users and can be maintained effectively over time.
 
 ### Technical Overview
-Alice is a device management platform for industrial systems such as farms, factories, and other automated systems. Specifically, Alice excels in managing sensor and control systems.
+Alice is a device management platform for industrial systems such as farms, factories, and other automated systems. Specifically, Alice excels in managing sensor and control systems through the [web application](#appendixc)).
 
 Picture an automated farm with a sensor network full of temperature, humidity, soil pH, and other sensors. This farm has hubs: central nodes which receive data from sensors, while also being able to execute codes to control systems such as a drip irrigation system. This would allow the hub to monitor sensor data, and react to it in real time by executing codes in order to modify the farm environment.
 
@@ -494,7 +494,7 @@ Software systems are complex amalgamations of many moving parts and subsystems t
 
 #rightproblem - Instead of trying to write code for concision and beauty I wrote it for clarity and effectiveness. Code is not meant to be beautiful, its meant to be understandable so other people can read and write it.
 
-## Appendix C: User Interviews, Research, and Testing
+## Appendix C: <a name="appendixc">User Interviews, Research, and Testing</a>
 
 Before diving into building a software platform, I had to figure out what users needed. Instead of assuming all of the features a user would want in the product, I set out to interview and learn about users' needs. Despite software development being the focus of this capstone, I included this section to show the process of product development.
 
@@ -517,7 +517,7 @@ Through this interview, data management is the most important need of Mohamed an
 
 ### Card Sorting Exercise
 
-I had users sort five cards according to different intangible objects in my web application (Mears, 2017). I used the resulting hierarchy and grouping to in the service blueprint and rough UI. Talking to the users I interviewed, I found that people grouped sensors and control codes on the same hierarchy, and in different groups. The most common layout of cards is shown below.
+I had users sort five cards according to different intangible objects in my cation (Mears, 2017). I used the resulting hierarchy and grouping to in the service blueprint and rough UI. Talking to the users I interviewed, I found that people grouped sensors and control codes on the same hierarchy, and in different groups. The most common layout of cards is shown below.
 
 ![](resources/cardsorting.jpeg)
 
