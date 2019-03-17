@@ -34,7 +34,6 @@ Thus, a large part of extensibility is separating systems by reducing dependenci
 
 ### Separation of Concerns
 Feeding into extensibility is separation of concerns, which is the separation of functionality or ‘jobs’ that certain pieces of the software system are responsible for. Breaking up the responsibilities of the entire system into smaller bite-sized concerns isolates the tasks at hand to specific subsystems. This isolation and separation improves the maintenance process and makes the system more extensible because of the natural plug-and-play behavior which emerges. A good separation of concerns can be illustrated by different files calling the same service to execute the same function. For example, the [`hubService.js`](https://github.com/benjithedalilama/alice-frontend/blob/master/src/services/hubService.js) file in the frontend is concerned with making API calls specifically for the Hub-related API endpoints. Figure seven, shown later, illustrates how the HubService class is the sole piece responsible for fetching hubs and can be called anywhere in the frontend to do its job. This separation of concerns enables us to control how and where the user can interact with their hubs, and gives us tighter control over security and access to the API.
-<br></br>
 ### Simplifying State Management
 State management, simply defined as managing memory stored in an application, is one of the number one causes of pain and anguish for software developers; however, software developers can mitigate the complications associated with it by using frameworks that enforce rules, such as Redux. The Redux website explains clearly and concisely that “the whole state of your app is stored in an object tree inside a single store. The only way to change the state tree is to emit an action, an object describing what happened. To specify how the actions transform the state tree, you write pure reducers” (“Getting Started with Redux”, 2018). Redux simplifies the state management process by enforcing a directionality in the flow of data that affects the state.
 
@@ -168,7 +167,6 @@ Fig. 5: [`fetchHubsSuccess`](https://github.com/benjithedalilama/alice-frontend/
 
 #### Redux Reducers
 When actions are dispatched, reducers handle them, and return a newly minted application state. Reducers returning a new state, instead of modifying an existing state, helps simplify state management. Unexpected bugs can occur when mutating an existing state, so creating a new state every time a change needs to be made helps us reduce the occurrence of those bugs. To illustrate, figure six below shows the [`hubReducer`](https://github.com/benjithedalilama/alice-frontend/blob/30877ae5c4d66610d1e3930e5bf10bc13bdc23ff/src/reducers/hubReducer.js#L102) which handles when the [`fetchHubsSuccess`](https://github.com/benjithedalilama/alice-frontend/blob/30877ae5c4d66610d1e3930e5bf10bc13bdc23ff/src/actions/hubActions.js#L55) action is dispatched.
-<br></br>
 ```javascript
 export default function hubReducer(state = initialState, action) {
   switch(action.type) {
@@ -454,12 +452,6 @@ To simplify state management on my server I opted for token authentication inste
 
 ## Conclusion
 Software systems are complex amalgamations of many moving parts and subsystems that work in harmony. The codebases of these systems can become overly complex and impossible to maintain. Using the guiding principles of extensibility, simplified state management, and a strong separation of concerns can help work against complexity and make software development a better experience. Extensibility allows the codebase to morph over time, making sure developers can easily update and change subsystems. Simplified state management helps developers deal with the complicated mess of memory stored in the frontend, ensuring interfaces perform well and have understandable behavior. Finally, separation of concerns make specific subsystems responsible for functions, aiding with security and maintenance. I demonstrated the value of extensibility, simplified state management, and separation of concerns by implementing design patterns such as service-oriented architecture, utilizing libraries which standardize and constrain system behavior, and minimizing code through abstraction and thoughtfulness, ultimately resulting in the fulfillment of users' needs and demands.
-<br></br>
-<br></br>
-<br></br>
-<br></br>
-<br></br>
-<br></br>
 ## Appendix
 ### Appendix A
 #### LOs
@@ -476,7 +468,6 @@ Software systems are complex amalgamations of many moving parts and subsystems t
 #scalability - My deployment pipeline simply tests the different images, then deploys them in containers on Hyper.sh. This also allows for easy scalability in the future where I can add in automatic load balancing and other scaling functions on a platform like AWS ECR/EC2. Docker greatly enables scaling horizontally while the tests present in my application provide scalability by simplifying maintenance and debugging. Tests help with the more human side of scaling to ensure people understand when changes they made breaks the behavior of code someone else wrote which is especially useful when a team is growing and not all team members have knowledge of the codebase and the impacts of their changes.
 
 #separationofconcerns - My choice to outsource the database calls to services for specific models allowed me to greatly simplify the logic in my API calls. The service deals with making calls to the database, while the API uses the service. Throughout my codebase I separate concerns to isolate functionality and simplify structure.
-<br></br>
 ### Appendix B
 #### HCs
 #algorithms - Most of the codebase is not made up of algorithms, however in my API server logic I use algorithms to interact with the database using data from API calls from the client. For example, I check the hashed password the user attempts a login with the one stored in the database, and on any API calls made, I verify that the token the user sends with the API call is valid.
@@ -522,15 +513,7 @@ Through this interview, data management is the most important need of Mohamed an
 
 ### Card Sorting Exercise
 
-I had users sort five cards according to different intangible objects in my cation (Mears, 2017). I used the resulting hierarchy and grouping to in the service blueprint and rough UI. Talking to the users I interviewed, I found that people grouped sensors and control codes on the same hierarchy, and in different groups. The most common layout of cards is shown below.
-
-![](resources/cardsorting.jpeg)
-
-<span style="display:block" align="center">
-
-Card sorting exercise
-
-</span>
+I had users sort five cards according to different intangible objects in my cation (Mears, 2017). I used the resulting hierarchy and grouping to in the service blueprint and rough UI. Talking to the users I interviewed, I found that people grouped sensors and control codes on the same hierarchy, and in different groups.
 
 This is partly because sensor readings and control commands take the same form. Control code and sensors are also similar in behavior, so I decided in my interface I would have a Hub view (overarching hierarchical element) that includes sensors and control commands side by side. The main takeaway of the card sorting is that sensors and control codes have similar behaviors, as do their output, control commands and sensor readings.
 
@@ -612,16 +595,6 @@ High Fidelity Mockup Overview
 Being customer centric when building products is vital, and often times extremely difficult. Accurately identifying user needs requires in depth interviewing and testing. When users' needs are effectively uncovered and addressed in product development, the customer ends up using something they need. The lack of customer centricity leaves the customer feeling frustrated and unheard.
 
 Using methods I have learned through classes such as *Human Computer Interaction* and *Needs Identification and Product Development*, I conducted customer centric research to identify user needs. Research, testing, and product design should not be compromised when building a product, and can often be critical to its success.
-<br></br>
-<br></br>
-<br></br>
-<br></br>
-<br></br>
-<br></br>
-<br></br>
-<br></br>
-<br></br>
-<br></br>
 ## References
 
 Atwood, J. (2007, May 30). Coding Horror.
