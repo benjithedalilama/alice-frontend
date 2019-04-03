@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { push } from 'connected-react-router'
 import { login, logout } from '../../actions/userActions'
-import './login.css'
 
 export class Login extends Component {
   constructor(props) {
