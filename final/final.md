@@ -610,8 +610,7 @@ Gibbens, S. (2017, August 27). Service Blueprints: Definition.
 
 Kertesz, J. (2018, October 25). Creating a service blueprint: Levels of digital and human interactions.
 
-Martin, R. C., Coplien, J. O., Wampler, K., Grenning, J. W., Schuchert, B. L., Langr, J., . . .
-
+Martin, R. C., Coplien, J. O., Wampler, K., Grenning, J. W., Schuchert, B. L., Langr, J., Feathers, M. C. (2016). Clean code: A handbook of agile software craftsmanship. Prentice Hall.
 Mears, C. (2017, July 04). Card Sorting – The Beginner's Guide.
 
 Powell, M. (2018, April 29). React State Management Patterns.
